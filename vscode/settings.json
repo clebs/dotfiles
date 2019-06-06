@@ -1,0 +1,137 @@
+{
+    // Workbench
+    "workbench.startupEditor": "none",
+    "workbench.colorTheme": "Solarized Dark",
+    "workbench.colorCustomizations": {
+        "editor.selectionBackground": "#255258",
+        "editor.selectionHighlightBackground": "#255258"
+    },    
+    
+    //editor
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 12,
+    "editor.smoothScrolling": true,
+
+    //Shell
+    "terminal.integrated.shell.osx": "/bin/zsh",
+    "git.confirmSync": false,
+
+    // GIT
+    "gitlens.codeLens.authors.enabled": false,
+    "gitlens.codeLens.enabled": false,
+
+    // GO
+    "go.gopath": "~/Dev/go",
+    "go.toolsGopath": "~/Dev/go",
+    "go.formatTool": "goreturns",
+    "go.liveErrors": {
+        "enabled": true,
+        "delay": 500
+    },
+    "go.lintTool": "gometalinter",
+    "go.lintFlags": [
+        "--vendored-linters",
+        "--deadline=60s",
+        "--disable-all",
+        "--enable=goimports",
+        "--enable=deadcode",
+        "--enable=gofmt",
+        "--enable=vet",
+        "--enable=errcheck",
+        "--enable=gas",
+        "--enable=dupl",
+        "--enable=ineffassign",
+        "--enable=staticcheck",
+        "--enable=unparam",
+        "--enable=unused",
+    ],
+
+    "go.useLanguageServer": true,
+    "go.alternateTools": {
+        "go-langserver": "gopls", // or bingo
+      },
+      "go.languageServerExperimentalFeatures": {
+        "format": true,
+        "autoComplete": true
+      },
+    "go.autocompleteUnimportedPackages": true,
+
+    "[go]": {
+        "editor.snippetSuggestions": "none",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true,
+            "source.fixAll": true,
+        },
+    },
+
+    // TODO highlight
+    "todohighlight.keywords": [
+        {
+            "text": "TODO",
+            "color": "#000099",
+            "backgroundColor": "teal",
+            "overviewRulerColor": "teal"
+        },
+        {
+            "text": "BONFIRE",
+            "color": "#efc11c",
+            "backgroundColor": "#c63703",
+            "overviewRulerColor": "#efc11c"
+        },
+        {
+            "text": "WTF",
+            "color": "#5bf763",
+            "backgroundColor": "#7d00a0",
+            "overviewRulerColor": "#7d00a0"
+        },
+        {
+            "text": "WIP",
+            "color": "#0d1ce8",
+            "backgroundColor": "#41f46b",
+            "overviewRulerColor": "#41f46b"
+        },
+    ],
+
+    // Notes
+    "vsnotes.defaultNotePath": "/Users/d073003/Dev/vsnotes",
+    "vsnotes.defaultNoteTitle": "{title}",
+    "vsnotes.defaultSnippet": {
+        "langId": "null",
+        "name": "null,"
+    },
+    "git.autofetch": true,
+    "window.zoomLevel": 0,
+
+    // emoji
+    "emojisense.languages": {
+        "markdown": true,
+        "plaintext": {
+            "markupCompletionsEnabled": false,
+            "emojiDecoratorsEnabled": false
+        },
+        "go":  {
+            "markupCompletionsEnabled": false,
+            "emojiDecoratorsEnabled": false,
+            "unicodeCompletionsEnabled": true
+        },
+        "git-commit": false
+    },
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": true,
+        "suppressNoRepositoryWarning": false,
+        "suppressResultsExplorerNotice": false,
+        "suppressShowKeyBindingsNotice": true
+    },
+    "gitlens.historyExplorer.enabled": true,
+    "breadcrumbs.enabled": true,
+    "workbench.iconTheme": "vscode-icons",
+    "go.gocodeAutoBuild": true,
+    "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
+    "go.useCodeSnippetsOnFunctionSuggest": true
+}
