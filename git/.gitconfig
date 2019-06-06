@@ -1,5 +1,5 @@
 [user]
-	email = borja.clemente@gmail.com
+	email = borja.clemente.castanera@sap.com
 	name = Borja Clemente
 [filter "lfs"]
 	process = git-lfs filter-process
