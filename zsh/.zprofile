@@ -119,6 +119,11 @@ function wk {
   watch -n 5 "kubectl get pods $NS $LABELS"
 }
 
+# Delete a context completely from Kubeconfig: deletes cluster, context and user auth
+function rmcluster {
+  kubectl config delete-cluster $1 && kubectl config delete-context $1 && kubectl config unset users.$1
+}
+
 # -------- KYMA --------- #
 
 # Get admin password for current context

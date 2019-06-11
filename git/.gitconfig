@@ -9,3 +9,4 @@
 [pager]
 	branch = false
 	tag = false
+	stash = false
