@@ -2,7 +2,7 @@ local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
 
 # If you with to add context indicator to your ZSH just set the CTX env var and it will be displayed
 ctx_prompt() {
-    local ctx=$(kubectl config current-context)
+    local ctx=$(kubectl config current-context 2>/dev/null)
     if [[ -n $ctx ]]; then
         local len=${#ctx}
         if [ $len -gt 8 ]; then
