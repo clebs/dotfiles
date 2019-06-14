@@ -47,7 +47,7 @@
         "--enable=unused",
     ],
 
-    "go.useLanguageServer": true,
+    "go.useLanguageServer": false,
     "go.alternateTools": {
         "go-langserver": "gopls", // or bingo
       },
