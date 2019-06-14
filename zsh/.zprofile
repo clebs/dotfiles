@@ -59,36 +59,19 @@ alias dl='docker login'
 # remove all containers
 alias dr='docker rm -f $(docker container ls -aq)'
 
-# Switch docker context
-function ctx {
+# Switch docker CLI target env
+function denv {
   case $1 in
-    local) # Dockerd = OSX / k8s = minikube
+    local) # Dockerd = OSX
       eval "$(docker-machine env -u)"
-      kubectl config use minikube > /dev/null
-      export CTX="local"
       return 0
       ;;
-    minikube) # Dockerd = minikube / k8s = minikube
+    minikube) # Dockerd = minikube
       eval $(minikube docker-env)
-      kubectl config use minikube > /dev/null
-      export CTX="minikube"
-      return 0
-      ;;
-    nightly) # Dockerd = OSX / k8s = nightly.cluster.kyma.cxq
-      eval "$(docker-machine env -u)"
-      kubectl config use nightly.cluster.kyma.cx > /dev/null
-      export CTX="nightly"
-      return 0
-      ;;
-    "") # Unset contest means: Dockerd = OSX / k8s = minikube / remove CTX label
-      eval "$(docker-machine env -u)"
-      kubectl config use minikube > /dev/null
-      export CTX=""
       return 0
       ;;
     *)
       echo "Docker environment not supported: $1"
-      unset CTX
       return 1
       ;;
   esac

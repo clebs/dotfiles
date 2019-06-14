@@ -7,7 +7,7 @@ export PATH=$HOME/bin:/usr/local/bin:$GOPATH/bin:$PATH
 #export GO111MODULE=on
 
 # K8s setup
-export KUBECONFIG=$HOME/.kube/config:$HOME/.kube/config-huskies
+export KUBECONFIG=$HOME/.kube/config
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/d073003/.oh-my-zsh

@@ -133,5 +133,6 @@
     "workbench.iconTheme": "vscode-icons",
     "go.gocodeAutoBuild": true,
     "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
-    "go.useCodeSnippetsOnFunctionSuggest": true
+    "go.useCodeSnippetsOnFunctionSuggest": true,
+    "diffEditor.ignoreTrimWhitespace": true
 }
