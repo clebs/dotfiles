@@ -1,9 +1,11 @@
 {
     // Workbench
     "workbench.startupEditor": "none",
+    "workbench.iconTheme": "vscode-icons",
     "workbench.colorTheme": "Solarized Dark",
     "workbench.colorCustomizations": {
         "editor.selectionBackground": "#255258",
+        "editorCursor.foreground": "#00c359",
         "editor.selectionHighlightBackground": "#255258"
     },    
     
@@ -58,7 +60,6 @@
     "go.autocompleteUnimportedPackages": true,
 
     "[go]": {
-        "editor.snippetSuggestions": "none",
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
             "source.organizeImports": true,
@@ -73,6 +74,12 @@
             "color": "#000099",
             "backgroundColor": "teal",
             "overviewRulerColor": "teal"
+        },
+        {
+            "text": "FIXME",
+            "color": "#000000",
+            "backgroundColor": "yellow",
+            "overviewRulerColor": "yellow"
         },
         {
             "text": "BONFIRE",
@@ -130,9 +137,12 @@
     },
     "gitlens.historyExplorer.enabled": true,
     "breadcrumbs.enabled": true,
-    "workbench.iconTheme": "vscode-icons",
     "go.gocodeAutoBuild": true,
     "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
     "go.useCodeSnippetsOnFunctionSuggest": true,
-    "diffEditor.ignoreTrimWhitespace": true
+    "diffEditor.ignoreTrimWhitespace": true,
+    "todohighlight.isEnable": true,
+    "editor.cursorBlinking": "expand",
+    "editor.cursorWidth": 3,
+    "editor.cursorSmoothCaretAnimation": true
 }

@@ -61,5 +61,15 @@
     {
         "key": "ctrl+shift+-",
         "command": "-workbench.action.navigateForward"
+    },
+    {
+        "key": "ctrl+cmd+g",
+        "command": "references-view.find",
+        "when": "editorHasReferenceProvider"
+    },
+    {
+        "key": "shift+alt+f12",
+        "command": "-references-view.find",
+        "when": "editorHasReferenceProvider"
     }
 ]
