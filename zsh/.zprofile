@@ -104,7 +104,9 @@ function wk {
 
 # Delete a context completely from Kubeconfig: deletes cluster, context and user auth
 function rmcluster {
-  kubectl config delete-cluster $1 && kubectl config delete-context $1 && kubectl config unset users.$1
+  kubectl config delete-cluster $(kubectl config get-contexts | grep $1 | awk '{print $3}') \
+  && kubectl config unset users.$(kubectl config get-contexts | grep $1 | awk '{print $4}') \
+  && kubectl config delete-context $(kubectl config get-contexts | grep $1 | awk '{print $2}')
 }
 
 # -------- KYMA --------- #

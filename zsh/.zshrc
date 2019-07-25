@@ -4,10 +4,12 @@
 #Golang setup
 export GOPATH=$HOME/Dev/go
 export PATH=$HOME/bin:/usr/local/bin:$GOPATH/bin:$PATH
-#export GO111MODULE=on
 
 # K8s setup
 export KUBECONFIG=$HOME/.kube/config
+
+# KYMA
+#. <(kyma completion zsh)
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/d073003/.oh-my-zsh
