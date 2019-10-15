@@ -6,7 +6,7 @@ export GOPATH=$HOME/Dev/go
 export PATH=$HOME/bin:/usr/local/bin:$GOPATH/bin:$PATH
 
 # K8s setup
-export KUBECONFIG=$HOME/.kube/config
+export KUBECONFIG=$HOME/.kube/config:$HOME/.kube/gardener
 
 # KYMA
 #. <(kyma completion zsh)

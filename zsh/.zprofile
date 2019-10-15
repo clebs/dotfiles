@@ -104,9 +104,18 @@ function wk {
 
 # Delete a context completely from Kubeconfig: deletes cluster, context and user auth
 function rmcluster {
-  kubectl config delete-cluster $(kubectl config get-contexts | grep $1 | awk '{print $3}') \
-  && kubectl config unset users.$(kubectl config get-contexts | grep $1 | awk '{print $4}') \
-  && kubectl config delete-context $(kubectl config get-contexts | grep $1 | awk '{print $2}')
+  if [[ "$(kubectl config get-contexts | grep $1 | awk '{print $1}')" == "*" ]]; then
+    local CLUSTER="3"
+    local AUTH="4"
+    local CONTEXT="2"
+  else
+    local CLUSTER="2"
+    local AUTH="3"
+    local CONTEXT="1"
+  fi
+  kubectl config delete-cluster $(kubectl config get-contexts | grep $1 | awk "{print \$$CLUSTER}") \
+  && kubectl config unset users.$(kubectl config get-contexts | grep $1 | awk "{print \$$AUTH}") \
+  && kubectl config delete-context $(kubectl config get-contexts | grep $1 | awk "{print \$$CONTEXT}")
 }
 
 # -------- KYMA --------- #
@@ -193,6 +202,7 @@ function dotfiles {
       ;;
     *)
       echo "Dotfiles command not supported: $1"
+      echo "Provide either apply or backup option"
       return 1
       ;;
   esac

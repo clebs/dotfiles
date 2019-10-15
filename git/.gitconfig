@@ -10,3 +10,5 @@
 	branch = false
 	tag = false
 	stash = false
+[format]
+	signoff = true

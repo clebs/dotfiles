@@ -26,7 +26,6 @@
     // GO
     "go.gopath": "~/Dev/go",
     "go.toolsGopath": "~/Dev/go",
-    "go.formatTool": "goreturns",
     "go.liveErrors": {
         "enabled": true,
         "delay": 500
@@ -48,16 +47,13 @@
         "--enable=unparam",
         "--enable=unused",
     ],
-
-    "go.useLanguageServer": false,
     "go.alternateTools": {
         "go-langserver": "gopls", // or bingo
-      },
-      "go.languageServerExperimentalFeatures": {
-        "format": true,
-        "autoComplete": true
-      },
+    },
     "go.autocompleteUnimportedPackages": true,
+    "go.gocodeAutoBuild": true,
+    "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
+    "go.useCodeSnippetsOnFunctionSuggest": true,
 
     "[go]": {
         "editor.formatOnSave": true,
@@ -137,9 +133,6 @@
     },
     "gitlens.historyExplorer.enabled": true,
     "breadcrumbs.enabled": true,
-    "go.gocodeAutoBuild": true,
-    "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
-    "go.useCodeSnippetsOnFunctionSuggest": true,
     "diffEditor.ignoreTrimWhitespace": true,
     "todohighlight.isEnable": true,
     "editor.cursorBlinking": "expand",
