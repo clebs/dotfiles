@@ -47,14 +47,36 @@
         "--enable=unparam",
         "--enable=unused",
     ],
+    "go.useLanguageServer": true,
+    "go.languageServerExperimentalFeatures": {
+        "format": true,
+        "autoComplete": true,
+        "rename": true,
+        "goToDefinition": true,
+        "hover": true,
+        "signatureHelp": true,
+        "goToTypeDefinition": true,
+        "goToImplementation": true,
+        "documentSymbols": true,
+        "workspaceSymbols": true,
+        "findReferences": true,
+        "diagnostics": true,
+        "documentLink": true
+    },
     "go.alternateTools": {
         "go-langserver": "gopls", // or bingo
     },
+    "gopls": {
+        "usePlaceholders": true,
+        "completeUnimported": true,
+    },
+
     "go.autocompleteUnimportedPackages": true,
     "go.gocodeAutoBuild": true,
     "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
     "go.useCodeSnippetsOnFunctionSuggest": true,
 
+    // go editor settings
     "[go]": {
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
@@ -131,11 +153,11 @@
         "suppressResultsExplorerNotice": false,
         "suppressShowKeyBindingsNotice": true
     },
-    "gitlens.historyExplorer.enabled": true,
+    
     "breadcrumbs.enabled": true,
     "diffEditor.ignoreTrimWhitespace": true,
     "todohighlight.isEnable": true,
     "editor.cursorBlinking": "expand",
     "editor.cursorWidth": 3,
-    "editor.cursorSmoothCaretAnimation": true
+    "editor.cursorSmoothCaretAnimation": true,
 }
