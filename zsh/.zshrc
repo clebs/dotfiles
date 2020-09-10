@@ -6,10 +6,9 @@ export GOPATH=$HOME/Dev/go
 export PATH=$HOME/bin:/usr/local/bin:$GOPATH/bin:$PATH
 
 # K8s setup
-export KUBECONFIG=$HOME/.kube/config:$HOME/.kube/gardener
-
-# KYMA
-#. <(kyma completion zsh)
+export KUBECONFIG=$HOME/.kube/config:$HOME/Dev/cloud-providers/gardener/berlin.yaml
+# add kubebuilder to path
+export PATH=$PATH:/usr/local/kubebuilder/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/d073003/.oh-my-zsh
@@ -108,3 +107,6 @@ if [ -f '/usr/local/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/usr/local/bin
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/usr/local/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/local/bin/google-cloud-sdk/completion.zsh.inc'; fi
+
+# KYMA
+. <(kyma completion zsh)

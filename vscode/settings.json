@@ -7,22 +7,18 @@
         "editor.selectionBackground": "#255258",
         "editorCursor.foreground": "#00c359",
         "editor.selectionHighlightBackground": "#255258"
-    },    
-    
+    },
     //editor
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
     "editor.fontSize": 12,
     "editor.smoothScrolling": true,
-
     //Shell
     "terminal.integrated.shell.osx": "/bin/zsh",
     "git.confirmSync": false,
-
     // GIT
     "gitlens.codeLens.authors.enabled": false,
     "gitlens.codeLens.enabled": false,
-
     // GO
     "go.gopath": "~/Dev/go",
     "go.toolsGopath": "~/Dev/go",
@@ -30,24 +26,37 @@
         "enabled": true,
         "delay": 500
     },
-    "go.lintTool": "gometalinter",
+    "go.lintTool": "golangci-lint",
     "go.lintFlags": [
-        "--vendored-linters",
-        "--deadline=60s",
-        "--disable-all",
-        "--enable=goimports",
-        "--enable=deadcode",
-        "--enable=gofmt",
-        "--enable=vet",
-        "--enable=errcheck",
-        "--enable=gas",
-        "--enable=dupl",
-        "--enable=ineffassign",
-        "--enable=staticcheck",
+        "--fast",
         "--enable=unparam",
-        "--enable=unused",
+        "--enable=goimports",
+        "--enable=interfacer",
     ],
+    "go.autocompleteUnimportedPackages": true,
+    "go.gocodeAutoBuild": true,
+    "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
+    "go.useCodeSnippetsOnFunctionSuggest": true,
+    "go.formatTool": "goimports",
+    // go editor settings
+    "[go]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true,
+            "source.fixAll": true,
+        },
+    },
+    // go modules
+    "[go.mod]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true,
+        },
+    },
     "go.useLanguageServer": true,
+    "go.alternateTools": {
+        "go-langserver": "gopls", // or bingo
+    },
     "go.languageServerExperimentalFeatures": {
         "format": true,
         "autoComplete": true,
@@ -63,62 +72,11 @@
         "diagnostics": true,
         "documentLink": true
     },
-    "go.alternateTools": {
-        "go-langserver": "gopls", // or bingo
-    },
     "gopls": {
-        "usePlaceholders": true,
-        "completeUnimported": true,
+        "usePlaceholders": true, // add parameter placeholders when completing a function
+        // Experimental settings
+        "completeUnimported": true, // autocomplete unimported packages
     },
-
-    "go.autocompleteUnimportedPackages": true,
-    "go.gocodeAutoBuild": true,
-    "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
-    "go.useCodeSnippetsOnFunctionSuggest": true,
-
-    // go editor settings
-    "[go]": {
-        "editor.formatOnSave": true,
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": true,
-            "source.fixAll": true,
-        },
-    },
-
-    // TODO highlight
-    "todohighlight.keywords": [
-        {
-            "text": "TODO",
-            "color": "#000099",
-            "backgroundColor": "teal",
-            "overviewRulerColor": "teal"
-        },
-        {
-            "text": "FIXME",
-            "color": "#000000",
-            "backgroundColor": "yellow",
-            "overviewRulerColor": "yellow"
-        },
-        {
-            "text": "BONFIRE",
-            "color": "#efc11c",
-            "backgroundColor": "#c63703",
-            "overviewRulerColor": "#efc11c"
-        },
-        {
-            "text": "WTF",
-            "color": "#5bf763",
-            "backgroundColor": "#7d00a0",
-            "overviewRulerColor": "#7d00a0"
-        },
-        {
-            "text": "WIP",
-            "color": "#0d1ce8",
-            "backgroundColor": "#41f46b",
-            "overviewRulerColor": "#41f46b"
-        },
-    ],
-
     // Notes
     "vsnotes.defaultNotePath": "/Users/d073003/Dev/vsnotes",
     "vsnotes.defaultNoteTitle": "{title}",
@@ -128,7 +86,6 @@
     },
     "git.autofetch": true,
     "window.zoomLevel": 0,
-
     // emoji
     "emojisense.languages": {
         "markdown": true,
@@ -136,7 +93,7 @@
             "markupCompletionsEnabled": false,
             "emojiDecoratorsEnabled": false
         },
-        "go":  {
+        "go": {
             "markupCompletionsEnabled": false,
             "emojiDecoratorsEnabled": false,
             "unicodeCompletionsEnabled": true
@@ -153,11 +110,77 @@
         "suppressResultsExplorerNotice": false,
         "suppressShowKeyBindingsNotice": true
     },
-    
     "breadcrumbs.enabled": true,
     "diffEditor.ignoreTrimWhitespace": true,
-    "todohighlight.isEnable": true,
     "editor.cursorBlinking": "expand",
     "editor.cursorWidth": 3,
     "editor.cursorSmoothCaretAnimation": true,
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "gitlens.advanced.telemetry.enabled": false,
+    "terraform.telemetry.enabled": false,
+    "terraform.indexing": {
+        "enabled": false,
+        "liveIndexing": false,
+        "delay": 500,
+        "exclude": [
+            ".terraform/**/*",
+            "**/.terraform/**/*"
+        ]
+    },
+    "terraform.languageServer": {
+        "external": true,
+        "args": [
+            "serve"
+        ]
+    },
+    "editor.formatOnSave": true,
+    "git.alwaysSignOff": true,
+    // TODO Tree    
+    "todo-tree.tree.showScanModeButton": false,
+    "todo-tree.general.tags": [
+        "BUG",
+        "FIXME",
+        "TODO",
+        "XXX",
+        "BONFIRE",
+        "WTF",
+        "WIP"
+    ],
+    "todo-tree.highlights.customHighlight": {
+        "TODO": {
+            "icon": "check",
+            "iconColour": "#008080", // teal
+            "background": "#008080", // teal
+            "foreground": "#000099" // dark blue
+        },
+        "BUG": {
+            "icon": "bug",
+            "iconColour": "#7d00a0",
+            "background": "#7d00a0",
+            "foreground": "#5bf763"
+        },
+        "WTF": {
+            "icon": "stop",
+            "iconColour": "red",
+            "background": "red",
+            "foreground": "yellow"
+        },
+        "BONFIRE": {
+            "icon": "flame",
+            "iconColour": "#c63703",
+            "foreground": "#efc11c",
+            "background": "#c63703"
+        },
+        "FIXME": {
+            "icon": "zap",
+            "iconColour": "yellow",
+            "background": "yellow",
+            "foreground": "black"
+        },
+    },
+    "vs-kubernetes": {
+        "vs-kubernetes.minikube-path.mac": "/Users/d073003/.vs-kubernetes/tools/minikube/darwin-amd64/minikube"
+    },
+    "go.testTimeout": "3m"
 }

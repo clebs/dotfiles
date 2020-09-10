@@ -1,6 +1,6 @@
 [user]
-	email = borja.clemente.castanera@sap.com
 	name = Borja Clemente
+	useConfigOnly = true
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
