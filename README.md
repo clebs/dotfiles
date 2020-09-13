@@ -14,3 +14,4 @@ mkdir ~/Dev && cd ~/Dev && git clone git@github.com:clebs/dotfiles.git && cd dot
 Once installed, the zsh profile contains 2 commands to apply and backup:
 - `dotfiles apply`:  applies configuration files from the repository on the local machine.
 - `dotfiles backup`: backs up the config on the local machine into the repository as a new commit to master.
+
