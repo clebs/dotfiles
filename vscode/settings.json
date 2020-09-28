@@ -182,5 +182,6 @@
     "vs-kubernetes": {
         "vs-kubernetes.minikube-path.mac": "/Users/d073003/.vs-kubernetes/tools/minikube/darwin-amd64/minikube"
     },
-    "go.testTimeout": "3m"
+    "go.testTimeout": "3m",
+    "terminal.external.osxExec": "iTerm.app",
 }

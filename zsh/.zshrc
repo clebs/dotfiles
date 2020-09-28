@@ -110,3 +110,9 @@ if [ -f '/usr/local/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/loc
 
 # KYMA
 . <(kyma completion zsh)
+
+# dotfiles
+source ~/Dev/dotfiles/dotfiles.sh
+#----- Asimov -----#
+source /Users/d073003/Dev/asimov/sources/aliases
+source /Users/d073003/Dev/asimov/sources/func
