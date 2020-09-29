@@ -116,3 +116,6 @@ source ~/Dev/dotfiles/dotfiles.sh
 #----- Asimov -----#
 source /Users/d073003/Dev/asimov/sources/aliases
 source /Users/d073003/Dev/asimov/sources/func
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
