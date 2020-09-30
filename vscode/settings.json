@@ -184,4 +184,8 @@
     },
     "go.testTimeout": "3m",
     "terminal.external.osxExec": "iTerm.app",
+    "files.associations": {
+        "aliases": "shellscript",
+        "func": "shellscript"
+    },
 }
