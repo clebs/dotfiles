@@ -6,7 +6,7 @@ export GOPATH=$HOME/Dev/go
 export PATH=$HOME/bin:/usr/local/bin:$GOPATH/bin:$PATH
 
 # K8s setup
-export KUBECONFIG=$HOME/.kube/config:$HOME/Dev/cloud-providers/gardener/berlin.yaml
+export KUBECONFIG=$HOME/.kube/config
 # add kubebuilder to path
 export PATH=$PATH:/usr/local/kubebuilder/bin
 

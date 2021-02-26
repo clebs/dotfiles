@@ -111,7 +111,7 @@
         "suppressShowKeyBindingsNotice": true
     },
     "breadcrumbs.enabled": true,
-    "diffEditor.ignoreTrimWhitespace": true,
+    "diffEditor.ignoreTrimWhitespace": false,
     "editor.cursorBlinking": "expand",
     "editor.cursorWidth": 3,
     "editor.cursorSmoothCaretAnimation": true,
