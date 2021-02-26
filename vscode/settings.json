@@ -9,16 +9,43 @@
         "editor.selectionHighlightBackground": "#255258"
     },
     //editor
+    "editor.formatOnSave": true,
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
     "editor.fontSize": 12,
     "editor.smoothScrolling": true,
+    "editor.cursorBlinking": "expand",
+    "editor.cursorWidth": 3,
+    "editor.cursorSmoothCaretAnimation": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "breadcrumbs.enabled": true,
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "window.zoomLevel": 0,
+    "files.associations": {
+        "aliases": "shellscript",
+        "func": "shellscript"
+    },
     //Shell
+    "terminal.external.osxExec": "iTerm.app",
     "terminal.integrated.shell.osx": "/bin/zsh",
     "git.confirmSync": false,
     // GIT
+    "git.alwaysSignOff": true,
+    "git.autofetch": true,
     "gitlens.codeLens.authors.enabled": false,
     "gitlens.codeLens.enabled": false,
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": true,
+        "suppressNoRepositoryWarning": false,
+        "suppressResultsExplorerNotice": false,
+        "suppressShowKeyBindingsNotice": true
+    },
+    "gitlens.advanced.telemetry.enabled": false,
     // GO
     "go.gopath": "~/Dev/go",
     "go.toolsGopath": "~/Dev/go",
@@ -53,6 +80,7 @@
             "source.organizeImports": true,
         },
     },
+    "go.testTimeout": "3m",
     "go.useLanguageServer": true,
     "go.alternateTools": {
         "go-langserver": "gopls", // or bingo
@@ -84,8 +112,6 @@
         "langId": "null",
         "name": "null,"
     },
-    "git.autofetch": true,
-    "window.zoomLevel": 0,
     // emoji
     "emojisense.languages": {
         "markdown": true,
@@ -100,24 +126,7 @@
         },
         "git-commit": false
     },
-    "gitlens.advanced.messages": {
-        "suppressCommitHasNoPreviousCommitWarning": false,
-        "suppressCommitNotFoundWarning": false,
-        "suppressFileNotUnderSourceControlWarning": false,
-        "suppressGitVersionWarning": false,
-        "suppressLineUncommittedWarning": true,
-        "suppressNoRepositoryWarning": false,
-        "suppressResultsExplorerNotice": false,
-        "suppressShowKeyBindingsNotice": true
-    },
-    "breadcrumbs.enabled": true,
-    "diffEditor.ignoreTrimWhitespace": false,
-    "editor.cursorBlinking": "expand",
-    "editor.cursorWidth": 3,
-    "editor.cursorSmoothCaretAnimation": true,
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
-    "gitlens.advanced.telemetry.enabled": false,
+    // Terrafrm
     "terraform.telemetry.enabled": false,
     "terraform.indexing": {
         "enabled": false,
@@ -134,8 +143,6 @@
             "serve"
         ]
     },
-    "editor.formatOnSave": true,
-    "git.alwaysSignOff": true,
     // TODO Tree    
     "todo-tree.tree.showScanModeButton": false,
     "todo-tree.general.tags": [
@@ -181,11 +188,5 @@
     },
     "vs-kubernetes": {
         "vs-kubernetes.minikube-path.mac": "/Users/d073003/.vs-kubernetes/tools/minikube/darwin-amd64/minikube"
-    },
-    "go.testTimeout": "3m",
-    "terminal.external.osxExec": "iTerm.app",
-    "files.associations": {
-        "aliases": "shellscript",
-        "func": "shellscript"
     },
 }

@@ -48,6 +48,7 @@ function dotfiles {
 
         #vscode
         cp ~/Library/Application\ Support/Code/User/*.json $REPO/vscode/
+        cp ~/Library/Application\ Support/Code/User/snippets/*.json $REPO/vscode/snippets
 
         if [ -z "$(git -C $REPO status --porcelain)" ]; then 
           echo "No changes in dotfiles. Nothing to backup."
