@@ -1,5 +1,7 @@
+# Find repo directory so script works from anywhere
+REPO=$(dirname $0)
+
 function dotfiles {
-  local REPO="$(echo ~/Dev/dotfiles)"
   case $1 in
     apply) # Apply the config files on the repository to this machine
       echo "Overwrite your local dotfiles? [y/n]"
@@ -22,6 +24,7 @@ function dotfiles {
 
         #vscode
         cp $REPO/vscode/*.json ~/Library/Application\ Support/Code/User/
+        cp $REPO/vscode/snippets/*.json ~/Library/Application\ Support/Code/User/snippets/
         echo "Done!"
       fi
 
