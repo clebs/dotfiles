@@ -156,7 +156,9 @@
         "XXX",
         "BONFIRE",
         "WTF",
-        "WIP"
+        "WIP",
+        "[ ]",
+        "[x]"
     ],
     "todo-tree.highlights.customHighlight": {
         "TODO": {
@@ -191,6 +193,13 @@
         },
     },
     "vs-kubernetes": {
-        "vs-kubernetes.minikube-path.mac": "/Users/d073003/.vs-kubernetes/tools/minikube/darwin-amd64/minikube"
+        "vs-kubernetes.minikube-path.mac": "/Users/d073003/.vs-kubernetes/tools/minikube/darwin-amd64/minikube",
+        "vscode-kubernetes.minikube-path.mac": "/Users/d073003/.vs-kubernetes/tools/minikube/darwin-amd64/minikube",
+        "vscode-kubernetes.helm-path.mac": "/Users/d073003/.vs-kubernetes/tools/helm/darwin-amd64/helm",
+        "vscode-kubernetes.kubectl-path.mac": "/Users/d073003/.vs-kubernetes/tools/kubectl/kubectl"
     },
+    "go.toolsManagement.autoUpdate": true,
+    "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+    "vs-color-picker.autoLaunch": false,
+    "redhat.telemetry.enabled": false,
 }
