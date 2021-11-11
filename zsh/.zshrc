@@ -68,7 +68,7 @@ HIST_STAMPS="dd.mm.yyyy"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git kubectl docker osx golang minikube svcat vscode helm 
+  git kubectl docker macos golang minikube svcat vscode helm 
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -102,12 +102,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/usr/local/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/usr/local/bin/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/usr/local/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/local/bin/google-cloud-sdk/completion.zsh.inc'; fi
-
 # KYMA
 . <(kyma completion zsh)
 
@@ -119,3 +113,9 @@ source /Users/d073003/Dev/asimov/sources/func
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/d073003/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/d073003/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/d073003/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/d073003/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
