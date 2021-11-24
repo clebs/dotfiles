@@ -17,10 +17,11 @@
     "editor.cursorBlinking": "expand",
     "editor.cursorWidth": 3,
     "editor.cursorSmoothCaretAnimation": true,
+    "editor.guides.bracketPairs": "active",
+    "editor.guides.highlightActiveBracketPair": true,
     "diffEditor.ignoreTrimWhitespace": false,
     "breadcrumbs.enabled": true,
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
+    "telemetry.telemetryLevel": "off",
     "window.zoomLevel": 0,
     "files.associations": {
         "aliases": "shellscript",
@@ -42,8 +43,6 @@
         "suppressGitVersionWarning": false,
         "suppressLineUncommittedWarning": true,
         "suppressNoRepositoryWarning": false,
-        "suppressResultsExplorerNotice": false,
-        "suppressShowKeyBindingsNotice": true
     },
     "gitlens.advanced.telemetry.enabled": false,
     // GO
@@ -56,9 +55,6 @@
     "go.lintTool": "golangci-lint",
     "go.lintFlags": [
         "--fast",
-        "--enable=unparam",
-        "--enable=goimports",
-        "--enable=interfacer",
     ],
     "go.autocompleteUnimportedPackages": true,
     "go.gocodeAutoBuild": true,
@@ -85,23 +81,11 @@
     "go.alternateTools": {
         "go-langserver": "gopls", // or bingo
     },
-    "go.languageServerExperimentalFeatures": {
-        "format": true,
-        "autoComplete": true,
-        "rename": true,
-        "goToDefinition": true,
-        "hover": true,
-        "signatureHelp": true,
-        "goToTypeDefinition": true,
-        "goToImplementation": true,
-        "documentSymbols": true,
-        "workspaceSymbols": true,
-        "findReferences": true,
-        "diagnostics": true,
-        "documentLink": true
-    },
+    "go.buildOnSave": "package",
+    "go.vetOnSave": "package",
+    "go.lintOnSave": "file",
     "gopls": {
-        "usePlaceholders": true, // add parameter placeholders when completing a function
+        "ui.completion.usePlaceholders": true, // add parameter placeholders when completing a function
         // Experimental settings
         "completeUnimported": true, // autocomplete unimported packages
         "buildFlags": [
