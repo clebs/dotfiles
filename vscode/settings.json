@@ -35,7 +35,6 @@
     "git.alwaysSignOff": true,
     "git.autofetch": true,
     "gitlens.codeLens.authors.enabled": false,
-    "gitlens.codeLens.enabled": false,
     "gitlens.advanced.messages": {
         "suppressCommitHasNoPreviousCommitWarning": false,
         "suppressCommitNotFoundWarning": false,
@@ -76,7 +75,7 @@
             "source.organizeImports": true,
         },
     },
-    "go.testTimeout": "3m",
+    "go.testTimeout": "10m",
     "go.useLanguageServer": true,
     "go.alternateTools": {
         "go-langserver": "gopls", // or bingo

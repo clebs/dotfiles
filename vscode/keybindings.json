@@ -71,5 +71,13 @@
         "key": "shift+alt+f12",
         "command": "-references-view.find",
         "when": "editorHasReferenceProvider"
+    },
+    {
+        "key": "alt+cmd+n",
+        "command": "workbench.action.files.newUntitledFile"
+    },
+    {
+        "key": "ctrl+cmd+n",
+        "command": "explorer.newFolder"
     }
 ]
