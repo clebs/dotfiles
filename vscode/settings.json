@@ -19,7 +19,6 @@
     "editor.cursorSmoothCaretAnimation": true,
     "editor.guides.bracketPairs": "active",
     "editor.guides.highlightActiveBracketPair": true,
-    "diffEditor.ignoreTrimWhitespace": false,
     "breadcrumbs.enabled": true,
     "telemetry.telemetryLevel": "off",
     "window.zoomLevel": 0,
@@ -185,4 +184,6 @@
     "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
     "vs-color-picker.autoLaunch": false,
     "redhat.telemetry.enabled": false,
+    "gitlens.mode.active": "zen",
+    "diffEditor.codeLens": true,
 }

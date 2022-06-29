@@ -122,3 +122,7 @@ if [ -f '/Users/d073003/Applications/google-cloud-sdk/path.zsh.inc' ]; then . '/
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/d073003/Applications/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/d073003/Applications/google-cloud-sdk/completion.zsh.inc'; fi
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/d073003/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
