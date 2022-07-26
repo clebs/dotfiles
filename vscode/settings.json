@@ -28,7 +28,11 @@
     },
     //Shell
     "terminal.external.osxExec": "iTerm.app",
-    "terminal.integrated.shell.osx": "/bin/zsh",
+    "terminal.integrated.profiles.osx": {
+        "ZSH": {
+            "path": "/bin/zsh",
+        }
+    },
     "git.confirmSync": false,
     // GIT
     "git.alwaysSignOff": true,
@@ -159,9 +163,9 @@
         },
         "WTF": {
             "icon": "stop",
-            "iconColour": "red",
-            "background": "red",
-            "foreground": "yellow"
+            "iconColour": "#FF0001",
+            "background": "#FF0001",
+            "foreground": "#FEFF00"
         },
         "BONFIRE": {
             "icon": "flame",
@@ -171,9 +175,9 @@
         },
         "FIXME": {
             "icon": "zap",
-            "iconColour": "yellow",
-            "background": "yellow",
-            "foreground": "black"
+            "iconColour": "#FEFF00",
+            "background": "#FEFF00",
+            "foreground": "#090900"
         },
     },
     "vs-kubernetes": {
