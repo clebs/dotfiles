@@ -1,0 +1,24 @@
+linters:
+  # please, do not use `enable-all`: it's deprecated and will be removed soon.
+  # inverted configuration with `enable-all` and `disable` is not scalable during updates of golangci-lint
+  disable-all: true
+  enable:
+    # default golangci-lint lints
+    - deadcode
+    - errcheck
+    - gosimple
+    - govet
+    - ineffassign
+    - staticcheck
+    - structcheck
+    - typecheck
+    - unused
+    - varcheck
+    # additional lints
+    - revive
+    - gofmt
+    - misspell
+    - gochecknoinits
+    - unparam
+    - exportloopref
+    - gosec

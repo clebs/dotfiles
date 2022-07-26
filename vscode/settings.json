@@ -53,6 +53,8 @@
     "go.lintTool": "golangci-lint",
     "go.lintFlags": [
         "--fast",
+        "-c",
+        "~/Dev/dotfiles/linters/golangci.yml"
     ],
     "go.autocompleteUnimportedPackages": true,
     "go.gocodeAutoBuild": true,
@@ -186,4 +188,5 @@
     "redhat.telemetry.enabled": false,
     "gitlens.mode.active": "zen",
     "diffEditor.codeLens": true,
+    "gitlens.hovers.currentLine.over": "line",
 }
