@@ -5,6 +5,10 @@
 export GOPATH=$HOME/Dev/go
 export PATH=$HOME/bin:/usr/local/bin:$GOPATH/bin:$PATH
 
+# Rust setup
+if [ ! -f ~/.oh-my-zsh/completions/_rustup ]; then rustup completions zsh > /Users/d073003/.oh-my-zsh/completions/_rustup; fi
+if [ ! -f ~/.oh-my-zsh/completions/_cargo ]; then rustup completions zsh > /Users/d073003/.oh-my-zsh/completions/_cargo; fi
+
 # K8s setup
 export KUBECONFIG=$HOME/.kube/config
 # add kubebuilder to path

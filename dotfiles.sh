@@ -25,6 +25,10 @@ function dotfiles {
         #vscode
         cp $REPO/vscode/*.json ~/Library/Application\ Support/Code/User/
         cp $REPO/vscode/snippets/*.json ~/Library/Application\ Support/Code/User/snippets/
+
+        #rust
+        cp $REPO/rust/.rustfmt.toml ~/
+        
         echo "Done!"
       fi
 
@@ -52,6 +56,9 @@ function dotfiles {
         #vscode
         cp ~/Library/Application\ Support/Code/User/*.json $REPO/vscode/
         cp ~/Library/Application\ Support/Code/User/snippets/*.json $REPO/vscode/snippets
+
+        #rust
+        cp ~/.rustfmt.toml $REPO/rust/
 
         if [ -z "$(git -C $REPO status --porcelain)" ]; then 
           echo "No changes in dotfiles. Nothing to backup."
