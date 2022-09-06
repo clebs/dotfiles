@@ -5,10 +5,6 @@
 export GOPATH=$HOME/Dev/go
 export PATH=$HOME/bin:/usr/local/bin:$GOPATH/bin:$PATH
 
-# Rust setup
-if [ ! -f ~/.oh-my-zsh/completions/_rustup ]; then rustup completions zsh > /Users/d073003/.oh-my-zsh/completions/_rustup; fi
-if [ ! -f ~/.oh-my-zsh/completions/_cargo ]; then rustup completions zsh > /Users/d073003/.oh-my-zsh/completions/_cargo; fi
-
 # K8s setup
 export KUBECONFIG=$HOME/.kube/config
 # add kubebuilder to path
@@ -130,3 +126,10 @@ if [ -f '/Users/d073003/Applications/google-cloud-sdk/completion.zsh.inc' ]; the
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/d073003/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# Rust setup
+if [ ! -f ~/.oh-my-zsh/completions/_rustup ]; then rustup completions zsh > /Users/d073003/.oh-my-zsh/completions/_rustup; fi
+if [ ! -f ~/.oh-my-zsh/completions/_cargo ]; then rustup completions zsh > /Users/d073003/.oh-my-zsh/completions/_cargo; fi
+
+# Zig setup
+if [ ! -f ~/.oh-my-zsh/completions/_zig ]; then curl https://raw.githubusercontent.com/ziglang/shell-completions/master/_zig > /Users/d073003/.oh-my-zsh/completions/_zig; fi

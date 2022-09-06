@@ -195,5 +195,14 @@
     "rust-analyzer.inlayHints.closingBraceHints.enable": false,
     "rust-analyzer.inlayHints.parameterHints.enable": false,
     "rust-analyzer.inlayHints.renderColons": false,
-    "rust-analyzer.inlayHints.typeHints.enable": false
+    "rust-analyzer.inlayHints.typeHints.enable": false,
+    "zls.enable_snippets": true,
+    "zls.enable_unused_variable_warnings": true,
+    "zls.path": "/Users/d073003/Library/Application Support/Code/User/globalStorage/augusterame.zls-vscode/zls_install/zls",
+    "zls.warn_style": true,
+    "[zig]": {
+        "editor.defaultFormatter": "tiehuis.zig"
+    },
+    "zls.enable_import_embedfile_argument_completions": true,
+    "zls.include_at_in_builtins": true
 }

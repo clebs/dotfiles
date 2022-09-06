@@ -12,7 +12,6 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
-
 	"Error nil check": {
 		"prefix": "errnil",
 		"body": [
@@ -21,7 +20,14 @@
 			"}",
 		]
 	},
-
+	"Condensed error nil check": {
+		"prefix": "conderrnil",
+		"body": [
+			"if err := $1; err != nil {",
+			"\t$2",
+			"}",
+		]
+	},
 	"Unit test": {
 		"prefix": "unit",
 		"body": [
