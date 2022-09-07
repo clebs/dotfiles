@@ -1,4 +1,3 @@
-tap "clebs/downgrades"
 tap "derailed/k9s"
 tap "gcenx/wine"
 tap "homebrew/bundle"
@@ -15,8 +14,6 @@ brew "dep"
 brew "docker-machine-driver-hyperkit", link: false
 brew "gcc", args: ["HEAD"]
 brew "gh"
-brew "helm"
-brew "helm@2"
 brew "hugo"
 brew "hyperkit", link: false
 brew "istioctl", link: false
