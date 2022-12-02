@@ -12,3 +12,5 @@
 	stash = false
 [format]
 	signoff = true
+[gpg]
+	format = ssh

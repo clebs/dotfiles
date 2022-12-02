@@ -79,5 +79,10 @@
     {
         "key": "ctrl+cmd+n",
         "command": "explorer.newFolder"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "editor.action.openLink",
+        "when": "editorTextFocus"
     }
 ]

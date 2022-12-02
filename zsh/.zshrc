@@ -9,6 +9,11 @@ export PATH=$HOME/bin:/usr/local/bin:$GOPATH/bin:$PATH
 export KUBECONFIG=$HOME/.kube/config
 # add kubebuilder to path
 export PATH=$PATH:/usr/local/kubebuilder/bin
+# Nvim setup
+alias vim=nvim
+
+# Homebrew setup
+export PATH=$PATH:/opt/homebrew/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/d073003/.oh-my-zsh
@@ -123,9 +128,6 @@ if [ -f '/Users/d073003/Applications/google-cloud-sdk/path.zsh.inc' ]; then . '/
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/d073003/Applications/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/d073003/Applications/google-cloud-sdk/completion.zsh.inc'; fi
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/d073003/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 # Rust setup
 if [ ! -f ~/.oh-my-zsh/completions/_rustup ]; then rustup completions zsh > /Users/d073003/.oh-my-zsh/completions/_rustup; fi
@@ -133,3 +135,7 @@ if [ ! -f ~/.oh-my-zsh/completions/_cargo ]; then rustup completions zsh > /User
 
 # Zig setup
 if [ ! -f ~/.oh-my-zsh/completions/_zig ]; then curl https://raw.githubusercontent.com/ziglang/shell-completions/master/_zig > /Users/d073003/.oh-my-zsh/completions/_zig; fi
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/d073003/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

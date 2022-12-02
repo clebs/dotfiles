@@ -1,7 +1,6 @@
 {
     // Workbench
     "workbench.startupEditor": "none",
-    "workbench.iconTheme": "vscode-icons",
     "workbench.colorTheme": "Solarized Dark",
     "workbench.colorCustomizations": {
         "editor.selectionBackground": "#255258",
@@ -198,11 +197,15 @@
     "rust-analyzer.inlayHints.typeHints.enable": false,
     "zls.enable_snippets": true,
     "zls.enable_unused_variable_warnings": true,
-    "zls.path": "/Users/d073003/Library/Application Support/Code/User/globalStorage/augusterame.zls-vscode/zls_install/zls",
+    "zls.path": "/Users/d073003/.zig/zls",
     "zls.warn_style": true,
     "[zig]": {
         "editor.defaultFormatter": "tiehuis.zig"
     },
+    "zig.buildOnSave": true,
     "zls.enable_import_embedfile_argument_completions": true,
-    "zls.include_at_in_builtins": true
+    "zls.include_at_in_builtins": true,
+    "workbench.iconTheme": "vscode-icons",
+    "security.workspace.trust.untrustedFiles": "open",
+    "errorLens.gutterIconsEnabled": true,
 }
