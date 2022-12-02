@@ -52,7 +52,6 @@ function dotfiles {
         
         # homebrew
         cd $REPO/homebrew
-        rm 
         brew bundle dump -f
         cd -
 
