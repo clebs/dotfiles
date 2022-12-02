@@ -52,7 +52,8 @@ function dotfiles {
         
         # homebrew
         cd $REPO/homebrew
-        brew bundle dump
+        rm 
+        brew bundle dump -f
         cd -
 
         #vim
