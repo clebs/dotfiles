@@ -13,6 +13,11 @@ function dotfiles {
       echo "Applying configuration..."
         #git
         cp $REPO/git/.gitconfig ~/
+
+        # homebrew
+        cd $REPO/homebrew
+        brew bundle
+        cd -
         
         #vim
         cp $REPO/vim/.vimrc ~/
@@ -45,6 +50,11 @@ function dotfiles {
         #git
         cp ~/.gitconfig $REPO/git/
         
+        # homebrew
+        cd $REPO/homebrew
+        brew bundle dump
+        cd -
+
         #vim
         cp ~/.vimrc $REPO/vim/
         
