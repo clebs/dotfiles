@@ -16,7 +16,7 @@ alias vim=nvim
 export PATH=$PATH:/opt/homebrew/bin
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/d073003/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -113,8 +113,8 @@ source $ZSH/oh-my-zsh.sh
 # dotfiles
 source ~/Dev/dotfiles/dotfiles.sh
 #----- Asimov -----#
-source /Users/d073003/Dev/asimov/sources/aliases
-source /Users/d073003/Dev/asimov/sources/func
+source ~/Dev/asimov/sources/aliases
+source ~/Dev/asimov/sources/func
 
 #----- Hugo -----##
 . <(hugo completion zsh)
@@ -123,19 +123,19 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/d073003/Applications/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/d073003/Applications/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '~/Applications/google-cloud-sdk/path.zsh.inc' ]; then . '~/Applications/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/d073003/Applications/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/d073003/Applications/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '~/Applications/google-cloud-sdk/completion.zsh.inc' ]; then . '~/Applications/google-cloud-sdk/completion.zsh.inc'; fi
 
 
 # Rust setup
-if [ ! -f ~/.oh-my-zsh/completions/_rustup ]; then rustup completions zsh > /Users/d073003/.oh-my-zsh/completions/_rustup; fi
-if [ ! -f ~/.oh-my-zsh/completions/_cargo ]; then rustup completions zsh > /Users/d073003/.oh-my-zsh/completions/_cargo; fi
+if [ ! -f ~/.oh-my-zsh/completions/_rustup ]; then rustup completions zsh > ~/.oh-my-zsh/completions/_rustup; fi
+if [ ! -f ~/.oh-my-zsh/completions/_cargo ]; then rustup completions zsh > ~/.oh-my-zsh/completions/_cargo; fi
 
 # Zig setup
-if [ ! -f ~/.oh-my-zsh/completions/_zig ]; then curl https://raw.githubusercontent.com/ziglang/shell-completions/master/_zig > /Users/d073003/.oh-my-zsh/completions/_zig; fi
+if [ ! -f ~/.oh-my-zsh/completions/_zig ]; then curl https://raw.githubusercontent.com/ziglang/shell-completions/master/_zig > ~/.oh-my-zsh/completions/_zig; fi
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/d073003/.rd/bin:$PATH"
+export PATH="~/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
