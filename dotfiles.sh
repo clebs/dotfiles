@@ -28,8 +28,11 @@ function dotfiles {
         cp $REPO/zsh/themes/*.zsh-theme ~/.oh-my-zsh/themes/
 
         #vscode
+        # Settings
         cp $REPO/vscode/*.json ~/Library/Application\ Support/Code/User/
         cp $REPO/vscode/snippets/*.json ~/Library/Application\ Support/Code/User/snippets/
+        # Extensions
+        cat $REPO/vscode/extensions.txt | xargs -n 1 code --install-extension
 
         #rust
         cp $REPO/rust/.rustfmt.toml ~/
@@ -64,8 +67,12 @@ function dotfiles {
         cp ~/.oh-my-zsh/themes/robbyctx.zsh-theme $REPO/zsh/themes/
 
         #vscode
+        # Settings
         cp ~/Library/Application\ Support/Code/User/*.json $REPO/vscode/
         cp ~/Library/Application\ Support/Code/User/snippets/*.json $REPO/vscode/snippets
+
+        # Extensions
+        code --list-extensions > $REPO/vscode/extensions.txt
 
         #rust
         cp ~/.rustfmt.toml $REPO/rust/
