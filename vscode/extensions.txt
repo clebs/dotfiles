@@ -1,0 +1,16 @@
+adam-watters.vscode-color-pick
+AugusteRame.zls-vscode
+bierner.emojisense
+bungcip.better-toml
+golang.go
+Gruntfuggly.todo-tree
+ms-vscode.makefile-tools
+patricklee.vsnotes
+redhat.vscode-yaml
+rust-lang.rust-analyzer
+tiehuis.zig
+usernamehw.errorlens
+vadimcn.vscode-lldb
+vscode-icons-team.vscode-icons
+waderyan.gitblame
+ziyasal.vscode-open-in-github
