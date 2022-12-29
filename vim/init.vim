@@ -20,21 +20,42 @@ set ttyfast " Speed up scrolling in Vim
 "Plugins
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 Plug 'lifepillar/vim-solarized8'
+Plug 'EdenEast/nightfox.nvim' " Vim-Plug
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ryanoasis/vim-devicons'
+
+" LSP Support
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+
+" Autocompletion
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-nvim-lua'
+
+"  Snippets
+Plug 'L3MON4D3/LuaSnip'
+Plug 'rafamadriz/friendly-snippets'
+
+Plug 'VonHeikemen/lsp-zero.nvim'
 call plug#end()
 
 "Config
-colorscheme solarized8
+colorscheme nordfox 
 let g:bargreybars_auto=0
 let g:airline_solarized_bg='dark'
 let g:airline_powerline_fonts=1
@@ -46,3 +67,11 @@ let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
 map <C-n> :NERDTreeToggle<CR>
 inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
+
+"LSP
+lua <<EOF
+local lsp = require('lsp-zero')
+lsp.preset('recommended')
+
+lsp.setup()
+EOF
