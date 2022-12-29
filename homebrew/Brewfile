@@ -16,6 +16,7 @@ brew "dep"
 brew "docker-machine-driver-hyperkit", link: false
 brew "gcc"
 brew "gh"
+brew "gnupg"
 brew "hugo"
 brew "istioctl"
 brew "jq"

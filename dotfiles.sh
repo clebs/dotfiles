@@ -21,6 +21,7 @@ function dotfiles {
         
         #vim
         cp $REPO/vim/.vimrc ~/
+        cp $REPO/vim/init.vim ~/.config/nvim/
         
         #zsh
         cp $REPO/zsh/.zshrc ~/
@@ -60,6 +61,7 @@ function dotfiles {
 
         #vim
         cp ~/.vimrc $REPO/vim/
+        cp ~/.config/nvim/init.vim $REPO/vim/
         
         #zsh
         cp ~/.zshrc $REPO/zsh/
