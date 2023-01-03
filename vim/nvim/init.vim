@@ -17,7 +17,8 @@ Plug 'leoluz/nvim-dap-go'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
 Plug 'ryanoasis/vim-devicons'
 
 " LSP Support

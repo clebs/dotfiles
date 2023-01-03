@@ -20,3 +20,10 @@ map("n", "<Leader>lp", ":lua require('dap').set_breakpoint(nil, nil, vim.fn.inpu
 map("n", "<Leader>dr", ":lua require('dap').repl.open()<CR>", {silent = true})
 map("n", "<Leader>dl", ":lua require('dap').run_last()<CR>ngs", {silent = true})
 map("n", "<Leader>u", ":lua require('dapui').toggle()<CR>", {silent = true})
+
+-- Telescope
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
