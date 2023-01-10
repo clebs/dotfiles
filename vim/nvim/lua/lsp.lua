@@ -16,3 +16,6 @@ lsp.set_preferences({
   }
 })
 lsp.setup()
+
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
+

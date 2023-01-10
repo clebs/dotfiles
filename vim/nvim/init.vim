@@ -35,6 +35,9 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-nvim-lua'
 
+" GIT
+Plug 'tanvirtin/vgit.nvim'
+
 "  Snippets
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
@@ -76,6 +79,7 @@ map <C-n> :NERDTreeToggle<CR>
 " Scripts
 lua require('dap-go').setup()
 lua require("dapui").setup()
+lua require('vgit').setup()
 lua require('keybindings')
 lua require('lsp')
 lua require('debuggers')

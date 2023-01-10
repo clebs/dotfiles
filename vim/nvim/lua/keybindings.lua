@@ -28,3 +28,23 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+
+-- LSP
+map("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>", { noremap = true })
+
+-- GIT
+map('n', '<C-k>', ":lua require('vgit').hunk_up()<CR>", {})
+map('n', '<C-j>', ":lua require('vgit').hunk_down()<CR>", {})
+map('n', '<leader>gs', ":lua require('vgit').buffer_hunk_stage()<CR>", {})
+map('n', '<leader>gr', ":lua require('vgit').buffer_hunk_reset()<CR>", {})
+map('n', '<leader>gp', ":lua require('vgit').buffer_hunk_preview()<CR>", {})
+map('n', '<leader>gb', ":lua require('vgit').buffer_blame_preview()<CR>", {})
+map('n', '<leader>gf', ":lua require('vgit').buffer_diff_preview()<CR>", {})
+map('n', '<leader>gh', ":lua require('vgit').buffer_history_preview()<CR>", {})
+map('n', '<leader>gu', ":lua require('vgit').buffer_reset()<CR>", {})
+map('n', '<leader>gg', ":lua require('vgit').buffer_gutter_blame_preview()<CR>", {})
+map('n', '<leader>glu', ":lua require('vgit').buffer_hunks_preview()<CR>", {})
+map('n', '<leader>gls', ":lua require('vgit').project_hunks_staged_preview()<CR>", {})
+map('n', '<leader>gd', ":lua require('vgit').project_diff_preview()<CR>", {})
+map('n', '<leader>gq', ":lua require('vgit').project_hunks_qf()<CR>", {})
+map('n', '<leader>gx', ":lua require('vgit').toggle_diff_preference()<CR>", {})
