@@ -48,3 +48,4 @@ map('n', '<leader>gls', ":lua require('vgit').project_hunks_staged_preview()<CR>
 map('n', '<leader>gd', ":lua require('vgit').project_diff_preview()<CR>", {})
 map('n', '<leader>gq', ":lua require('vgit').project_hunks_qf()<CR>", {})
 map('n', '<leader>gx', ":lua require('vgit').toggle_diff_preference()<CR>", {})
+map('n', '<leader>go', ":lua require('vgit').project_logs_preview()<CR>", {})

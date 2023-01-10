@@ -7,7 +7,7 @@ tap "int128/kubelogin"
 tap "sidneys/homebrew"
 tap "vektra/tap"
 brew "gettext"
-brew "azure-cli", link: false
+brew "azure-cli"
 brew "libx11"
 brew "ccat"
 brew "cmake"
