@@ -64,7 +64,17 @@ filetype plugin indent on   " Allow auto-indenting depending on file type
 syntax on
 set nospell " enable spell check (may need to download language package)
 set ttyfast " Speed up scrolling in Vim
+
+" Appearence
+
+" Transparent BG
+augroup user_colors
+  autocmd!
+  autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+augroup END
+" Theme
 colorscheme nordfox 
+
 let g:bargreybars_auto=0
 let g:airline_solarized_bg='dark'
 let g:airline_powerline_fonts=1
