@@ -1,7 +1,6 @@
 "Plugins
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
-Plug 'lifepillar/vim-solarized8'
-Plug 'EdenEast/nightfox.nvim' " Vim-Plug
+Plug 'EdenEast/nightfox.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
@@ -34,6 +33,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-nvim-lua'
+Plug 'folke/which-key.nvim'
 
 " GIT
 Plug 'tanvirtin/vgit.nvim'
@@ -90,6 +90,7 @@ map <C-n> :NERDTreeToggle<CR>
 lua require('dap-go').setup()
 lua require("dapui").setup()
 lua require('vgit').setup()
+lua require('which-key').setup()
 lua require('keybindings')
 lua require('lsp')
 lua require('debuggers')
