@@ -12,8 +12,6 @@ brew "libx11"
 brew "ccat"
 brew "cmake"
 brew "go"
-brew "dep"
-brew "docker-machine-driver-hyperkit", link: false
 brew "fd"
 brew "gcc"
 brew "gh"
