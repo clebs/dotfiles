@@ -10,7 +10,9 @@ export KUBECONFIG=$HOME/.kube/config
 # add kubebuilder to path
 export PATH=$PATH:/usr/local/kubebuilder/bin
 # Nvim setup
-alias v=nvim
+v() {
+  cd "$1" && nvim .;
+}
 
 # Homebrew setup
 export PATH=$PATH:/opt/homebrew/bin
