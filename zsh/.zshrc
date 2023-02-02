@@ -11,7 +11,16 @@ export KUBECONFIG=$HOME/.kube/config
 export PATH=$PATH:/usr/local/kubebuilder/bin
 # Nvim setup
 v() {
-  cd "$1" && nvim .;
+  if [[ -z $1 ]]; then
+    nvim;
+  elif [[ -d $1 ]]; then
+    cd "$1" && nvim .;
+  elif [[ -f $1 ]]; then
+    nvim $1;
+  else
+    echo "Invalid path or file."
+    return 1;
+  fi
 }
 
 # Homebrew setup
