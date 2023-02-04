@@ -26,6 +26,9 @@ v() {
 # Homebrew setup
 export PATH=$PATH:/opt/homebrew/bin
 
+# Fix for GPG sign
+export GPG_TTY=$(tty)
+
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
