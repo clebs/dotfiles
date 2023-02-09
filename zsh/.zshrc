@@ -87,10 +87,13 @@ HIST_STAMPS="dd.mm.yyyy"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git kubectl docker macos golang minikube svcat vscode helm 
+  git kubectl docker macos golang minikube svcat vscode
 )
 
 source $ZSH/oh-my-zsh.sh
+
+# shell iterm2_shell_integration
+source ~/.config/iterm2/AppSupport/Scripts/iterm2_shell_integration.zsh
 
 # User configuration
 
