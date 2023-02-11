@@ -87,12 +87,16 @@ HIST_STAMPS="dd.mm.yyyy"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git kubectl docker macos golang minikube svcat vscode
+  git kubectl docker macos golang minikube svcat vscode keychain gpg-agent 
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # shell iterm2_shell_integration
+if [ ! -f ~/.config/iterm2/AppSupport/Scripts/iterm2_shell_integration.zsh ]; then
+  curl -L https://iterm2.com/shell_integration/zsh -o ~/.config/iterm2/AppSupport/Scripts/iterm2_shell_integration.zsh
+fi
+
 source ~/.config/iterm2/AppSupport/Scripts/iterm2_shell_integration.zsh
 
 # User configuration
@@ -130,11 +134,6 @@ source ~/Dev/dotfiles/dotfiles.sh
 source ~/Dev/asimov/sources/aliases
 source ~/Dev/asimov/sources/func
 
-#----- Hugo -----##
-. <(hugo completion zsh)
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '~/Applications/google-cloud-sdk/path.zsh.inc' ]; then . '~/Applications/google-cloud-sdk/path.zsh.inc'; fi
@@ -142,6 +141,8 @@ if [ -f '~/Applications/google-cloud-sdk/path.zsh.inc' ]; then . '~/Applications
 # The next line enables shell command completion for gcloud.
 if [ -f '~/Applications/google-cloud-sdk/completion.zsh.inc' ]; then . '~/Applications/google-cloud-sdk/completion.zsh.inc'; fi
 
+#----- Hugo -----##
+if [ ! -f ~/.oh-my-zsh/completions/_hugo ]; then hugo completion zsh > ~/.oh-my-zsh/completions/_hugo; fi
 
 # Rust setup
 if [ ! -f ~/.oh-my-zsh/completions/_rustup ]; then rustup completions zsh > ~/.oh-my-zsh/completions/_rustup; fi
