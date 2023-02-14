@@ -24,10 +24,11 @@ map('n', "<Leader>u", ":lua require('dapui').toggle()<CR>", {silent = true})
 
 -- Telescope
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {desc = "Find files"})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {desc = "Live grep"})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {desc = "Show buffers"})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {desc = "Help tags"})
+vim.keymap.set('n', '<leader>fd', builtin.diagnostics, {desc = "Show diagnostics results"})
 
 -- LSP
 map("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>", { noremap = true })
