@@ -1,5 +1,7 @@
+set lazyredraw
 syntax on
 set number
+set ruler
 set wildmenu
 set nospell
 set autoindent

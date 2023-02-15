@@ -18,6 +18,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
+Plug 'xiyaowong/telescope-emoji.nvim'
 Plug 'ryanoasis/vim-devicons'
 
 " LSP Support
@@ -88,6 +89,7 @@ let NERDSpaceDelims=1
 map <C-n> :NERDTreeToggle<CR>
 
 " Scripts
+lua require("telescope").load_extension("emoji")
 lua require('dap-go').setup()
 lua require("dapui").setup()
 lua require('vgit').setup()
