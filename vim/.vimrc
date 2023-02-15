@@ -2,3 +2,8 @@ syntax on
 set number
 set wildmenu
 set nospell
+set autoindent
+set encoding=utf-8
+set ruler
+set cursorline
+set title

@@ -15,7 +15,7 @@
     "editor.smoothScrolling": true,
     "editor.cursorBlinking": "expand",
     "editor.cursorWidth": 3,
-    "editor.cursorSmoothCaretAnimation": true,
+    "editor.cursorSmoothCaretAnimation": "on",
     "editor.guides.bracketPairs": "active",
     "editor.guides.highlightActiveBracketPair": true,
     "breadcrumbs.enabled": true,
