@@ -20,6 +20,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
 Plug 'xiyaowong/telescope-emoji.nvim'
 Plug 'ryanoasis/vim-devicons'
+Plug 'ellisonleao/glow.nvim'
 
 " LSP Support
 Plug 'neovim/nvim-lspconfig'
@@ -94,6 +95,7 @@ lua require('dap-go').setup()
 lua require("dapui").setup()
 lua require('vgit').setup()
 lua require('which-key').setup()
+lua require('glow').setup()
 lua require('keybindings')
 lua require('lsp')
 lua require('debuggers')
