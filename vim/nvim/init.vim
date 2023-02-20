@@ -19,7 +19,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
 Plug 'xiyaowong/telescope-emoji.nvim'
-Plug 'ryanoasis/vim-devicons'
 Plug 'ellisonleao/glow.nvim'
 
 " LSP Support
@@ -88,6 +87,8 @@ let g:airline#extension#tabline#formatter='unique_tail'
 let NERDTreeShowHidden=1
 let NERDSpaceDelims=1
 map <C-n> :NERDTreeToggle<CR>
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['zig'] = '⚡'
 
 " Scripts
 lua require("telescope").load_extension("emoji")

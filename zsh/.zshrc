@@ -151,6 +151,9 @@ if [ ! -f ~/.oh-my-zsh/completions/_cargo ]; then rustup completions zsh > ~/.oh
 # Zig setup
 if [ ! -f ~/.oh-my-zsh/completions/_zig ]; then curl https://raw.githubusercontent.com/ziglang/shell-completions/master/_zig > ~/.oh-my-zsh/completions/_zig; fi
 
+## AWS CLI completions
+complete -C '/opt/homebrew/bin/aws_completer' aws
+
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="~/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
