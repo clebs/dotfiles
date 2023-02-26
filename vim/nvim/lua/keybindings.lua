@@ -33,7 +33,11 @@ vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = "Show diagnostic
 map("n", "<leader>fe", ":lua require('telescope').load_extension('emoji').emoji()<CR>", { desc = "Emoji picker" })
 
 -- LSP
-map("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>", { noremap = true })
+map("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>", { noremap = true, desc = "Rename symbol" })
+map('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', { noremap = true, desc = "Go to definition" })
+map('n', 'gp', ':lua vim.lsp.buf.implementation()<CR>', { noremap = true, desc = "Go to implementation" })
+map('n', 'gr', ':lua vim.lsp.buf.references()<CR>', { noremap = true, desc = "References" })
+map('n', '<leader>ga', ':lua vim.lsp.buf.code_action()<CR>', { noremap = true, desc = "Code actions" })
 
 -- GIT
 map('n', '<C-k>', ":lua require('vgit').hunk_up()<CR>", {})
@@ -55,3 +59,8 @@ map('n', '<leader>go', ":lua require('vgit').project_logs_preview()<CR>", {})
 
 -- Glow Markdown buffer_hunks_preview
 vim.keymap.set('n', '<leader>m', vim.cmd.Glow, { desc = "Markdown Preview" })
+
+-- Miscelaneous --
+map("n", "<leader>y", "\"*y", { noremap = true, desc = "Copy to system clipboard" })
+map("v", "<leader>y", "\"*y", { noremap = true, desc = "Copy to system clipboard" })
+map("x", "<leader>p", "\"_dP", { noremap = true, desc = "Paste without overwrite" })

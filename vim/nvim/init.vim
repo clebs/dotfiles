@@ -4,8 +4,8 @@ Plug 'EdenEast/nightfox.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdtree'
+Plug 'preservim/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -15,7 +15,6 @@ Plug 'rcarriga/nvim-dap-ui'
 Plug 'leoluz/nvim-dap-go'
 
 Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-fugitive'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
 Plug 'xiyaowong/telescope-emoji.nvim'
@@ -48,6 +47,7 @@ Plug 'rafamadriz/friendly-snippets'
 call plug#end()
 
 "Config
+set shell=zsh
 set clipboard=unnamedplus " Enables the clipboard between Vim/Neovim and other applications.
 set completeopt=noinsert,menuone,noselect " Modifies the auto-complete menu to behave more like an IDE.
 set cursorline " Highlights the current line in the editor
@@ -65,6 +65,8 @@ filetype plugin indent on   " Allow auto-indenting depending on file type
 syntax on
 set nospell " enable spell check (may need to download language package)
 set ttyfast " Speed up scrolling in Vim
+set ignorecase " Ignore case on search
+set smartcase " Search is case insensitive when all lowerccase
 
 " Appearence
 

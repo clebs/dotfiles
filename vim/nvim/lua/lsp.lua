@@ -18,4 +18,4 @@ lsp.set_preferences({
 lsp.setup()
 
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
-
+vim.cmd [[autocmd BufWritePre *.go silent lua vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })]]
