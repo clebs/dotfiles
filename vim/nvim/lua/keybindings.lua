@@ -23,8 +23,8 @@ map("n", "<Leader>dl", ":lua require('dap').run_last()<CR>ngs", { silent = true 
 
 map('n', "<Leader>u", ":lua require('dapui').toggle()<CR>", { silent = true })
 
--- Nerdtree
-vim.keymap.set('n', '<C-n>', vim.cmd.NERDTreeToggle, { noremap = true, desc = "Toggle file tree" })
+-- Nvimtree
+vim.keymap.set('n', '<C-n>', vim.cmd.NvimTreeToggle, { noremap = true, desc = "Toggle file tree" })
 
 
 -- Telescope
