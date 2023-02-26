@@ -88,7 +88,6 @@ let g:airline#extension#tabline#formatter='unique_tail'
 "let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
 let NERDSpaceDelims=1
-map <C-n> :NERDTreeToggle<CR>
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['zig'] = '⚡'
 
