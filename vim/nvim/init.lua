@@ -107,8 +107,6 @@ cmd([[hi NvimTreeNormal guibg=NONE ctermbg=NONE]])
 
 -- set termguicolors to enable highlight groups
 opt.termguicolors = true
-g.WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} -- needed
-g.WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['zig'] = '⚡'
 
 -- Scripts
 require("nvim-tree").setup({ open_on_setup = true })
