@@ -16,15 +16,13 @@ local Plug = fn['plug#']
 -- Plugins
 call('plug#begin', data_dir .. '/plugged')
 Plug 'EdenEast/nightfox.nvim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
--- Plug 'ryanoasis/vim-devicons'
--- Plug 'preservim/nerdtree'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'preservim/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
 Plug('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+Plug 'kylechui/nvim-surround'
 
 -- Debugging
 Plug 'mfussenegger/nvim-dap'
@@ -59,7 +57,8 @@ Plug 'tanvirtin/vgit.nvim'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
 
--- Images
+-- Zen
+Plug 'folke/zen-mode.nvim'
 
 call('plug#end')
 
@@ -98,8 +97,6 @@ augroup END
 cmd.colorscheme("nordfox")
 
 g.bargreybars_auto = 0
-g.airline_solarized_bg = 'dark'
-g.airline_powerline_fonts = 1
 -- let NERDTreeQuitOnOpen=1
 -- g.NERDTreeShowHidden = 1
 -- g.NERDSpaceDelims = 1
@@ -116,11 +113,14 @@ g.WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['zig'] = '⚡'
 -- Scripts
 require("nvim-tree").setup({ open_on_setup = true })
 require("telescope").load_extension("emoji")
+require('lualine').setup()
 require('dap-go').setup()
 require("dapui").setup()
 require('vgit').setup()
 require('which-key').setup()
 require('glow').setup()
+require('nvim-surround').setup()
+require('zen-mode').setup()
 require('keybindings')
 require('lsp')
 require('debuggers')

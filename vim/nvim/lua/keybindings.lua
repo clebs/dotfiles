@@ -61,6 +61,9 @@ map('n', '<leader>gq', ":lua require('vgit').project_hunks_qf()<CR>", {})
 map('n', '<leader>gx', ":lua require('vgit').toggle_diff_preference()<CR>", {})
 map('n', '<leader>go', ":lua require('vgit').project_logs_preview()<CR>", {})
 
+-- Zen
+map('n', '<leader>z', ":lua require('zen-mode').toggle({window = {width = .85}})<CR>", { desc = "Zen mode" })
+
 -- Glow Markdown buffer_hunks_preview
 vim.keymap.set('n', '<leader>m', vim.cmd.Glow, { desc = "Markdown Preview" })
 
