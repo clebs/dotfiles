@@ -130,9 +130,12 @@ source ~/.config/iterm2/AppSupport/Scripts/iterm2_shell_integration.zsh
 
 # dotfiles
 source ~/Dev/dotfiles/dotfiles.sh
+
 #----- Asimov -----#
-source ~/Dev/asimov/sources/aliases
-source ~/Dev/asimov/sources/func
+if [ -d "~/Dev/asimov" ]; then
+  source ~/Dev/asimov/sources/aliases
+  source ~/Dev/asimov/sources/func
+fi
 
 
 # The next line updates PATH for the Google Cloud SDK.

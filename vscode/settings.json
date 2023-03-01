@@ -95,7 +95,7 @@
         "experimentalWorkspaceModule": true,
     },
     // Notes
-    "vsnotes.defaultNotePath": "/Users/d073003/Dev/vsnotes",
+    "vsnotes.defaultNotePath": "~/Dev/vsnotes",
     "vsnotes.defaultNoteTitle": "{title}",
     "vsnotes.defaultSnippet": {
         "langId": "null",
@@ -178,10 +178,10 @@
         },
     },
     "vs-kubernetes": {
-        "vs-kubernetes.minikube-path.mac": "/Users/d073003/.vs-kubernetes/tools/minikube/darwin-amd64/minikube",
-        "vscode-kubernetes.minikube-path.mac": "/Users/d073003/.vs-kubernetes/tools/minikube/darwin-amd64/minikube",
-        "vscode-kubernetes.helm-path.mac": "/Users/d073003/.vs-kubernetes/tools/helm/darwin-amd64/helm",
-        "vscode-kubernetes.kubectl-path.mac": "/Users/d073003/.vs-kubernetes/tools/kubectl/kubectl"
+        "vs-kubernetes.minikube-path.mac": "~/.vs-kubernetes/tools/minikube/darwin-amd64/minikube",
+        "vscode-kubernetes.minikube-path.mac": "~/.vs-kubernetes/tools/minikube/darwin-amd64/minikube",
+        "vscode-kubernetes.helm-path.mac": "~/.vs-kubernetes/tools/helm/darwin-amd64/helm",
+        "vscode-kubernetes.kubectl-path.mac": "~/.vs-kubernetes/tools/kubectl/kubectl"
     },
     "go.toolsManagement.autoUpdate": true,
     "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
@@ -197,7 +197,7 @@
     "rust-analyzer.inlayHints.typeHints.enable": false,
     "zls.enable_snippets": true,
     "zls.enable_unused_variable_warnings": true,
-    "zls.path": "/Users/d073003/.zig/zls",
+    "zls.path": "~/.zig/zls",
     "zls.warn_style": true,
     "[zig]": {
         "editor.defaultFormatter": "tiehuis.zig"

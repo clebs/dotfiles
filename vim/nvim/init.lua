@@ -111,7 +111,7 @@ opt.termguicolors = true
 -- Scripts
 require("nvim-tree").setup({ open_on_setup = true })
 require("telescope").load_extension("emoji")
-require('lualine').setup()
+require('lualine').setup({ sections = { lualine_c = { { 'filename', path = 1, file_status = true } } } })
 require('dap-go').setup()
 require("dapui").setup()
 require('vgit').setup()
