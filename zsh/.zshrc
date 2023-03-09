@@ -132,7 +132,7 @@ source ~/.config/iterm2/AppSupport/Scripts/iterm2_shell_integration.zsh
 source ~/Dev/dotfiles/dotfiles.sh
 
 #----- Asimov -----#
-if [ -d "~/Dev/asimov" ]; then
+if [ -d ~/Dev/asimov ]; then
   source ~/Dev/asimov/sources/aliases
   source ~/Dev/asimov/sources/func
 fi
