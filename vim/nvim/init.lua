@@ -6,9 +6,10 @@ local g = vim.g
 
 -- Plugin manager
 local data_dir = fn.stdpath('data')
-if fn.empty(fn.glob(data_dir .. '/autoload/plug.vim')) then
+if fn.empty(fn.glob(data_dir .. '/site/autoload/plug.vim')) then
 	cmd('silent !curl -fLo ' ..
-	data_dir .. '/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
+	data_dir ..
+	'/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
 	-- cmd('autocmd VimEnter * PlugInstall --sync | source %')
 end
 local Plug = fn['plug#']
