@@ -98,9 +98,7 @@ augroup END
 cmd.colorscheme("nordfox")
 
 g.bargreybars_auto = 0
--- let NERDTreeQuitOnOpen=1
--- g.NERDTreeShowHidden = 1
--- g.NERDSpaceDelims = 1
+g.NERDSpaceDelims = 1
 -- disable netrw at the very start of your init.lua (strongly advised)
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
