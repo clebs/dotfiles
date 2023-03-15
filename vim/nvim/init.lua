@@ -41,6 +41,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'VonHeikemen/lsp-zero.nvim'
+Plug 'simrat39/symbols-outline.nvim'
 
 -- Autocompletion
 Plug 'hrsh7th/nvim-cmp'
@@ -118,6 +119,9 @@ require('which-key').setup()
 require('glow').setup()
 require('nvim-surround').setup()
 require('zen-mode').setup()
+require("symbols-outline").setup()
+
+-- includes
 require('keybindings')
 require('lsp')
 require('debuggers')

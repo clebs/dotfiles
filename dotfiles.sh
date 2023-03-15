@@ -18,6 +18,9 @@ function dotfiles {
         cd $REPO/homebrew
         brew bundle
         cd -
+
+        # tmux
+        cp $REPO/tmux/.tmux.conf ~/
         
         #vim
         cp $REPO/vim/.vimrc ~/
@@ -58,6 +61,9 @@ function dotfiles {
         cd $REPO/homebrew
         brew bundle dump -f
         cd -
+
+        # tmux
+        cp ~/.tmux.conf $REPO/tmux/
 
         #vim
         cp ~/.vimrc $REPO/vim/
