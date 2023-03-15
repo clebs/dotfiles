@@ -109,7 +109,15 @@ cmd([[hi NvimTreeNormal guibg=NONE ctermbg=NONE]])
 opt.termguicolors = true
 
 -- Scripts
-require("nvim-tree").setup({ open_on_setup = true })
+require("nvim-tree").setup({
+	open_on_setup = true,
+	filters = {
+		dotfiles = true,
+	},
+	git = {
+		ignore = false,
+	}
+})
 require("telescope").load_extension("emoji")
 require('lualine').setup({ sections = { lualine_c = { { 'filename', path = 1, file_status = true } } } })
 require('dap-go').setup()

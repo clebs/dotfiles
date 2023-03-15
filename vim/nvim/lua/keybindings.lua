@@ -42,6 +42,7 @@ map('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', { noremap = true, desc = "Go
 map('n', 'gp', ':lua vim.lsp.buf.implementation()<CR>', { noremap = true, desc = "Go to implementation" })
 map('n', 'gr', ':lua vim.lsp.buf.references()<CR>', { noremap = true, desc = "References" })
 map('n', '<leader>ga', ':lua vim.lsp.buf.code_action()<CR>', { noremap = true, desc = "Code actions" })
+vim.keymap.set('n', '<leader>o', vim.cmd.SymbolsOutline, { desc = "Code Outline" })
 
 -- GIT
 map('n', '<C-k>', ":lua require('vgit').hunk_up()<CR>", {})
