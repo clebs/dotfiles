@@ -115,7 +115,12 @@ require("nvim-tree").setup({
 	},
 	git = {
 		ignore = false,
-	}
+	},
+	actions = {
+		open_file = {
+			resize_window = false,
+		},
+	},
 })
 require("telescope").load_extension("emoji")
 require('lualine').setup({ sections = { lualine_c = { { 'filename', path = 1, file_status = true } } } })
