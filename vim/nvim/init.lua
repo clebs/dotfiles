@@ -110,7 +110,6 @@ opt.termguicolors = true
 
 -- Scripts
 require("nvim-tree").setup({
-	open_on_setup = true,
 	filters = {
 		dotfiles = true,
 	},
@@ -133,3 +132,4 @@ require("symbols-outline").setup()
 require('keybindings')
 require('lsp')
 require('debuggers')
+require('tree')
