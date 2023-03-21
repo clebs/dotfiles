@@ -111,7 +111,7 @@ opt.termguicolors = true
 -- Scripts
 require("nvim-tree").setup({
 	filters = {
-		dotfiles = true,
+		dotfiles = false,
 	},
 	git = {
 		ignore = false,
@@ -121,6 +121,13 @@ require("nvim-tree").setup({
 			resize_window = false,
 		},
 	},
+})
+require("telescope").setup({
+	pickers = {
+		find_files = {
+			hidden = true
+		}
+	}
 })
 require("telescope").load_extension("emoji")
 require('lualine').setup({ sections = { lualine_c = { { 'filename', path = 1, file_status = true } } } })
