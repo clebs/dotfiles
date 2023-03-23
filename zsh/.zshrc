@@ -9,19 +9,9 @@ export PATH=$HOME/bin:/usr/local/bin:$GOPATH/bin:$PATH
 export KUBECONFIG=$HOME/.kube/config
 # add kubebuilder to path
 export PATH=$PATH:/usr/local/kubebuilder/bin
+
 # Nvim setup
-v() {
-  if [[ -z $1 ]]; then
-    nvim;
-  elif [[ -d $1 ]]; then
-    cd "$1" && nvim .;
-  elif [[ -f $1 ]]; then
-    nvim $1;
-  else
-    echo "Invalid path or file."
-    return 1;
-  fi
-}
+alias v=nvim
 
 # Homebrew setup
 export PATH=$PATH:/opt/homebrew/bin
