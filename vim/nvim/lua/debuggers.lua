@@ -10,11 +10,13 @@ dap.adapters.lldb = {
 -- Adapter to connect to a remote dlv debugger
 dap.adapters.go_remote = function(cb, config)
   if config.request == 'attach' then
+    if config.port == '' then config.port = 2345 end -- default dlv remote port
+    if config.host == '' then config.host = '127.0.0.1' end
     -- Attach without running any dlv process to try connecting to a running one.
     cb({
       type = 'server',
-      port = config.port or 0,
-      host = config.host or '127.0.0.1',
+      port = config.port,
+      host = config.host,
     })
   else
     cb({
@@ -46,11 +48,11 @@ dap.configurations.zig = {
 
 -- Append configuration to existing ones at nvim-dap-go
 table.insert(dap.configurations.go, {
-  name = "Remote debug tilt",
+  name = "Remote debug",
   type = "go_remote",
   request = "attach",
   mode = "remote",
   remotePath = "${workspaceFolder}",
-  port = 30000,
-  host = "127.0.0.1",
+  host = function() return vim.fn.input('Remote debugger host:') end,
+  port = function() return vim.fn.input('Remote debugger port:') end,
 })

@@ -8,8 +8,8 @@ local g = vim.g
 local data_dir = fn.stdpath('data')
 if fn.empty(fn.glob(data_dir .. '/site/autoload/plug.vim')) then
 	cmd('silent !curl -fLo ' ..
-	data_dir ..
-	'/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
+		data_dir ..
+		'/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
 	-- cmd('autocmd VimEnter * PlugInstall --sync | source %')
 end
 local Plug = fn['plug#']
@@ -66,25 +66,25 @@ call('plug#end')
 
 -- Config
 opt.shell = 'zsh'
-opt.clipboard = 'unnamedplus' -- Enables the clipboard between Vim/Neovim and other applications.
+opt.clipboard = 'unnamedplus'                 -- Enables the clipboard between Vim/Neovim and other applications.
 opt.completeopt = 'noinsert,menuone,noselect' -- Modifies the auto-complete menu to behave more like an IDE.
-opt.cursorline = true -- Highlights the current line in the editor
-opt.hidden = true -- Hide unused buffers
-opt.autoindent = true -- Indent a new line
-opt.inccommand = 'split' -- Show replacements in a split screen
-opt.mouse = 'a' -- Allow to use the mouse in the editor
-opt.number = true -- shows current line number together with relative numbers
-opt.relativenumber = true -- Shows line numbers relative to cursor
+opt.cursorline = true                         -- Highlights the current line in the editor
+opt.hidden = true                             -- Hide unused buffers
+opt.autoindent = true                         -- Indent a new line
+opt.inccommand = 'split'                      -- Show replacements in a split screen
+opt.mouse = 'a'                               -- Allow to use the mouse in the editor
+opt.number = true                             -- shows current line number together with relative numbers
+opt.relativenumber = true                     -- Shows line numbers relative to cursor
 opt.splitbelow = true
-opt.splitright = true -- Change the split screen behavior
-opt.title = true -- Show file title
-opt.wildmenu = true -- Show a more advance menu
+opt.splitright = true                         -- Change the split screen behavior
+opt.title = true                              -- Show file title
+opt.wildmenu = true                           -- Show a more advance menu
 opt.background = 'dark'
 -- opt.cc = 80 -- Show at 80 column a border for good code style
-opt.spell = false -- enable spell check (may need to download language package)
-opt.ttyfast = true -- Speed up scrolling in Vim
+opt.spell = false     -- enable spell check (may need to download language package)
+opt.ttyfast = true    -- Speed up scrolling in Vim
 opt.ignorecase = true -- Ignore case on search
-opt.smartcase = true -- Search is case insensitive when all lowerccase
+opt.smartcase = true  -- Search is case insensitive when all lowerccase
 
 -- Appearence
 
@@ -139,6 +139,7 @@ require('glow').setup()
 require('nvim-surround').setup()
 require('zen-mode').setup()
 require("symbols-outline").setup()
+require("mason").setup()
 
 -- includes
 require('keybindings')

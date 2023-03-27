@@ -25,7 +25,7 @@ map('n', "<Leader>u", ":lua require('dapui').toggle()<CR>", { silent = true })
 
 -- Nvimtree
 vim.keymap.set('n', '<C-n>', vim.cmd.NvimTreeToggle, { noremap = true, desc = "Toggle file tree" })
-vim.keymap.set('n', 'gx', [[:silent execute '!open ' . shellescape(expand('<cfile>'), 1)<CR>]], {noremap = true, desc="Open file or link in system app"})
+-- vim.keymap.set('n', 'gx', [[:silent execute '!open ' . shellescape(expand('<cfile>'), 1)<CR>]], {noremap = true, desc="Open file or link in system app"})
 
 -- Telescope
 local builtin = require('telescope.builtin')
