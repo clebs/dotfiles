@@ -35,6 +35,7 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Show buffers" })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Help tags" })
 vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = "Show diagnostics results" })
 map("n", "<leader>fe", ":lua require('telescope').load_extension('emoji').emoji()<CR>", { desc = "Emoji picker" })
+map("n", "<leader>fp", ":lua require('telescope').load_extension('project').project()<CR>", { desc = "Project picker" })
 
 -- LSP
 map("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>", { noremap = true, desc = "Rename symbol" })

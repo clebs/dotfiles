@@ -33,6 +33,7 @@ Plug 'leoluz/nvim-dap-go'
 Plug 'jiangmiao/auto-pairs'
 Plug 'nvim-lua/plenary.nvim'
 Plug('nvim-telescope/telescope.nvim', { branch = '0.1.x' })
+Plug('nvim-telescope/telescope-project.nvim')
 Plug 'xiyaowong/telescope-emoji.nvim'
 Plug 'ellisonleao/glow.nvim'
 
@@ -130,6 +131,7 @@ require("telescope").setup({
 	}
 })
 require("telescope").load_extension("emoji")
+require 'telescope'.load_extension('project')
 require('lualine').setup({ sections = { lualine_c = { { 'filename', path = 1, file_status = true } } } })
 require('dap-go').setup()
 require("dapui").setup()
