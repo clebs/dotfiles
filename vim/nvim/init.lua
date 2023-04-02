@@ -43,6 +43,7 @@ Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'VonHeikemen/lsp-zero.nvim'
 Plug 'simrat39/symbols-outline.nvim'
+Plug 'onsails/lspkind.nvim'
 
 -- Autocompletion
 Plug 'hrsh7th/nvim-cmp'
@@ -111,6 +112,8 @@ opt.termguicolors = true
 
 -- Scripts
 require("nvim-tree").setup({
+	sync_root_with_cwd = true,
+	update_cwd = true,
 	filters = {
 		dotfiles = false,
 	},
