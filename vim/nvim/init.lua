@@ -6,11 +6,11 @@ local g = vim.g
 
 -- Plugin manager
 local data_dir = fn.stdpath('data')
-if fn.empty(fn.glob(data_dir .. '/site/autoload/plug.vim')) then
+if fn.empty(fn.glob(data_dir .. '/site/autoload/plug.vim')) == 1 then
 	cmd('silent !curl -fLo ' ..
 		data_dir ..
 		'/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
-	-- cmd('autocmd VimEnter * PlugInstall --sync | source %')
+	cmd('autocmd VimEnter * PlugInstall --sync | source %')
 end
 local Plug = fn['plug#']
 
@@ -91,12 +91,8 @@ opt.smartcase = true  -- Search is case insensitive when all lowerccase
 -- Appearence
 
 -- Transparent BG
-cmd([[
-augroup user_colors
-	autocmd!
-	autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
-augroup END
-]])
+cmd [[autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE]]
+
 -- Theme
 cmd.colorscheme("nordfox")
 
