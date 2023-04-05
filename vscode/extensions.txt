@@ -8,9 +8,9 @@ ms-vscode.makefile-tools
 patricklee.vsnotes
 redhat.vscode-yaml
 rust-lang.rust-analyzer
-tiehuis.zig
 usernamehw.errorlens
 vadimcn.vscode-lldb
 vscode-icons-team.vscode-icons
 waderyan.gitblame
+ziglang.vscode-zig
 ziyasal.vscode-open-in-github
