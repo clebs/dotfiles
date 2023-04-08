@@ -127,6 +127,8 @@ if [ -d ~/Dev/asimov ]; then
   source ~/Dev/asimov/sources/func
 fi
 
+#----- Autojump -----#
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '~/Applications/google-cloud-sdk/path.zsh.inc' ]; then . '~/Applications/google-cloud-sdk/path.zsh.inc'; fi

@@ -3,7 +3,7 @@ local dap = require('dap')
 -- Debuggers
 dap.adapters.lldb = {
   type = 'executable',
-  command = '/usr/bin/lldb',
+  command = '/Users/cborja/Library/Application Support/Code/CachedExtensionVSIXs/vadimcn.vscode-lldb-1.9.0',
   name = 'lldb'
 }
 
@@ -39,9 +39,9 @@ dap.configurations.zig = {
     type = 'lldb',
     request = 'launch',
     name = "Launch file",
+    cwd = '${workspaceFolder}',
     program = function()
-      local program = vim.fn.input('Program to debug: ')
-      return program
+      return vim.fn.input('Program to debug: ')
     end,
   },
 }
