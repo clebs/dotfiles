@@ -4,6 +4,7 @@ bierner.emojisense
 bungcip.better-toml
 golang.go
 Gruntfuggly.todo-tree
+lanza.lldb-vscode
 ms-vscode.makefile-tools
 patricklee.vsnotes
 redhat.vscode-yaml

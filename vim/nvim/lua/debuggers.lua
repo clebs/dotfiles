@@ -2,9 +2,14 @@ local dap = require('dap')
 
 -- Debuggers
 dap.adapters.lldb = {
-  type = 'executable',
-  command = '/Users/cborja/Library/Application Support/Code/CachedExtensionVSIXs/vadimcn.vscode-lldb-1.9.0',
-  name = 'lldb'
+  type = 'server',
+  name = 'lldb',
+  host = '127.0.0.1',
+  port = 13000,
+  executable = {
+    command = vim.fn.stdpath('data') .. '/mason/bin/codelldb',
+    args = { "--port", '13000' },
+  }
 }
 
 -- Adapter to connect to a remote dlv debugger
@@ -40,6 +45,7 @@ dap.configurations.zig = {
     request = 'launch',
     name = "Launch file",
     cwd = '${workspaceFolder}',
+    args = {},
     program = function()
       return vim.fn.input('Program to debug: ')
     end,
