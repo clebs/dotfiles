@@ -25,7 +25,8 @@ vim.diagnostic.config({
 
 -- Icons for autocomplete popup
 local lspkind = require('lspkind')
-require('cmp').setup {
+local cmp = require('cmp')
+cmp.setup {
   formatting = {
     format = lspkind.cmp_format({
       mode = 'symbol_text', -- show only symbol annotations
@@ -33,7 +34,9 @@ require('cmp').setup {
         return vim_item
       end
     })
-  }
+  },
+  -- Always start autocomplete list at the top
+  preselect = cmp.PreselectMode.None,
 }
 
 vim.cmd('autocmd BufWritePre * lua vim.lsp.buf.format()')

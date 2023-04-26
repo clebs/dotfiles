@@ -132,6 +132,12 @@
       "Text" : "[1;2A",
       "Action" : 10
     },
+    "0xf728-0x80000-0x75" : {
+      "Version" : 1,
+      "Action" : 10,
+      "Text" : "d",
+      "Label" : ""
+    },
     "0xf701-0x280000" : {
       "Text" : "0x1b 0x1b 0x5b 0x42",
       "Action" : 11
@@ -147,6 +153,12 @@
     "0xf703-0x220000" : {
       "Text" : "[1;2C",
       "Action" : 10
+    },
+    "0x7f-0x80000-0x33" : {
+      "Version" : 1,
+      "Action" : 11,
+      "Text" : "0x17",
+      "Label" : ""
     },
     "0xf701-0x240000" : {
       "Text" : "[1;5B",
@@ -283,7 +295,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.83870609821624109
   },
-  "Window Type" : 12,
+  "Window Type" : 0,
   "Use Bright Bold" : true,
   "Cursor Text Color" : {
     "Red Component" : 0.035318292677402482,

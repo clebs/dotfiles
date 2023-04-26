@@ -139,6 +139,10 @@ if [ -f '~/Applications/google-cloud-sdk/completion.zsh.inc' ]; then . '~/Applic
 #----- Hugo -----##
 if [ ! -f ~/.oh-my-zsh/completions/_hugo ]; then hugo completion zsh > ~/.oh-my-zsh/completions/_hugo; fi
 
+# ---- Kubebuilder and Kustomize ---- #
+if [ ! -f ~/.oh-my-zsh/completions/_kubebuilder ]; then kubebuilder completion zsh > ~/.oh-my-zsh/completions/_kubebuilder; fi
+if [ ! -f ~/.oh-my-zsh/completions/_kustomize ]; then kustomize completion zsh > ~/.oh-my-zsh/completions/_kustomize; fi
+
 # Rust setup
 if [ ! -f ~/.oh-my-zsh/completions/_rustup ]; then rustup completions zsh > ~/.oh-my-zsh/completions/_rustup; fi
 if [ ! -f ~/.oh-my-zsh/completions/_cargo ]; then rustup completions zsh > ~/.oh-my-zsh/completions/_cargo; fi
