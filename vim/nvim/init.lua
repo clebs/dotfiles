@@ -16,7 +16,10 @@ local Plug = fn['plug#']
 
 -- Plugins
 call('plug#begin', data_dir .. '/plugged')
+
+-- Appearence and widgets
 Plug 'EdenEast/nightfox.nvim'
+Plug('catppuccin/nvim', { as = 'catppuccin' }) -- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-tree/nvim-tree.lua'
@@ -94,7 +97,7 @@ opt.smartcase = true  -- Search is case insensitive when all lowerccase
 cmd [[autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE]]
 
 -- Theme
-cmd.colorscheme("nordfox")
+cmd.colorscheme("catppuccin-frappe")
 
 g.bargreybars_auto = 0
 g.NERDSpaceDelims = 1
