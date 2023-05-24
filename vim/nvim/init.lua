@@ -58,7 +58,7 @@ Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'folke/which-key.nvim'
 
 -- GIT
-Plug 'tanvirtin/vgit.nvim'
+Plug 'sindrets/diffview.nvim'
 
 --  Snippets
 Plug 'L3MON4D3/LuaSnip'
@@ -137,7 +137,7 @@ require 'telescope'.load_extension('project')
 require('lualine').setup({ sections = { lualine_c = { { 'filename', path = 1, file_status = true } } } })
 require('dap-go').setup()
 require("dapui").setup()
-require('vgit').setup()
+require('diffview').setup()
 require('which-key').setup()
 require('glow').setup()
 require('nvim-surround').setup()
