@@ -27,6 +27,9 @@ vim.diagnostic.config({
 local lspkind = require('lspkind')
 local cmp = require('cmp')
 cmp.setup {
+  mapping = {
+    ['<CR>'] = cmp.mapping.confirm({select = true}),
+  },
   formatting = {
     format = lspkind.cmp_format({
       mode = 'symbol_text', -- show only symbol annotations
