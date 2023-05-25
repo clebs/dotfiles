@@ -20,8 +20,8 @@ map("n", "<Leader>lp", ":lua require('dap').set_breakpoint(nil, nil, vim.fn.inpu
     { silent = true })
 map("n", "<Leader>dr", ":lua require('dap').repl.open()<CR>", { silent = true })
 map("n", "<Leader>dl", ":lua require('dap').run_last()<CR>ngs", { silent = true })
-
 map('n', "<Leader>u", ":lua require('dapui').toggle()<CR>", { silent = true })
+map("n", "<Leader>de", ":lua require('dapui').eval()<CR>", { silent = true, desc = "Evaluate expression" })
 
 -- Nvimtree
 vim.keymap.set('n', '<C-n>', vim.cmd.NvimTreeToggle, { noremap = true, desc = "Toggle file tree" })
@@ -62,3 +62,4 @@ map("v", "<leader>y", "\"*y", { noremap = true, desc = "Copy to system clipboard
 map("x", "<leader>p", "\"_dP", { noremap = true, desc = "Paste without overwrite" })
 map("n", "<leader>q", ":lua vim.cmd('copen')<CR>", { noremap = true, desc = "Open Quickfix list" })
 map("n", "<leader>Q", ":lua vim.cmd('cclose')<CR>", { noremap = true, desc = "Close Quickfix list" })
+map("n", "<C-h>", ":lua vim.cmd('noh')<CR>", { noremap = true, desc = "Clear search highlight" })

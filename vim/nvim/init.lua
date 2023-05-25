@@ -59,6 +59,7 @@ Plug 'folke/which-key.nvim'
 
 -- GIT
 Plug 'sindrets/diffview.nvim'
+Plug 'APZelos/blamer.nvim'
 
 --  Snippets
 Plug 'L3MON4D3/LuaSnip'
@@ -91,6 +92,11 @@ opt.ttyfast = true    -- Speed up scrolling in Vim
 opt.ignorecase = true -- Ignore case on search
 opt.smartcase = true  -- Search is case insensitive when all lowerccase
 
+-- Git blamer
+g.blamer_show_in_visual_modes = 0
+g.blamer_show_in_insert_modes = 0
+g.blamer_date_format = '%d.%m.%y'
+
 -- Appearence
 
 -- Transparent BG
@@ -109,7 +115,7 @@ cmd([[hi NvimTreeNormal guibg=NONE ctermbg=NONE]])
 -- set termguicolors to enable highlight groups
 opt.termguicolors = true
 
--- Scripts
+-- Plugin setup
 require("nvim-tree").setup({
 	sync_root_with_cwd = true,
 	update_cwd = true,
