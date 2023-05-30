@@ -25,6 +25,9 @@ function dotfiles {
         #vim
         cp $REPO/vim/.vimrc ~/
         cp -r $REPO/vim/nvim/* ~/.config/nvim/
+
+        # alacritty
+        cp -r $REPO/alacritty/* ~/.config/alacritty/
         
         #zsh
         cp $REPO/zsh/.zshrc ~/
@@ -68,6 +71,9 @@ function dotfiles {
         #vim
         cp ~/.vimrc $REPO/vim/
         cp -r ~/.config/nvim/ $REPO/vim/nvim
+
+        # alacritty
+        cp -r ~/.config/alacritty/ $REPO/alacritty
         
         #zsh
         cp ~/.zshrc $REPO/zsh/
