@@ -157,3 +157,6 @@ complete -C '/opt/homebrew/bin/aws_completer' aws
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="~/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# x86 Homebrew
+alias axbrew='arch -x86_64 /usr/local/homebrew/bin/brew'
