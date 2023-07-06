@@ -49,6 +49,7 @@ vim.keymap.set('n', '<leader>o', vim.cmd.SymbolsOutline, { desc = "Code Outline"
 map('n', '<leader>gd', ":lua vim.cmd('DiffviewOpen')<CR>", { desc = "Open Git Diff" })
 map('n', '<leader>gc', ":lua vim.cmd('DiffviewClose')<CR>", { desc = "Close Git Diff" })
 map('n', '<leader>gh', ":lua vim.cmd('DiffviewFileHistory')<CR>", { desc = "Git History" })
+map('n', '<leader>gb', ":lua vim.cmd('BlamerToggle')<CR>", { desc = "Git Blame" })
 
 -- Zen
 map('n', '<leader>z', ":lua require('zen-mode').toggle({window = {width = .80}})<CR>", { desc = "Zen mode" })
