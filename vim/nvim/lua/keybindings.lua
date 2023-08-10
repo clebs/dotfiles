@@ -25,7 +25,7 @@ map("n", "<Leader>de", ":lua require('dapui').eval()<CR>", { silent = true, desc
 
 -- Nvimtree
 vim.keymap.set('n', '<C-n>', vim.cmd.NvimTreeToggle, { noremap = true, desc = "Toggle file tree" })
--- vim.keymap.set('n', 'gx', [[:silent execute '!open ' . shellescape(expand('<cfile>'), 1)<CR>]], {noremap = true, desc="Open file or link in system app"})
+vim.keymap.set('n', '<Leader>ft', vim.cmd.NvimTreeFindFile, { noremap = true, desc = "Find file in tree" })
 
 -- Telescope
 local builtin = require('telescope.builtin')
