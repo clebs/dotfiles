@@ -44,6 +44,7 @@ map('n', 'gp', ':lua vim.lsp.buf.implementation()<CR>', { noremap = true, desc =
 map('n', 'gr', ':lua vim.lsp.buf.references()<CR>', { noremap = true, desc = "References" })
 map('n', '<leader>ga', ':lua vim.lsp.buf.code_action()<CR>', { noremap = true, desc = "Code actions" })
 vim.keymap.set('n', '<leader>o', vim.cmd.SymbolsOutline, { desc = "Code Outline" })
+vim.keymap.set('n', '<leader>k', vim.diagnostic.open_float, { desc = "Show diagnostic" })
 
 -- Git
 map('n', '<leader>gd', ":lua vim.cmd('DiffviewOpen')<CR>", { desc = "Open Git Diff" })
