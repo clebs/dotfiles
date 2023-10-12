@@ -20,7 +20,7 @@ function dotfiles {
         cd -
 
         # tmux
-        cp $REPO/tmux/.tmux.conf ~/
+        cp $REPO/tmux/tmux.conf ~/.config/tmux/
         
         #vim
         cp $REPO/vim/.vimrc ~/
@@ -66,7 +66,7 @@ function dotfiles {
         cd -
 
         # tmux
-        cp ~/.tmux.conf $REPO/tmux/
+        cp ~/.config/tmux/tmux.conf $REPO/tmux/
 
         #vim
         cp ~/.vimrc $REPO/vim/
