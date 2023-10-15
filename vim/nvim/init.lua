@@ -27,6 +27,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
 Plug('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 Plug 'kylechui/nvim-surround'
+Plug 'startup-nvim/startup.nvim'
 
 -- Debugging
 Plug 'mfussenegger/nvim-dap'
@@ -150,9 +151,9 @@ require('nvim-surround').setup()
 require('zen-mode').setup()
 require("symbols-outline").setup()
 require("mason").setup()
+require("startup").setup({ theme = "nvim" })
 
 -- includes
 require('keybindings')
 require('lsp')
 require('debuggers')
-require('tree')
