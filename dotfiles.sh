@@ -29,6 +29,9 @@ function dotfiles {
         # kitty
         cp -r $REPO/kitty/* ~/.config/kitty/
         
+        # ghostty
+        cp -r $REPO/ghostty/* ~/.config/ghostty/
+        
         #zsh
         cp $REPO/zsh/.zshrc ~/
         cp $REPO/zsh/.zprofile ~/
@@ -74,6 +77,9 @@ function dotfiles {
 
         # kitty
         cp -r ~/.config/kitty/ $REPO/kitty
+
+        # ghostty
+        cp -r ~/.config/ghostty/ $REPO/ghostty
         
         #zsh
         cp ~/.zshrc $REPO/zsh/

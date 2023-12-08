@@ -37,6 +37,15 @@ vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = "Show diagnostic
 map("n", "<leader>fe", ":lua require('telescope').load_extension('emoji').emoji()<CR>", { desc = "Emoji picker" })
 map("n", "<leader>fp", ":lua require('telescope').load_extension('project').project()<CR>", { desc = "Project picker" })
 
+-- Harpoon
+local harpoon = require("harpoon")
+vim.keymap.set("n", "<leader>ha", function() harpoon:list():append() end, { desc = "Harpoon append file" })
+vim.keymap.set("n", "<leader>hl", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Harpoon list" })
+vim.keymap.set("n", "<leader>h1", function() harpoon:list():select(1) end, { desc = "Harpoon go to 1" })
+vim.keymap.set("n", "<leader>h2", function() harpoon:list():select(2) end, { desc = "Harpoon go to 2" })
+vim.keymap.set("n", "<leader>h3", function() harpoon:list():select(3) end, { desc = "Harpoon go to 3" })
+vim.keymap.set("n", "<leader>h4", function() harpoon:list():select(4) end, { desc = "Harpoon go to 4" })
+
 -- LSP
 map("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>", { noremap = true, desc = "Rename symbol" })
 map('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', { noremap = true, desc = "Go to definition" })

@@ -1,0 +1,53 @@
+# Theme
+foreground = 00b151
+background = 10303a
+
+background-opacity = 0.95
+unfocused-split-opacity = 0.98
+
+# Font
+font-family = FiraCode Nerd Font Mono
+
+# cursor
+cursor-style = block
+shell-integration-features = no-cursor
+
+# colors
+
+# black
+palette = 0=1d1f21
+palette = 8=666666
+
+# red
+palette = 1=c91b00
+palette = 9=ff6d67
+
+# green
+palette = 2=00c200
+palette = 10=5ff967
+
+# yellow
+palette = 3=c7c400
+palette = 11=fefb67
+
+# blue
+palette = 4=1e8db0
+palette = 12=62d5fa
+
+# magenta
+palette = 5=c930c7
+palette = 13=ff76ff
+
+# cyan
+palette = 6=00c5c7
+palette = 14=5ffdff
+
+# white
+palette = 7=c5c8c6
+palette = 15=eaeaea
+
+# Key bindings
+keybind = shift+delete=esc:d
+keybind = shift+left=esc:b
+keybind = shift+right=esc:f
+keybind = "ctrl+shift+l=text:printf '\\e[2J\\e[3J\\e[H'\n"
