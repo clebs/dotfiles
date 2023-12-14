@@ -28,7 +28,7 @@ local lspkind = require('lspkind')
 local cmp = require('cmp')
 cmp.setup {
   mapping = {
-    ['<CR>'] = cmp.mapping.confirm({select = true}),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
   },
   formatting = {
     format = lspkind.cmp_format({
@@ -42,7 +42,35 @@ cmp.setup {
   preselect = cmp.PreselectMode.None,
 }
 
-vim.cmd('autocmd BufWritePre * lua vim.lsp.buf.format()')
-vim.cmd(
-  'autocmd BufWritePre *.go silent lua vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })'
-)
+-- Swift LSP (not available on Mason)
+local swift_lsp = vim.api.nvim_create_augroup("swift_lsp", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "swift" },
+  callback = function()
+    local root_dir = vim.fs.dirname(vim.fs.find({
+      "Package.swift",
+      ".git",
+    }, { upward = true })[1])
+    local client = vim.lsp.start({
+      name = "sourcekit-lsp",
+      cmd = { "sourcekit-lsp" },
+      root_dir = root_dir,
+    })
+    vim.lsp.buf_attach_client(0, client)
+  end,
+  group = swift_lsp,
+})
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*',
+  callback = function()
+    vim.lsp.buf.format()
+  end
+})
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*.go',
+  callback = function()
+    vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
+    vim.cmd('write')
+  end
+})

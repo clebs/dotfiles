@@ -1,4 +1,5 @@
 # Theme
+title = "Ghostty 👻"
 foreground = 00b151
 background = 10303a
 
@@ -48,6 +49,7 @@ palette = 15=eaeaea
 
 # Key bindings
 keybind = shift+delete=esc:d
+keybind = shift+backspace=esc:^H
 keybind = shift+left=esc:b
 keybind = shift+right=esc:f
 keybind = "ctrl+shift+l=text:printf '\\e[2J\\e[3J\\e[H'\n"
