@@ -102,7 +102,11 @@ g.blamer_date_format = '%d.%m.%y'
 -- Appearence
 
 -- Transparent BG
+-- Focused pane/window
 cmd [[autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE]]
+-- All other panes and overlays
+cmd [[autocmd ColorScheme * highlight NormalNC ctermbg=NONE guibg=NONE]]
+cmd [[autocmd ColorScheme * highlight NormalSB ctermbg=NONE guibg=NONE]]
 
 -- Theme
 cmd.colorscheme("catppuccin-frappe")
@@ -110,7 +114,7 @@ cmd.colorscheme("catppuccin-frappe")
 g.bargreybars_auto = 0
 g.NERDSpaceDelims = 1
 -- disable netrw at the very start of your init.lua (strongly advised)
-g.loaded_netrw = 1
+g.loaded_netrw = 0
 g.loaded_netrwPlugin = 1
 cmd([[hi NvimTreeNormal guibg=NONE ctermbg=NONE]])
 

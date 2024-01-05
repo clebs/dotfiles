@@ -130,6 +130,14 @@ fi
 #----- Autojump -----#
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
+#----- Atuin shell history -----#
+# Need to manually remove the arrow up keybinds
+if command -v atuin > /dev/null && [ ! -f ~/.oh-my-zsh/custom/plugins/atuin.sh ]; then atuin init zsh > ~/.oh-my-zsh/custom/plugins/atuin.sh > ~/.oh-my-zsh/custom/plugins/atuin.sh; fi
+
+if [ -f ~/.oh-my-zsh/custom/plugins/atuin.sh ]; then
+  source ~/.oh-my-zsh/custom/plugins/atuin.sh 
+fi
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '~/Applications/google-cloud-sdk/path.zsh.inc' ]; then . '~/Applications/google-cloud-sdk/path.zsh.inc'; fi
 
@@ -137,19 +145,19 @@ if [ -f '~/Applications/google-cloud-sdk/path.zsh.inc' ]; then . '~/Applications
 if [ -f '~/Applications/google-cloud-sdk/completion.zsh.inc' ]; then . '~/Applications/google-cloud-sdk/completion.zsh.inc'; fi
 
 #----- Hugo -----##
-if [ ! -f ~/.oh-my-zsh/completions/_hugo ]; then hugo completion zsh > ~/.oh-my-zsh/completions/_hugo; fi
+if command -v hugo > /dev/null && [ ! -f ~/.oh-my-zsh/completions/_hugo ]; then hugo completion zsh > ~/.oh-my-zsh/completions/_hugo; fi
 
 # ---- K8s tooling ---- #
-if [ ! -f ~/.oh-my-zsh/completions/_kubebuilder ]; then kubebuilder completion zsh > ~/.oh-my-zsh/completions/_kubebuilder; fi
-if [ ! -f ~/.oh-my-zsh/completions/_kustomize ]; then kustomize completion zsh > ~/.oh-my-zsh/completions/_kustomize; fi
-if [ ! -f ~/.oh-my-zsh/completions/_kind ]; then kind completion zsh > ~/.oh-my-zsh/completions/_kind; fi
+if command -v kubebuilder > /dev/null && [ ! -f ~/.oh-my-zsh/completions/_kubebuilder ]; then kubebuilder completion zsh > ~/.oh-my-zsh/completions/_kubebuilder; fi
+if command -v rustup > /dev/null && [ ! -f ~/.oh-my-zsh/completions/_kustomize ]; then kustomize completion zsh > ~/.oh-my-zsh/completions/_kustomize; fi
+if command -v rustup > /dev/null && [ ! -f ~/.oh-my-zsh/completions/_kind ]; then kind completion zsh > ~/.oh-my-zsh/completions/_kind; fi
 
 # Rust setup
 if [ ! -f ~/.oh-my-zsh/completions/_rustup ]; then rustup completions zsh > ~/.oh-my-zsh/completions/_rustup; fi
 if [ ! -f ~/.oh-my-zsh/completions/_cargo ]; then rustup completions zsh > ~/.oh-my-zsh/completions/_cargo; fi
 
 # Zig setup
-if [ ! -f ~/.oh-my-zsh/completions/_zig ]; then curl https://raw.githubusercontent.com/ziglang/shell-completions/master/_zig > ~/.oh-my-zsh/completions/_zig; fi
+if command -v zig > /dev/null && [ ! -f ~/.oh-my-zsh/completions/_zig ]; then curl https://raw.githubusercontent.com/ziglang/shell-completions/master/_zig > ~/.oh-my-zsh/completions/_zig; fi
 
 ## AWS CLI completions
 complete -C '/opt/homebrew/bin/aws_completer' aws
