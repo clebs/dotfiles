@@ -63,13 +63,19 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = '*',
-  callback = function()
-    vim.lsp.buf.format()
-  end
+  command = "silent! lua vim.lsp.buf.format()",
 })
 vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = '*.go',
   callback = function()
+    local orignal = vim.notify
+    vim.notify = function(msg, level, opts)
+      if msg == 'No code actions available' then
+        return
+      end
+      orignal(msg, level, opts)
+    end
+
     vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
     vim.cmd('write')
   end
