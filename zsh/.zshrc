@@ -77,17 +77,17 @@ HIST_STAMPS="dd.mm.yyyy"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git kubectl docker macos golang minikube svcat vscode keychain gpg-agent 
+  git kubectl docker macos golang svcat vscode keychain gpg-agent 
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # shell iterm2_shell_integration
-if [ ! -f ~/.config/iterm2/AppSupport/Scripts/iterm2_shell_integration.zsh ]; then
-  curl -L https://iterm2.com/shell_integration/zsh -o ~/.config/iterm2/AppSupport/Scripts/iterm2_shell_integration.zsh
-fi
+# if [ ! -f ~/.config/iterm2/AppSupport/Scripts/iterm2_shell_integration.zsh ]; then
+  # curl -L https://iterm2.com/shell_integration/zsh -o ~/.config/iterm2/AppSupport/Scripts/iterm2_shell_integration.zsh
+# fi
 
-source ~/.config/iterm2/AppSupport/Scripts/iterm2_shell_integration.zsh
+# source ~/.config/iterm2/AppSupport/Scripts/iterm2_shell_integration.zsh
 
 # User configuration
 
@@ -166,5 +166,3 @@ complete -C '/opt/homebrew/bin/aws_completer' aws
 export PATH="~/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
-# x86 Homebrew
-alias axbrew='arch -x86_64 /usr/local/homebrew/bin/brew'
