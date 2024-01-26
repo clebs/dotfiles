@@ -13,6 +13,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_3_10;
  
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -83,6 +84,7 @@
     isNormalUser = true;
     description = "Borja Clemente";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
     packages = with pkgs; [
       firefox
     #  thunderbird
@@ -123,6 +125,12 @@
   autojump
   git
   fd
+  fzf
+  tree
+  tldr
+  jq
+  htop
+  gnupg
   ];
  
   # Some programs need SUID wrappers, can be configured further or are
