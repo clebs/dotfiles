@@ -59,3 +59,6 @@ function __omf_plugins -d "Install Oh My Fish plugins and theme"
     omf theme robbyrussell
     omf reload
 end
+
+[ -f ~/Dev/dotfiles/dotfiles.sh ]; and source ~/Dev/dotfiles/dotfiles.sh
+
