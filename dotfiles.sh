@@ -20,22 +20,31 @@ function dotfiles {
         cd -
 
         # tmux
+        mkdir -p ~/.config/tmux/
         cp $REPO/tmux/tmux.conf ~/.config/tmux/
         
         #vim
         cp $REPO/vim/.vimrc ~/
+        mkdir -p ~/.config/nvim/
         cp -r $REPO/vim/nvim/* ~/.config/nvim/
 
         # kitty
+        mkdir -p ~/.config/kitty/
         cp -r $REPO/kitty/* ~/.config/kitty/
         
         # ghostty
+        mkdir -p ~/.config/ghostty/
         cp -r $REPO/ghostty/* ~/.config/ghostty/
         
         #zsh
         cp $REPO/zsh/.zshrc ~/
         cp $REPO/zsh/.zprofile ~/
         cp $REPO/zsh/themes/*.zsh-theme ~/.oh-my-zsh/themes/
+
+        # fish
+        mkdir -p ~/.config/fish/
+        cp -r $REPO/fish/* ~/.config/fish/
+
 
         #vscode
         # Settings
@@ -86,6 +95,9 @@ function dotfiles {
         cp ~/.zprofile $REPO/zsh/
         cp ~/.oh-my-zsh/themes/robbyctx.zsh-theme $REPO/zsh/themes/
 
+        # tmux
+        cp ~/.config/fish/config.fish $REPO/fish/
+        
         #vscode
         # Settings
         cp ~/Library/Application\ Support/Code/User/*.json $REPO/vscode/
