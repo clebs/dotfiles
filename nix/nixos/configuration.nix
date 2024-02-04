@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, system, pkgs, nixos-unstable, ... }:
 
 {
   imports =
@@ -15,6 +15,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   # set kernel version
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_7;
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -104,6 +105,12 @@
 
   #Allow to use the new nix command
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; 
+  # add extra binary caches
+  nix.settings = {
+    extra-substituters = ["https://ghostty.cachix.org"];
+    extra-trusted-public-keys = ["ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="];
+  };
+
   virtualisation.vmware.guest = {
     headless = true;
     enable = true; 
@@ -116,12 +123,14 @@
     WLR_NO_HARDWARE_CURSORS = "1"; 
     # Hint electron apps to use Wayland
     NIXOS_OZONE_WL = "1";
+    PATH = "$PATH:$HOME/.local/bin";
   };
-
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = let unstable = import <nixos-unstable> {};
+  environment.systemPackages = let 
+    unstable = import nixos-unstable { inherit system; config.allowUnfree = true; };
+	
   in with pkgs; [
   unstable.neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   wget
@@ -174,5 +183,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }
