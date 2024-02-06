@@ -1,0 +1,10 @@
+\.DS_Store
+dotfiles.sh
+Makefile
+README.md
+.git
+.gitignore
+homebrew
+iterm2
+nix
+vscode
