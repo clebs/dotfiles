@@ -15,7 +15,7 @@ export EDITOR='nvim'
 
 
 # Homebrew setup
-export PATH=$PATH:/opt/homebrew/bin
+export PATH=$PATH:/opt/homebrew/bin:/opt/homebrew/sbin
 
 # Fix for GPG sign
 export GPG_TTY=$(tty)
