@@ -17,6 +17,13 @@
           ./configuration.nix
         ];
       };
+      white-tower = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit nixos-unstable system; };
+        modules = [
+          ./machines/white-tower.nix
+        ];
+      };
     };
   };
 }
