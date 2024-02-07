@@ -1,5 +1,6 @@
 # Theme
 title = "Ghostty 👻"
+macos-titlebar-tabs = true
 foreground = 00b151
 background = 10303a
 
