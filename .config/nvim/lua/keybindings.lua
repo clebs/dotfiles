@@ -26,6 +26,8 @@ map("n", "<Leader>de", ":lua require('dapui').eval()<CR>", { silent = true, desc
 -- Nvimtree
 vim.keymap.set('n', '<C-n>', vim.cmd.NvimTreeToggle, { noremap = true, desc = "Toggle file tree" })
 vim.keymap.set('n', '<Leader>ft', vim.cmd.NvimTreeFindFile, { noremap = true, desc = "Find file in tree" })
+-- Remap open link to a different key, default does not work with netrw disabled and remapping the same key does not work.
+vim.keymap.set("n", "gb", ":!open <cfile><CR>", { desc = "Open with default OS app.", silent = true, noremap = false })
 
 -- Telescope
 local builtin = require('telescope.builtin')

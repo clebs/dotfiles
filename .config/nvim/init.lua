@@ -114,7 +114,7 @@ cmd.colorscheme("catppuccin-frappe")
 g.bargreybars_auto = 0
 g.NERDSpaceDelims = 1
 -- disable netrw at the very start of your init.lua (strongly advised)
-g.loaded_netrw = 0
+g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 cmd([[hi NvimTreeNormal guibg=NONE ctermbg=NONE]])
 
