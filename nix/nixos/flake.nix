@@ -10,11 +10,11 @@
     nixosConfigurations = {
       # Here we can define different configurations for hosts and systems.
       # Then they can be called with nix-os rebuild switch --flake .#configname
-      default = let system = "aarch64-linux"; in nixpkgs.lib.nixosSystem {
+      arm-vmware = let system = "aarch64-linux"; in nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit nixos-unstable system; };
         modules = [
-          ./configuration.nix
+          ./machines/arm-vmware.nix
         ];
       };
       white-tower = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
