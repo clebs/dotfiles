@@ -65,6 +65,18 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = '*',
   command = "silent! lua vim.lsp.buf.format()",
 })
+
+-- Go LSP setup
+
+-- Multi platform lsp
+require("lspconfig").gopls.setup {
+  settings = { gopls = {
+    buildFlags = { "-tags=darwin" }
+  }
+  }
+}
+
+-- format and rganize imports on save
 vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = '*.go',
   callback = function()

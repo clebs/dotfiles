@@ -4,6 +4,7 @@
 	signingkey = 2539757EF64C60DD
 [core]
 	editor = nvim
+	ignoreCase = false
 [init]
 	defaultBranch = main
 [filter "lfs"]
