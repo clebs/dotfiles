@@ -1,6 +1,6 @@
 local lsp = require('lsp-zero')
 
-lsp.set_preferences({
+lsp.preset({
   float_border = 'rounded',
   suggest_lsp_servers = true,
   setup_servers_on_start = true,
@@ -18,6 +18,12 @@ lsp.set_preferences({
 })
 lsp.setup()
 
+require('mason-lspconfig').setup({
+  handlers = {
+    lsp.default_setup,
+  }
+})
+
 -- Show text inline
 vim.diagnostic.config({
   virtual_text = true,
@@ -26,9 +32,14 @@ vim.diagnostic.config({
 -- Icons for autocomplete popup
 local lspkind = require('lspkind')
 local cmp = require('cmp')
+local selectBehavior = { behavior = cmp.SelectBehavior, count = 1 }
 cmp.setup {
   mapping = {
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-n>'] = cmp.mapping.select_next_item(selectBehavior),
+    ['<Tab>'] = cmp.mapping.select_next_item(selectBehavior),
+    ['<C-p>'] = cmp.mapping.select_prev_item(selectBehavior),
+    ['<S-Tab>'] = cmp.mapping.select_prev_item(selectBehavior),
   },
   formatting = {
     format = lspkind.cmp_format({
