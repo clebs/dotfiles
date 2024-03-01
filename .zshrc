@@ -75,7 +75,7 @@ HIST_STAMPS="dd.mm.yyyy"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git golang kubectl docker keychain atuin
+  git golang kubectl docker keychain atuin autojump
 )
 
 # Preferred editor for local and remote sessions
@@ -93,9 +93,6 @@ if [ -d ~/Dev/asimov ]; then
   source ~/Dev/asimov/sources/aliases
   source ~/Dev/asimov/sources/func
 fi
-
-#----- Autojump -----#
-[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
 #----- Atuin shell history -----#
 # Need to manually remove the arrow up keybinds
