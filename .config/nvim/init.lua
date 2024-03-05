@@ -10,7 +10,7 @@ if fn.empty(fn.glob(data_dir .. '/site/autoload/plug.vim')) == 1 then
 	cmd('silent !curl -fLo ' ..
 		data_dir ..
 		'/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
-	cmd('PlugInstall --sync')
+	cmd('autocmd VimEnter * PlugInstall --sync | source $MYVIMRC')
 end
 local Plug = fn['plug#']
 
@@ -103,10 +103,10 @@ g.blamer_date_format = '%d.%m.%y'
 
 -- Transparent BG
 -- Focused pane/window
-cmd [[autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE]]
+cmd('autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE')
 -- All other panes and overlays
-cmd [[autocmd ColorScheme * highlight NormalNC ctermbg=NONE guibg=NONE]]
-cmd [[autocmd ColorScheme * highlight NormalSB ctermbg=NONE guibg=NONE]]
+cmd('autocmd ColorScheme * highlight NormalNC ctermbg=NONE guibg=NONE')
+cmd('autocmd ColorScheme * highlight NormalSB ctermbg=NONE guibg=NONE')
 
 -- Theme
 cmd.colorscheme("catppuccin-frappe")
@@ -116,7 +116,7 @@ g.NERDSpaceDelims = 1
 -- disable netrw at the very start of your init.lua (strongly advised)
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
-cmd([[hi NvimTreeNormal guibg=NONE ctermbg=NONE]])
+cmd('hi NvimTreeNormal guibg=NONE ctermbg=NONE')
 
 -- set termguicolors to enable highlight groups
 opt.termguicolors = true
