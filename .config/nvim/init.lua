@@ -145,8 +145,6 @@ require("telescope").setup({
 		}
 	}
 })
-require("telescope").load_extension("emoji")
-require 'telescope'.load_extension('project')
 require('harpoon'):setup()
 require('lualine').setup({ sections = { lualine_c = { { 'filename', path = 1, file_status = true } } } })
 require('dap-go').setup()
