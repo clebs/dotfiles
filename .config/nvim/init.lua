@@ -10,6 +10,7 @@ if fn.empty(fn.glob(data_dir .. '/site/autoload/plug.vim')) == 1 then
 	cmd('silent !curl -fLo ' ..
 		data_dir ..
 		'/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
+	cmd('source ' .. data_dir .. '/site/autoload/plug.vim')
 	cmd('autocmd VimEnter * PlugInstall --sync | source $MYVIMRC')
 end
 local Plug = fn['plug#']
