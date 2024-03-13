@@ -1,82 +1,79 @@
 vim.g.mapleader = ' '
-
--- Functional wrapper for mapping custom keybindings
-function map(mode, lhs, rhs, opts)
-    local options = { noremap = true }
-    if opts then
-        options = vim.tbl_extend("force", options, opts)
-    end
-    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
+local key = vim.keymap
+local cmd = vim.cmd
 
 -- Debugger settings
-map("n", "<F5>", ":lua require('dap').continue()<CR>", { silent = true })
-map("n", "<F10>", ":lua require('dap').step_over()<CR>", { silent = true })
-map("n", "<F11>", ":lua require('dap').step_into()<CR>", { silent = true })
-map("n", "<F12>", ":lua require('dap').step_out()<CR>", { silent = true })
-map("n", "<Leader>b", ":lua require('dap').toggle_breakpoint()<CR>", { silent = true })
-map("n", "<Leader>B", ":lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", { silent = true })
-map("n", "<Leader>lp", ":lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
+local dap = require('dap')
+local dapui = require('dapui')
+key.set('n', '<F5>', dap.continue, { silent = true })
+key.set('n', '<F10>', dap.step_over, { silent = true })
+key.set('n', '<F11>', dap.step_into, { silent = true })
+key.set('n', '<F12>', dap.step_out, { silent = true })
+key.set('n', '<Leader>b', dap.toggle_breakpoint, { silent = true })
+key.set('n', '<Leader>B', function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end,
     { silent = true })
-map("n", "<Leader>dr", ":lua require('dap').repl.open()<CR>", { silent = true })
-map("n", "<Leader>dl", ":lua require('dap').run_last()<CR>ngs", { silent = true })
-map('n', "<Leader>u", ":lua require('dapui').toggle()<CR>", { silent = true })
-map("n", "<Leader>de", ":lua require('dapui').eval()<CR>", { silent = true, desc = "Evaluate expression" })
+key.set('n', '<Leader>lp', function() dap.set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end,
+    { silent = true })
+key.set('n', '<Leader>dr', dap.repl.open, { silent = true })
+key.set('n', '<Leader>dl', ':lua require("dap").run_last()<CR>ngs', { silent = true })
+key.set('n', '<Leader>u', dapui.toggle, { silent = true })
+key.set('n', '<Leader>de', dapui.eval, { silent = true, desc = 'Evaluate expression' })
 
 -- Nvimtree
-vim.keymap.set('n', '<C-n>', vim.cmd.NvimTreeToggle, { noremap = true, desc = "Toggle file tree" })
-vim.keymap.set('n', '<Leader>ft', vim.cmd.NvimTreeFindFile, { noremap = true, desc = "Find file in tree" })
+key.set('n', '<C-n>', cmd.NvimTreeToggle, { noremap = true, desc = 'Toggle file tree' })
+key.set('n', '<Leader>ft', cmd.NvimTreeFindFile, { noremap = true, desc = 'Find file in tree' })
 -- Remap open link to a different key, default does not work with netrw disabled and remapping the same key does not work.
-vim.keymap.set("n", "gb", ":!open <cfile><CR>", { desc = "Open with default OS app.", silent = true, noremap = false })
+key.set('n', 'gb', ':!open <cfile><CR>', { desc = 'Open with default OS app.', silent = true, remap = true })
 
 -- Telescope
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find files" })
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Live grep" })
-vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Show buffers" })
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Help tags" })
-vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = "Show diagnostics results" })
-map("n", "<leader>fe", ":lua require('telescope').load_extension('emoji').emoji()<CR>", { desc = "Emoji picker" })
-map("n", "<leader>fp", ":lua require('telescope').load_extension('project').project()<CR>", { desc = "Project picker" })
+key.set('n', '<leader>ff', builtin.find_files, { desc = 'Find files' })
+key.set('n', '<leader>fg', builtin.live_grep, { desc = 'Live grep' })
+key.set('n', '<leader>fb', builtin.buffers, { desc = 'Show buffers' })
+key.set('n', '<leader>fh', builtin.help_tags, { desc = 'Help tags' })
+key.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Show diagnostics results' })
+key.set('n', '<leader>fe', require('telescope').load_extension('emoji').emoji, { desc = 'Emoji picker' })
+key.set('n', '<leader>fp', require('telescope').load_extension('project').project,
+    { desc = 'Project picker' })
 
 -- Harpoon
-local harpoon = require("harpoon")
-vim.keymap.set("n", "<leader>ha", function() harpoon:list():append() end, { desc = "Harpoon append file" })
-vim.keymap.set("n", "<leader>hl", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Harpoon list" })
-vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end, { desc = "Harpoon go to 1" })
-vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end, { desc = "Harpoon go to 2" })
-vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end, { desc = "Harpoon go to 3" })
-vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end, { desc = "Harpoon go to 4" })
-vim.keymap.set("n", "<leader>5", function() harpoon:list():select(5) end, { desc = "Harpoon go to 5" })
-vim.keymap.set("n", "<leader>6", function() harpoon:list():select(6) end, { desc = "Harpoon go to 6" })
+local harpoon = require('harpoon')
+key.set('n', '<leader>ha', function() harpoon:list():append() end, { desc = 'Harpoon append file' })
+key.set('n', '<leader>hl', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = 'Harpoon list' })
+key.set('n', '<leader>1', function() harpoon:list():select(1) end, { desc = 'Harpoon go to 1' })
+key.set('n', '<leader>2', function() harpoon:list():select(2) end, { desc = 'Harpoon go to 2' })
+key.set('n', '<leader>3', function() harpoon:list():select(3) end, { desc = 'Harpoon go to 3' })
+key.set('n', '<leader>4', function() harpoon:list():select(4) end, { desc = 'Harpoon go to 4' })
+key.set('n', '<leader>5', function() harpoon:list():select(5) end, { desc = 'Harpoon go to 5' })
+key.set('n', '<leader>6', function() harpoon:list():select(6) end, { desc = 'Harpoon go to 6' })
 
 -- LSP
-map("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>", { noremap = true, desc = "Rename symbol" })
-map('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', { noremap = true, desc = "Go to definition" })
-map('n', 'gp', ':lua vim.lsp.buf.implementation()<CR>', { noremap = true, desc = "Go to implementation" })
-map('n', 'gr', ':lua vim.lsp.buf.references()<CR>', { noremap = true, desc = "References" })
-map('n', '<leader>ga', ':lua vim.lsp.buf.code_action()<CR>', { noremap = true, desc = "Code actions" })
-vim.keymap.set('n', '<leader>o', vim.cmd.SymbolsOutline, { desc = "Code Outline" })
-vim.keymap.set('n', '<leader>k', vim.diagnostic.open_float, { desc = "Show diagnostic" })
-vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "Hover docs" })
+key.set('n', '<leader>rn', vim.lsp.buf.rename, { noremap = true, desc = 'Rename symbol' })
+key.set('n', 'gd', vim.lsp.buf.definition, { noremap = true, desc = 'Go to definition' })
+key.set('n', 'gp', vim.lsp.buf.implementation, { noremap = true, desc = 'Go to implementation' })
+key.set('n', 'gr', vim.lsp.buf.references, { noremap = true, desc = 'References' })
+key.set('n', '<leader>ga', vim.lsp.buf.code_action, { noremap = true, desc = 'Code actions' })
+key.set('n', '<leader>o', cmd.SymbolsOutline, { desc = 'Code Outline' })
+key.set('n', '<leader>k', vim.diagnostic.open_float, { desc = 'Show diagnostic' })
+key.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover docs' })
 
 -- Git
-map('n', '<leader>gd', ":lua vim.cmd('DiffviewOpen')<CR>", { desc = "Open Git Diff" })
-map('n', '<leader>gc', ":lua vim.cmd('DiffviewClose')<CR>", { desc = "Close Git Diff" })
-map('n', '<leader>gh', ":lua vim.cmd('DiffviewFileHistory %')<CR>", { desc = "Git File History" })
-map('n', '<leader>gH', ":lua vim.cmd('DiffviewFileHistory')<CR>", { desc = "Git Repo History" })
-map('n', '<leader>gb', ":lua vim.cmd('BlamerToggle')<CR>", { desc = "Git Blame" })
+key.set('n', '<leader>gd', cmd.DiffviewOpen, { desc = 'Open Git Diff' })
+key.set('n', '<leader>gc', cmd.DiffviewClose, { desc = 'Close Git Diff' })
+key.set('n', '<leader>gh', function() cmd('DiffviewFileHistory %') end, { desc = 'Git File History' })
+key.set('n', '<leader>gH', cmd.DiffviewFileHistory, { desc = 'Git Repo History' })
+key.set('n', '<leader>gb', cmd.BlamerToggle, { desc = 'Git Blame' })
 
 -- Zen
-map('n', '<leader>z', ":lua require('zen-mode').toggle({window = {width = .80}})<CR>", { desc = "Zen mode" })
+key.set('n', '<leader>z', function() require('zen-mode').toggle({ window = { width = .80 } }) end, { desc = 'Zen mode' })
 
 -- Glow Markdown buffer_hunks_preview
-vim.keymap.set('n', '<leader>m', vim.cmd.Glow, { desc = "Markdown Preview" })
+key.set('n', '<leader>m', cmd.Glow, { desc = 'Markdown Preview' })
 
 -- Miscelaneous --
-map("n", "<leader>y", "\"*y", { noremap = true, desc = "Copy to system clipboard" })
-map("v", "<leader>y", "\"*y", { noremap = true, desc = "Copy to system clipboard" })
-map("x", "<leader>p", "\"_dP", { noremap = true, desc = "Paste without overwrite" })
-map("n", "<leader>q", ":lua vim.cmd('copen')<CR>", { noremap = true, desc = "Open Quickfix list" })
-map("n", "<leader>Q", ":lua vim.cmd('cclose')<CR>", { noremap = true, desc = "Close Quickfix list" })
-map("n", "<C-h>", ":lua vim.cmd('noh')<CR>", { noremap = true, desc = "Clear search highlight" })
+key.set('n', '<leader>y', '\'*y', { noremap = true, desc = 'Copy to system clipboard' })
+key.set('v', '<leader>y', '\'*y', { noremap = true, desc = 'Copy to system clipboard' })
+key.set('x', '<leader>p', '\'_dP', { noremap = true, desc = 'Paste without overwrite' })
+key.set('n', '<leader>q', cmd.copen, { noremap = true, desc = 'Open Quickfix list' })
+key.set('n', '<leader>Q', cmd.cclose, { noremap = true, desc = 'Close Quickfix list' })
+key.set('n', '<C-h>', cmd.noh, { noremap = true, desc = 'Clear search highlight' })
