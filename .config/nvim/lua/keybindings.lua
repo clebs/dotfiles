@@ -71,8 +71,8 @@ key.set('n', '<leader>z', function() require('zen-mode').toggle({ window = { wid
 key.set('n', '<leader>m', cmd.Glow, { desc = 'Markdown Preview' })
 
 -- Miscelaneous --
-key.set('n', '<leader>y', '\'*y', { noremap = true, desc = 'Copy to system clipboard' })
-key.set('v', '<leader>y', '\'*y', { noremap = true, desc = 'Copy to system clipboard' })
+key.set('n', '<leader>y', '\"*y', { noremap = true, desc = 'Copy to system clipboard' })
+key.set('v', '<leader>y', '\"*y', { noremap = true, desc = 'Copy to system clipboard' })
 key.set('x', '<leader>p', '\'_dP', { noremap = true, desc = 'Paste without overwrite' })
 key.set('n', '<leader>q', cmd.copen, { noremap = true, desc = 'Open Quickfix list' })
 key.set('n', '<leader>Q', cmd.cclose, { noremap = true, desc = 'Close Quickfix list' })
