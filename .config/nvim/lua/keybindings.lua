@@ -23,7 +23,7 @@ key.set('n', '<Leader>de', dapui.eval, { silent = true, desc = 'Evaluate express
 key.set('n', '<C-n>', cmd.NvimTreeToggle, { noremap = true, desc = 'Toggle file tree' })
 key.set('n', '<Leader>ft', cmd.NvimTreeFindFile, { noremap = true, desc = 'Find file in tree' })
 -- Remap open link to a different key, default does not work with netrw disabled and remapping the same key does not work.
-local openCmd = vim.fn.has('macunix') and 'open' or 'xdg-open'
+local openCmd = vim.fn.has('macunix') == 1 and 'open' or 'xdg-open'
 key.set('n', 'gb', ':!' .. openCmd .. ' <cfile><CR>', { desc = 'Open with default OS app.', silent = true, remap = true })
 
 -- Telescope
