@@ -141,6 +141,9 @@
   zsh
   atuin
   go
+  gcc
+  nodejs
+  tree-sitter
   neofetch
   autojump
   git
