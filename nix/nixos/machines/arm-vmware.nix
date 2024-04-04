@@ -117,6 +117,7 @@
   };
   
   programs.zsh.enable = true;
+  programs.fuse.userAllowOther = true;
 
   environment.sessionVariables = {
     # Prevent invisible cursor
