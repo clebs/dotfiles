@@ -1,5 +1,7 @@
 {pkgs, ...}: with pkgs; 
 [
-  ventoy
-  gparted
+  go
+  nodejs
+  tree-sitter
+  cargo
 ]
