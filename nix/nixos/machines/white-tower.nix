@@ -15,7 +15,7 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
   # set kernel version
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_7;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_8;
 
   networking.hostName = "white-tower"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -172,6 +172,7 @@
   in with pkgs; [
   unstable.neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   gnomeExtensions.dash-to-dock
+  gnomeExtensions.blur-my-shell
   wget
   curl
   ripgrep
@@ -179,6 +180,10 @@
   zsh
   atuin
   go
+  gcc
+  cargo
+  nodejs
+  tree-sitter
   neofetch
   autojump
   git
@@ -194,6 +199,11 @@
   lutris
   wine
   xboxdrv
+  gparted
+  ventoy
+  # Choose clipboard based on display server
+  # xclip
+  wl-clipboard
   ];
 
   # Fonts

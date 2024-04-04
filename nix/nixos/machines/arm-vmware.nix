@@ -14,7 +14,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   # set kernel version
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_7;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_8;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -134,6 +134,7 @@
   in with pkgs; [
   unstable.neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   gnomeExtensions.dash-to-dock
+  gnomeExtensions.blur-my-shell
   wget
   curl
   ripgrep
@@ -144,6 +145,7 @@
   gcc
   nodejs
   tree-sitter
+  cargo
   neofetch
   autojump
   git
@@ -155,6 +157,12 @@
   htop
   gnupg
   stow
+  brave
+  ventoy
+  gparted
+  # Choose clipboard based on display server
+  # xclip
+  wl-clipboard
   ];
 
   # Fonts
