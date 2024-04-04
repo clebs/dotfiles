@@ -168,43 +168,14 @@
   # $ nix search wget
   environment.systemPackages = let 
     unstable = import nixos-unstable { inherit system; config.allowUnfree = true; };
+
+    core = import ../packages/core.nix { inherit pkgs unstable; };
+    desktop = import ../packages/desktop.nix { inherit pkgs; };
+    dev = import ../packages/dev.nix { inherit pkgs; };
+    utils = import ../packages/utils.nix { inherit pkgs; };
+    games = import ../packages/games.nix { inherit pkgs; };
 	
-  in with pkgs; [
-  unstable.neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  gnomeExtensions.dash-to-dock
-  gnomeExtensions.blur-my-shell
-  wget
-  curl
-  ripgrep
-  tmux
-  zsh
-  atuin
-  go
-  gcc
-  cargo
-  nodejs
-  tree-sitter
-  neofetch
-  autojump
-  git
-  fd
-  fzf
-  tree
-  tldr
-  jq
-  htop
-  gnupg
-  stow
-  brave
-  lutris
-  wine
-  xboxdrv
-  gparted
-  ventoy
-  # Choose clipboard based on display server
-  # xclip
-  wl-clipboard
-  ];
+  in with pkgs; core ++ desktop ++ dev ++ utils ++ games;
 
   # Fonts
   fonts.packages = with pkgs; [
