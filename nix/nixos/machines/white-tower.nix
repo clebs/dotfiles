@@ -11,9 +11,12 @@
     ];
 
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.grub = {
+    enable = true;
+    device = "/dev/sda";
+    useOSProber = true;
+  };
+
   # set kernel version
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_8;
 
@@ -45,17 +48,26 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
+  # Desktop
   services.xserver = {
+    # Enable the X11 windowing system.
+    enable = true;
+    # Configure keymap in X11
     layout = "us";
     xkbVariant = "euro";
+    # Enable the GNOME Desktop Environment.
+    desktopManager.gnome.enable = true;
+    displayManager = {
+      # GNOME login manager
+      gdm = {
+        enable = true;
+        wayland = false;
+      };
+      # Enable automatic login for the user.
+      autoLogin.enable = true;
+      autoLogin.user = "borja";
+    };
+    videoDrivers = ["nvidia"];
   };
 
   # Enable CUPS to print documents.
@@ -71,11 +83,8 @@
     driSupport32Bit = true;
   };
 
-  # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
 
   hardware.nvidia = {
-
     # Modesetting is required.
     modesetting.enable = true;
 
@@ -134,9 +143,6 @@
     ];
   };
 
-  # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "borja";
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
@@ -174,8 +180,9 @@
     dev = import ../packages/dev.nix { inherit pkgs; };
     utils = import ../packages/utils.nix { inherit pkgs; };
     games = import ../packages/games.nix { inherit pkgs; };
+    x11 = import ../packages/x11.nix { inherit pkgs; };
 	
-  in with pkgs; core ++ desktop ++ dev ++ utils ++ games;
+  in with pkgs; core ++ desktop ++ dev ++ utils ++ games ++ x11 ++ [ brave ];
 
   # Fonts
   fonts.packages = with pkgs; [

@@ -44,17 +44,25 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
+  # Desktop
   services.xserver = {
+    # Enable the X11 windowing system.
+    enable = true;
+    # Configure keymap in X11
     layout = "us";
     xkbVariant = "euro";
+    # Enable the GNOME Desktop Environment.
+    desktopManager.gnome.enable = true;
+    displayManager = {
+      # GNOME login manager
+      gdm = {
+        enable = true;
+        wayland = true;
+      };
+      # Enable automatic login for the user.
+      autoLogin.enable = true;
+      autoLogin.user = "borja";
+    };
   };
 
   # Enable CUPS to print documents.
@@ -91,10 +99,6 @@
     #  thunderbird
     ];
   };
-
-  # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "borja";
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
@@ -136,8 +140,9 @@
     desktop = import ../packages/desktop.nix { inherit pkgs; };
     dev = import ../packages/dev.nix { inherit pkgs; };
     utils = import ../packages/utils.nix { inherit pkgs; };
+    wayland = import ../packages/wayland.nix { inherit pkgs; };
 	
-  in with pkgs; core ++ desktop ++ dev ++ utils;
+  in with pkgs; core ++ desktop ++ dev ++ utils ++ wayland;
 
   # Fonts
   fonts.packages = with pkgs; [

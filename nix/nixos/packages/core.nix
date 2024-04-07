@@ -19,7 +19,4 @@
   tmux
   wget
   zsh
-  # Choose clipboard based on display server
-  # xclip
-  wl-clipboard
 ]
