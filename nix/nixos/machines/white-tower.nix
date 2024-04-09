@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, system, pkgs, nixos-unstable, ... }:
+{ config, system, pkgs, nixos-unstable, zigpkgs, ... }:
 
 {
   imports =
@@ -182,7 +182,7 @@
     games = import ../packages/games.nix { inherit pkgs; };
     x11 = import ../packages/x11.nix { inherit pkgs; };
 	
-  in with pkgs; core ++ desktop ++ dev ++ utils ++ games ++ x11 ++ [ brave ];
+  in with pkgs; core ++ desktop ++ dev ++ utils ++ games ++ x11 ++ [ brave zigpkgs.packages.${system}.master ];
 
   # Fonts
   fonts.packages = with pkgs; [

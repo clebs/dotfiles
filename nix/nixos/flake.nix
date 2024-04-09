@@ -4,9 +4,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    zigpkgs.url = "github:mitchellh/zig-overlay";
  };
 
- outputs = { self, nixpkgs, nixos-unstable, ...}: {
+ outputs = { self, nixpkgs, nixos-unstable, zigpkgs, ...}: {
     nixosConfigurations = {
       # Here we can define different configurations for hosts and systems.
       # Then they can be called with nix-os rebuild switch --flake .#configname
@@ -19,14 +20,14 @@
       };
       white-tower = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit nixos-unstable system; };
+        specialArgs = { inherit nixos-unstable zigpkgs system; };
         modules = [
           ./machines/white-tower.nix
         ];
       };
       mbp13 = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit nixos-unstable system; };
+        specialArgs = { inherit nixos-unstable zigpkgs system; };
         modules = [
           ./machines/mbp13.nix
         ];
