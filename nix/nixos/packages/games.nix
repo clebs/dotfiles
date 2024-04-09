@@ -1,6 +1,8 @@
 {pkgs, ...}: with pkgs; 
 [
   lutris
-  wine64
+  wineWowPackages.unstableFull
+  mesa
   xboxdrv
+  retroarchFull
 ]

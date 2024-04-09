@@ -16,7 +16,10 @@
 
   # set kernel version
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_8;
-  boot.blacklistedKernelModules = ["b43" "bcma"];
+  boot.kernelModules = [ "kvm-intel" ];
+  boot.blacklistedKernelModules = ["b43" "bcma" "nouveau" "nvidia" ];
+  # Add VGA device for intel graphics.
+  boot.kernelParams = [ "i915.force_probe=0a2e" ];
 
   networking.hostName = "mbp13-nixos"; # Define your hostname.
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -72,6 +75,12 @@
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
+    extraPackages = with pkgs; [
+      intel-media-driver # LIBVA_DRIVER_NAME=iHD
+      vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
   };
 
   # Enable sound with pipewire.
