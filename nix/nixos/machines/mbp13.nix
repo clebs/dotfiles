@@ -157,7 +157,7 @@
     games = import ../packages/games.nix { inherit pkgs; };
     x11 = import ../packages/x11.nix { inherit pkgs; };
 	
-  in with pkgs; core ++ desktop ++ dev ++ utils ++ games ++ x11 ++ [ brave ];
+  in with pkgs; core ++ desktop ++ dev ++ utils ++ games ++ x11 ++ [ brave zigpkgs.packages.${system}.master ];
 
   # Fonts
   fonts.packages = with pkgs; [
