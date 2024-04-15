@@ -159,6 +159,8 @@
 	
   in with pkgs; core ++ desktop ++ dev ++ utils ++ games ++ x11 ++ [ brave zigpkgs.packages.${system}.master ];
 
+  services.flatpak.enable = true;
+
   # Fonts
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = ["FiraCode"];})
