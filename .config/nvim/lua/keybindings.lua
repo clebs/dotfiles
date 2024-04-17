@@ -9,14 +9,14 @@ key.set('n', '<F5>', dap.continue, { silent = true })
 key.set('n', '<F10>', dap.step_over, { silent = true })
 key.set('n', '<F11>', dap.step_into, { silent = true })
 key.set('n', '<F12>', dap.step_out, { silent = true })
-key.set('n', '<Leader>b', dap.toggle_breakpoint, { silent = true })
+key.set('n', '<Leader>b', dap.toggle_breakpoint, { desc = 'Set breakpoint', silent = true })
 key.set('n', '<Leader>B', function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end,
-    { silent = true })
+    { desc = 'Set conditional breakpoint', silent = true })
 key.set('n', '<Leader>lp', function() dap.set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end,
     { silent = true })
 key.set('n', '<Leader>dr', dap.repl.open, { silent = true })
 key.set('n', '<Leader>dl', ':lua require("dap").run_last()<CR>ngs', { silent = true })
-key.set('n', '<Leader>u', dapui.toggle, { silent = true })
+key.set('n', '<Leader>u', dapui.toggle, { desc = 'Toggle debug UI', silent = true })
 key.set('n', '<Leader>de', dapui.eval, { silent = true, desc = 'Evaluate expression' })
 
 -- Nvimtree
@@ -68,6 +68,10 @@ key.set('n', '<leader>gb', cmd.BlamerToggle, { desc = 'Git Blame' })
 -- Zen
 key.set('n', '<leader>z', function() require('zen-mode').toggle({ window = { width = .80 } }) end, { desc = 'Zen mode' })
 
+-- Neorg
+key.set('n', '<leader>ni', function() cmd('Neorg index') end, { desc = 'Neorg index' })
+key.set('n', '<leader>nr', function() cmd('Neorg return') end, { desc = 'Neorg return' })
+
 -- Glow Markdown buffer_hunks_preview
 key.set('n', '<leader>m', cmd.Glow, { desc = 'Markdown Preview' })
 
@@ -78,3 +82,5 @@ key.set('x', '<leader>p', '\'_dP', { noremap = true, desc = 'Paste without overw
 key.set('n', '<leader>q', cmd.copen, { noremap = true, desc = 'Open Quickfix list' })
 key.set('n', '<leader>Q', cmd.cclose, { noremap = true, desc = 'Close Quickfix list' })
 key.set('n', '<C-h>', cmd.noh, { noremap = true, desc = 'Clear search highlight' })
+key.set('n', '<leader>tc', function() cmd('cd %:p:h') end, { desc = 'cd to current buffer dir' })
+key.set('n', '<leader>tp', function() cmd('cd -') end, { desc = 'cd to previous dir' })

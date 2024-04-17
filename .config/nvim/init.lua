@@ -18,6 +18,13 @@ local Plug = fn['plug#']
 -- Plugins
 call('plug#begin', data_dir .. '/plugged')
 
+-- Common
+Plug 'nvim-neotest/nvim-nio'
+Plug('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+Plug 'nvim-lua/plenary.nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'pysan3/pathlib.nvim'
+
 -- Appearence and widgets
 Plug 'EdenEast/nightfox.nvim'
 Plug('catppuccin/nvim', { as = 'catppuccin' }) -- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
@@ -26,22 +33,22 @@ Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'preservim/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
-Plug('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 Plug 'kylechui/nvim-surround'
 Plug 'startup-nvim/startup.nvim'
 
 -- Debugging
 Plug 'mfussenegger/nvim-dap'
-Plug 'nvim-neotest/nvim-nio'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'leoluz/nvim-dap-go'
 
+-- Telescope
 Plug 'jiangmiao/auto-pairs'
-Plug 'nvim-lua/plenary.nvim'
 Plug('nvim-telescope/telescope.nvim', { branch = '0.1.x' })
 Plug('nvim-telescope/telescope-project.nvim')
 Plug('ThePrimeagen/harpoon', { branch = 'harpoon2' })
 Plug 'xiyaowong/telescope-emoji.nvim'
+
+-- Markdown
 Plug 'ellisonleao/glow.nvim'
 
 -- LSP Support
@@ -71,6 +78,10 @@ Plug 'rafamadriz/friendly-snippets'
 
 -- Zen
 Plug 'folke/zen-mode.nvim'
+
+-- Org mode
+Plug('nvim-neorg/neorg', { run = ':Neorg sync-parsers' })
+Plug 'nvim-neorg/lua-utils.nvim'
 
 call('plug#end')
 
@@ -158,6 +169,26 @@ require('zen-mode').setup()
 require("symbols-outline").setup()
 require("mason").setup()
 require("startup").setup({ theme = "nvim" })
+require("neorg").setup({
+	load = {
+		["core.defaults"] = {},
+		["core.concealer"] = {},
+		["core.dirman"] = {
+			config = {
+				workspaces = {
+					notes = "~/Documents/notes",
+				},
+				default_workspace = "notes",
+			},
+		},
+	},
+})
+-- Fix for detecting neorg files. This does not work, using autocmd for now
+-- vim.filetype.add({ extensions = { norg = "lua" } })
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = "*.norg",
+	command = "setfiletype norg",
+})
 
 -- includes
 require('keybindings')

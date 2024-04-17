@@ -4,7 +4,7 @@ macos-titlebar-tabs = true
 foreground = 00b151
 background = 10303a
 
-background-opacity = 0.95
+background-opacity = 0.90
 unfocused-split-opacity = 0.98
 
 # Font
