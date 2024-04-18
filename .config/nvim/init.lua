@@ -174,6 +174,8 @@ require("neorg").setup({
 	load = {
 		["core.defaults"] = {},
 		["core.concealer"] = {},
+		["core.completion"] = { config = { engine = 'nvim-cmp', name = "[Norg]" } },
+		["core.summary"] = {},
 		["core.dirman"] = {
 			config = {
 				workspaces = {
@@ -182,6 +184,9 @@ require("neorg").setup({
 				default_workspace = "notes",
 			},
 		},
+		["core.integrations.nvim-cmp"] = {},
+		["core.integrations.treesitter"] = {},
+		["core.syntax"] = {},
 	},
 })
 -- Fix for detecting neorg files. This does not work, using autocmd for now
