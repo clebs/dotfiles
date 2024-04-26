@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, system, pkgs, nixos-unstable, ... }:
+{ config, system, pkgs, nixos-unstable, zigpkgs, ... }:
 
 {
   imports =
@@ -142,7 +142,7 @@
     utils = import ../packages/utils.nix { inherit pkgs; };
     wayland = import ../packages/wayland.nix { inherit pkgs; };
 	
-  in with pkgs; core ++ desktop ++ dev ++ utils ++ wayland;
+  in with pkgs; core ++ desktop ++ dev ++ utils ++ wayland ++ [zigpkgs.packages.${system}."0.12.0"];
 
   # Fonts
   fonts.packages = with pkgs; [

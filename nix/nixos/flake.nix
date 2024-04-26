@@ -13,7 +13,7 @@
       # Then they can be called with nix-os rebuild switch --flake .#configname
       arm-vmware = let system = "aarch64-linux"; in nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit nixos-unstable system; };
+        specialArgs = { inherit nixos-unstable zigpkgs system; };
         modules = [
           ./machines/arm-vmware.nix
         ];
