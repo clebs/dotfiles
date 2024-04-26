@@ -102,11 +102,13 @@ opt.title = true                              -- Show file title
 opt.wildmenu = true                           -- Show a more advance menu
 opt.background = 'dark'
 -- opt.cc = 80 -- Show at 80 column a border for good code style
-opt.spell = false      -- enable spell check (may need to download language package)
-opt.ttyfast = true     -- Speed up scrolling in Vim
-opt.ignorecase = true  -- Ignore case on search
-opt.smartcase = true   -- Search is case insensitive when all lowerccase
-opt.foldenable = false -- Disable folding (smehow neorg set everything to fold)
+opt.spell = false         -- enable spell check (may need to download language package)
+opt.ttyfast = true        -- Speed up scrolling in Vim
+opt.ignorecase = true     -- Ignore case on search
+opt.smartcase = true      -- Search is case insensitive when all lowerccase
+opt.foldenable = false    -- Disable folding (smehow neorg set everything to fold)
+opt.conceallevel = 2      -- conceal level for org mode
+opt.concealcursor = "nvc" -- conceal cursor for org mode
 
 -- Git blamer
 g.blamer_show_in_visual_modes = 0
