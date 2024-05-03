@@ -70,7 +70,10 @@ key.set('n', '<leader>gb', cmd.BlamerToggle, { desc = 'Git Blame' })
 key.set('n', '<leader>z', function() require('zen-mode').toggle({ window = { width = .80 } }) end, { desc = 'Zen mode' })
 
 -- Neorg
-key.set('n', '<leader>ni', function() cmd('Neorg index') end, { desc = 'Neorg index' })
+key.set('n', '<leader>ni', function()
+    cmd('tabnew')
+    cmd('Neorg index')
+end, { desc = 'Neorg index' })
 key.set('n', '<leader>nr', function() cmd('Neorg return') end, { desc = 'Neorg return' })
 
 -- Glow Markdown buffer_hunks_preview
