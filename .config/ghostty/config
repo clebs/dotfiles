@@ -1,12 +1,12 @@
 # Theme
 title = "Ghostty 👻"
-macos-titlebar-tabs = true
+window-decoration = false
 window-padding-x = 10
 window-padding-y = 10
 foreground = 00b151
 background = 10303a
 
-background-opacity = 0.90
+background-opacity = 0.85
 unfocused-split-opacity = 0.98
 
 # Font
