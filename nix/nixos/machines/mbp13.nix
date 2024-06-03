@@ -59,8 +59,8 @@
 
   # Configure keymap in X11
   services.xserver = {
-    layout = "us";
-    xkbVariant = "alt-intl";
+    xkb.layout = "us";
+    xkb.variant = "alt-intl";
   };
 
   # Configure console keymap
@@ -116,8 +116,10 @@
   };
 
   # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "borja";
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "borja";
+  };
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;

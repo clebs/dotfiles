@@ -49,8 +49,8 @@
     # Enable the X11 windowing system.
     enable = true;
     # Configure keymap in X11
-    layout = "us";
-    xkbVariant = "euro";
+    xkb.layout = "us";
+    xkb.variant = "euro";
     # Enable the GNOME Desktop Environment.
     desktopManager.gnome.enable = true;
     displayManager = {
@@ -59,10 +59,13 @@
         enable = true;
         wayland = true;
       };
-      # Enable automatic login for the user.
-      autoLogin.enable = true;
-      autoLogin.user = "borja";
     };
+  };
+
+  # Enable automatic login for the user.
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "borja";
   };
 
   # Enable CUPS to print documents.
