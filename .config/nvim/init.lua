@@ -28,6 +28,10 @@ Plug 'pysan3/pathlib.nvim'
 -- Appearence and widgets
 Plug 'EdenEast/nightfox.nvim'
 Plug('catppuccin/nvim', { as = 'catppuccin' }) -- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+Plug('neanias/everforest-nvim', { branch = 'main' })
+Plug('folke/tokyonight.nvim', { branch = 'main' })
+
+
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-tree/nvim-tree.lua'
@@ -107,7 +111,7 @@ opt.ttyfast = true        -- Speed up scrolling in Vim
 opt.ignorecase = true     -- Ignore case on search
 opt.smartcase = true      -- Search is case insensitive when all lowerccase
 opt.foldenable = false    -- Disable folding (smehow neorg set everything to fold)
-opt.conceallevel = 2      -- conceal level for org mode
+-- opt.conceallevel = 2      -- conceal level for org mode
 opt.concealcursor = "nvc" -- conceal cursor for org mode
 
 -- Git blamer
@@ -117,15 +121,8 @@ g.blamer_date_format = '%d.%m.%y'
 
 -- Appearence
 
--- Transparent BG
--- Focused pane/window
-cmd('autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE')
--- All other panes and overlays
-cmd('autocmd ColorScheme * highlight NormalNC ctermbg=NONE guibg=NONE')
-cmd('autocmd ColorScheme * highlight NormalSB ctermbg=NONE guibg=NONE')
-
 -- Theme
-cmd.colorscheme("catppuccin-frappe")
+require('theme')
 
 g.bargreybars_auto = 0
 g.NERDSpaceDelims = 1
@@ -161,7 +158,7 @@ require("telescope").setup({
 	}
 })
 require('harpoon'):setup()
-require('lualine').setup({ sections = { lualine_c = { { 'filename', path = 1, file_status = true } } } })
+require('lualine').setup({ sections = { lualine_c = { { 'filename', path = 1, file_status = true } } }, options = { theme = "auto" } })
 require('dap-go').setup()
 require("dapui").setup()
 require('diffview').setup()

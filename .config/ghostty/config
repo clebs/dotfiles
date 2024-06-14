@@ -3,10 +3,8 @@ title = "Ghostty 👻"
 window-decoration = false
 window-padding-x = 10
 window-padding-y = 10
-foreground = 00b151
-background = 10303a
 
-background-opacity = 0.85
+background-opacity = 0.90
 unfocused-split-opacity = 0.98
 
 # Font
@@ -17,6 +15,10 @@ cursor-style = block
 shell-integration-features = no-cursor
 
 # colors
+
+background = 10303a
+foreground = 00b151
+
 
 # black
 palette = 0=1d1f21
