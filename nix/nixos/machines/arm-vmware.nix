@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ../hardware-configuration.nix
+      ../modules/vmware-guest-tools.nix
     ];
 
   # Bootloader.
@@ -118,11 +119,16 @@
     extra-trusted-public-keys = ["ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="];
   };
 
+  # VMware tools
+  # Disable the default module and import Mitchell's override. It has
+  # customizations to make this work on aarch64.
+  disabledModules = [ "virtualisation/vmware-guest.nix" ];
+
   virtualisation.vmware.guest = {
-    headless = true;
+    headless = false;
     enable = true; 
   };
-  
+
   programs.zsh.enable = true;
   programs.fuse.userAllowOther = true;
 
