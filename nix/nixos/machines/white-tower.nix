@@ -179,7 +179,7 @@
     unstable = import nixos-unstable { inherit system; config.allowUnfree = true; };
 
     core = import ../packages/core.nix { inherit pkgs unstable; };
-    desktop = import ../packages/desktop.nix { inherit pkgs; };
+    desktop = import ../packages/desktop.nix { inherit pkgs unstable; };
     dev = import ../packages/dev.nix { inherit pkgs; };
     utils = import ../packages/utils.nix { inherit pkgs; };
     games = import ../packages/games.nix { inherit pkgs; };
