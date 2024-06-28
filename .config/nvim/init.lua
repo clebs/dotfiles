@@ -131,6 +131,14 @@ g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 cmd('hi NvimTreeNormal guibg=NONE ctermbg=NONE')
 
+-- highlight yanked text for 150ms using the "Visual" highlight group
+cmd [[
+augroup highlight_yank
+autocmd!
+au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=150})
+augroup END
+]]
+
 -- set termguicolors to enable highlight groups
 opt.termguicolors = true
 
