@@ -116,6 +116,9 @@ if command -v rustup > /dev/null && [ ! -f ~/.oh-my-zsh/completions/_cargo ]; th
 # Zig setup
 if command -v zig > /dev/null && [ ! -f ~/.oh-my-zsh/completions/_zig ]; then curl https://raw.githubusercontent.com/ziglang/shell-completions/master/_zig > ~/.oh-my-zsh/completions/_zig; fi
 
+# Ruby setup
+if command -v rbenv &> /dev/null; then eval "$(rbenv init - zsh)"; fi
+
 ## AWS CLI completions
 # complete -C '/opt/homebrew/bin/aws_completer' aws
 
