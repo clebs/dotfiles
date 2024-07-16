@@ -4,5 +4,5 @@
   wineWowPackages.unstableFull
   mesa
   xboxdrv
-  retroarchFull
+  # retroarchFull # builds from source and takes very long
 ]
