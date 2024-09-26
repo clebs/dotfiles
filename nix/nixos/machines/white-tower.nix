@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ../hardware-configuration.nix
+      ../modules/remote-desktop-gnome.nix
     ];
 
   # Bootloader.
@@ -18,7 +19,7 @@
   };
 
   # set kernel version
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_8;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_11;
 
   networking.hostName = "white-tower"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -111,7 +112,17 @@
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    # package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+    # Pin specific version since on 6.11 kernel stable does not work.
+    package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+      version = "555.58.02";
+      sha256_64bit = "sha256-xctt4TPRlOJ6r5S54h5W6PT6/3Zy2R4ASNFPu8TSHKM=";
+      sha256_aarch64 = "sha256-wb20isMrRg8PeQBU96lWJzBMkjfySAUaqt4EgZnhyF8=";
+      openSha256 = "sha256-8hyRiGB+m2hL3c9MDA/Pon+Xl6E788MZ50WrrAGUVuY=";
+      settingsSha256 = "sha256-ZpuVZybW6CFN/gz9rx+UJvQ715FZnAOYfHn5jt5Z2C8=";
+      persistencedSha256 = "sha256-a1D7ZZmcKFWfPjjH1REqPM5j/YLWKnbkP9qfRyIyxAw=";
+    };
   };
 
   # Enable sound with default settings, pipewire causes crackling.
@@ -189,8 +200,9 @@
     utils = import ../packages/utils.nix { inherit pkgs; };
     games = import ../packages/games.nix { inherit pkgs; };
     x11 = import ../packages/x11.nix { inherit pkgs; };
+    social = import ../packages/social.nix { inherit pkgs; };
 	
-  in with pkgs; core ++ desktop ++ dev ++ utils ++ games ++ x11 ++ [ brave zigpkgs.packages.${system}."0.12.0" ];
+  in with pkgs; core ++ desktop ++ dev ++ utils ++ games ++ x11 ++ social ++ [ brave zigpkgs.packages.${system}."0.12.0" ];
 
   # Fonts
   fonts.packages = with pkgs; [
