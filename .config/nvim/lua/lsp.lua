@@ -1,57 +1,54 @@
-local lsp = require('lsp-zero')
+-- UI
 
-lsp.preset({
-  float_border = 'rounded',
-  suggest_lsp_servers = true,
-  setup_servers_on_start = true,
-  set_lsp_keymaps = true,
-  configure_diagnostics = true,
-  cmp_capabilities = true,
-  manage_nvim_cmp = true,
-  call_servers = 'local',
-  sign_icons = {
-    error = '✘',
-    warn = '▲',
-    hint = '⚑',
-    info = ''
-  }
-})
-lsp.setup()
+-- Override globally
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or 'rounded'
+  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
 
-require('mason-lspconfig').setup({
-  handlers = {
-    lsp.default_setup,
-  }
-})
+-- Mason managed LSPs
 
--- Show text inline
-vim.diagnostic.config({
-  virtual_text = true,
-})
+require('mason-lspconfig').setup()
+require('mason-lspconfig').setup_handlers {
+  -- The first entry (without a key) will be the default handler
+  -- and will be called for each installed server that doesn't have
+  -- a dedicated handler.
+  function(server_name) -- default handler (optional)
+    require('lspconfig')[server_name].setup {}
+  end,
 
--- Icons for autocomplete popup
-local lspkind = require('lspkind')
-local cmp = require('cmp')
-local selectBehavior = { behavior = cmp.SelectBehavior, count = 1 }
-cmp.setup {
-  mapping = {
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    ['<C-n>'] = cmp.mapping.select_next_item(selectBehavior),
-    ['<Tab>'] = cmp.mapping.select_next_item(selectBehavior),
-    ['<C-p>'] = cmp.mapping.select_prev_item(selectBehavior),
-    ['<S-Tab>'] = cmp.mapping.select_prev_item(selectBehavior),
-  },
-  formatting = {
-    format = lspkind.cmp_format({
-      mode = 'symbol_text', -- show only symbol annotations
-      before = function(entry, vim_item)
-        return vim_item
-      end
-    })
-  },
-  -- Always start autocomplete list at the top
-  preselect = cmp.PreselectMode.None,
+  -- Next, you can provide a dedicated handler for specific servers.
+  ['gopls'] = function()
+    require('lspconfig').gopls.setup {
+      settings = { gopls = {
+        buildFlags = { '-tags=darwin' }
+      }
+      }
+    }
+  end
 }
+
+-- Extra config
+
+-- Go: format and organize imports on save
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*.go',
+  callback = function()
+    local orignal = vim.notify
+    vim.notify = function(msg, level, opts)
+      if msg == 'No code actions available' then
+        return
+      end
+      orignal(msg, level, opts)
+    end
+
+    vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
+    vim.cmd('write')
+  end
+})
+
 
 -- Swift LSP (not available on Mason)
 local swift_lsp = vim.api.nvim_create_augroup("swift_lsp", { clear = true })
@@ -75,31 +72,4 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = '*',
   command = "silent! lua vim.lsp.buf.format()",
-})
-
--- Go LSP setup
-
--- Multi platform lsp
-require("lspconfig").gopls.setup {
-  settings = { gopls = {
-    buildFlags = { "-tags=darwin" }
-  }
-  }
-}
-
--- format and rganize imports on save
-vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern = '*.go',
-  callback = function()
-    local orignal = vim.notify
-    vim.notify = function(msg, level, opts)
-      if msg == 'No code actions available' then
-        return
-      end
-      orignal(msg, level, opts)
-    end
-
-    vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
-    vim.cmd('write')
-  end
 })

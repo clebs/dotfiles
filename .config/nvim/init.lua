@@ -59,7 +59,6 @@ Plug 'ellisonleao/glow.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
-Plug 'VonHeikemen/lsp-zero.nvim'
 Plug 'simrat39/symbols-outline.nvim'
 Plug 'onsails/lspkind.nvim'
 
@@ -206,4 +205,6 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 -- includes
 require('keybindings')
 require('lsp')
-require('debuggers')
+require('debug')
+require('completion')
+require('diagnostics')
