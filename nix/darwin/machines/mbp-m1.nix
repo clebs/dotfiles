@@ -10,7 +10,6 @@
             clusterctl
             cmake
             fd
-            gcc
             gettext
             gh
             gnupg
@@ -85,9 +84,12 @@
             ];
 
             brews = [
+                  # can't use nix gcc because of https://github.com/NixOS/nixpkgs/issues/306279
+                  "gcc" 
                   "mingw-w64"
                   "messense/macos-cross-toolchains/aarch64-unknown-linux-gnu"
                   "messense/macos-cross-toolchains/x86_64-unknown-linux-gnu"
+                  "libyaml"
             ];
       };
 
