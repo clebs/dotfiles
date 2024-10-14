@@ -1,5 +1,8 @@
 # zmodload zsh/zprof  
 
+# Nix setup
+export PATH=/run/current-system/sw/bin:$PATH
+
 #Golang setup
 export GOPATH=$HOME/Dev/go
 export PATH=$HOME/bin:/usr/local/bin:$GOPATH/bin:$PATH
