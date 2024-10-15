@@ -84,12 +84,11 @@
             ];
 
             brews = [
-                  # can't use nix gcc because of https://github.com/NixOS/nixpkgs/issues/306279
-                  "gcc" 
+                  "gcc" # can't use nix gcc because of https://github.com/NixOS/nixpkgs/issues/306279
                   "mingw-w64"
                   "messense/macos-cross-toolchains/aarch64-unknown-linux-gnu"
                   "messense/macos-cross-toolchains/x86_64-unknown-linux-gnu"
-                  "libyaml"
+                  "libyaml" # can't use nix one because rbenv is installed on homebrew and needs this
             ];
       };
 
