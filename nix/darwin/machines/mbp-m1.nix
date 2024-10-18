@@ -19,7 +19,6 @@
             highlight
             htop
             hugo
-            # jp2a broken for now
             jq
             k3d
             k9s
@@ -112,6 +111,7 @@
 
       # Create /etc/zshrc that loads the nix-darwin environment.
       programs.zsh.enable = true;  # default shell on catalina
+      programs.autoenv.enable = true;
 
       # Set Git commit hash for darwin-version.
       system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
