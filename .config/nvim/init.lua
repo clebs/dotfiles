@@ -156,6 +156,7 @@ require("nvim-tree").setup({
 			resize_window = true,
 		},
 	},
+	view = { adaptive_size = true },
 })
 require("telescope").setup({
 	pickers = {
