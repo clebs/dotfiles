@@ -30,6 +30,8 @@ Plug 'EdenEast/nightfox.nvim'
 Plug('catppuccin/nvim', { as = 'catppuccin' }) -- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 Plug('neanias/everforest-nvim', { branch = 'main' })
 Plug('folke/tokyonight.nvim', { branch = 'main' })
+Plug 'ellisonleao/gruvbox.nvim'
+Plug('rose-pine/neovim', { as = 'rose-pine' })
 
 
 Plug 'nvim-lualine/lualine.nvim'
