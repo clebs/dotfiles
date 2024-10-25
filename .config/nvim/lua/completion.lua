@@ -28,7 +28,14 @@ cmp.setup {
   preselect = cmp.PreselectMode.None,
   sources = {
     { name = 'nvim_lsp' },
-    { name = 'luasnip' },
     { name = 'path' },
+    { name = 'buffer' },
+    { name = 'snippets' },
+  },
+
+  snippet = {
+    expand = function(arg)
+      vim.snippet.expand(arg.body)
+    end,
   },
 }

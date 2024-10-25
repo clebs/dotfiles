@@ -209,5 +209,6 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 require('keybindings')
 require('lsp')
 require('debug')
+require('snippets')
 require('completion')
 require('diagnostics')
