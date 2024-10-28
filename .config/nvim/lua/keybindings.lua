@@ -71,10 +71,15 @@ key.set('n', '<leader>z', function() require('zen-mode').toggle({ window = { wid
 
 -- Neorg
 key.set('n', '<leader>ni', function()
-    cmd('tabnew')
     cmd('Neorg index')
+    cmd('cd %:p:h')
+    cmd('NvimTreeRefresh')
 end, { desc = 'Neorg index' })
-key.set('n', '<leader>nr', function() cmd('Neorg return') end, { desc = 'Neorg return' })
+key.set('n', '<leader>nr', function()
+    cmd('Neorg return')
+    cmd('cd -')
+    cmd('NvimTreeRefresh')
+end, { desc = 'Neorg return' })
 
 -- Glow Markdown buffer_hunks_preview
 key.set('n', '<leader>m', cmd.Glow, { desc = 'Markdown Preview' })
