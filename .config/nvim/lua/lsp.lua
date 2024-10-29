@@ -9,6 +9,7 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
 end
 
 -- Mason managed LSPs
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 require('mason-lspconfig').setup()
 require('mason-lspconfig').setup_handlers {
@@ -16,16 +17,22 @@ require('mason-lspconfig').setup_handlers {
   -- and will be called for each installed server that doesn't have
   -- a dedicated handler.
   function(server_name) -- default handler (optional)
-    require('lspconfig')[server_name].setup {}
+    require('lspconfig')[server_name].setup {
+      capabilities = capabilities,
+    }
   end,
 
   -- Next, you can provide a dedicated handler for specific servers.
   ['gopls'] = function()
     require('lspconfig').gopls.setup {
       settings = { gopls = {
-        buildFlags = { '-tags=darwin' }
-      }
-      }
+        buildFlags = { '-tags=darwin' },
+        completeUnimported = true,
+        usePlaceholders = true,
+        staticcheck = true,
+        gofumpt = true,
+      } },
+      capabilities = capabilities,
     }
   end
 }

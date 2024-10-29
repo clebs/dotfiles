@@ -9,6 +9,7 @@ cmp.setup {
     ['<Tab>'] = cmp.mapping.select_next_item(selectBehavior),
     ['<C-p>'] = cmp.mapping.select_prev_item(selectBehavior),
     ['<S-Tab>'] = cmp.mapping.select_prev_item(selectBehavior),
+    ['<C-l>'] = cmp.mapping.complete(),
   },
 
   window = {
@@ -24,6 +25,11 @@ cmp.setup {
       end
     })
   },
+
+  experimental = {
+    ghost_text = true,
+  },
+
   -- Always start autocomplete list at the top
   preselect = cmp.PreselectMode.None,
   sources = {
@@ -38,4 +44,16 @@ cmp.setup {
       vim.snippet.expand(arg.body)
     end,
   },
+
+  sorting = {
+    priority_weight = 1.0,
+    comparators = {
+      cmp.config.compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
+      cmp.config.compare.locality,
+      cmp.config.compare.kind,
+      cmp.config.compare.order,
+      cmp.config.compare.recently_used,
+      cmp.config.compare.offset,
+    },
+  }
 }
