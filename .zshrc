@@ -91,9 +91,6 @@ plugins=(
 #   export EDITOR='mvim'
 # fi
 
-# dotfiles
-source ~/Dev/dotfiles/dotfiles.sh
-
 #----- Asimov -----#
 if [ -d ~/Dev/asimov ]; then
   source ~/Dev/asimov/sources/aliases
