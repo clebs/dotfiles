@@ -6,7 +6,6 @@
             atuin
             autojump
             awscli
-            azure-cli
             clusterctl
             cmake
             fd
