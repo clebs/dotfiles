@@ -68,7 +68,6 @@ Plug 'onsails/lspkind.nvim'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
-Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'folke/which-key.nvim'
@@ -76,10 +75,6 @@ Plug 'folke/which-key.nvim'
 -- GIT
 Plug 'sindrets/diffview.nvim'
 Plug 'APZelos/blamer.nvim'
-
---  Snippets
-Plug 'L3MON4D3/LuaSnip'
-Plug 'rafamadriz/friendly-snippets'
 
 -- Zen
 Plug 'folke/zen-mode.nvim'
