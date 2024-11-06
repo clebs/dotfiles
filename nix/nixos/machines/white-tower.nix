@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, system, pkgs, nixos-unstable, zigpkgs, ... }:
+{ config, system, pkgs, nixos-unstable, zigpkgs, ghostty, ... }:
 
 {
   imports =
@@ -194,7 +194,7 @@
   environment.systemPackages = let 
     unstable = import nixos-unstable { inherit system; config.allowUnfree = true; };
 
-    core = import ../packages/core.nix { inherit pkgs unstable; };
+    core = import ../packages/core.nix { inherit pkgs unstable ghostty; };
     desktop = import ../packages/desktop.nix { inherit pkgs unstable; };
     dev = import ../packages/dev.nix { inherit pkgs; };
     utils = import ../packages/utils.nix { inherit pkgs; };

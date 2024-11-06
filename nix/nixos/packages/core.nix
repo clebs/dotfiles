@@ -1,5 +1,6 @@
-{pkgs, unstable, ...}: with pkgs; 
+{pkgs, unstable, ghostty, ...}: with pkgs; 
 [
+  ghostty.packages.${system}.default
   unstable.neovim
   atuin
   curl
