@@ -71,12 +71,13 @@ key.set('n', '<leader>z', function() require('zen-mode').toggle({ window = { wid
 
 -- Neorg
 key.set('n', '<leader>ni', function()
+    cmd('tabnew')
     cmd('Neorg index')
     cmd('cd %:p:h')
     cmd('NvimTreeRefresh')
 end, { desc = 'Neorg index' })
 key.set('n', '<leader>nr', function()
-    cmd('Neorg return')
+    cmd('tabclose')
     cmd('cd -')
     cmd('NvimTreeRefresh')
 end, { desc = 'Neorg return' })
