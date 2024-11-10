@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, system, pkgs, nixos-unstable, ghostty, ... }:
+{ config, system, pkgs, nixos-unstable, zigpkgs, ghostty, ... }:
 
 {
   imports =
@@ -15,7 +15,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # set kernel version
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_8;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_11;
   boot.kernelModules = [ "kvm-intel" ];
   boot.blacklistedKernelModules = ["b43" "bcma" "nouveau" "nvidia" ];
   # Add VGA device for intel graphics.
@@ -101,7 +101,7 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.borja = {
@@ -153,13 +153,14 @@
     unstable = import nixos-unstable { inherit system; config.allowUnfree = true; };
 
     core = import ../packages/core.nix { inherit system pkgs unstable ghostty; };
-    desktop = import ../packages/desktop.nix { inherit pkgs; };
+    desktop = import ../packages/desktop.nix { inherit pkgs unstable; };
     dev = import ../packages/dev.nix { inherit pkgs; };
     utils = import ../packages/utils.nix { inherit pkgs; };
     games = import ../packages/games.nix { inherit pkgs; };
     x11 = import ../packages/x11.nix { inherit pkgs; };
+    social = import ../packages/social.nix { inherit pkgs; };
 	
-  in with pkgs; core ++ desktop ++ dev ++ utils ++ games ++ x11 ++ [ brave zigpkgs.packages.${system}."0.12.0" ];
+  in with pkgs; core ++ desktop ++ dev ++ utils ++ games ++ x11 ++ social ++ [ brave zigpkgs.packages.${system}."0.13.0" ];
 
   # Fonts
   fonts.packages = with pkgs; [

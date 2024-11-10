@@ -1,23 +1,24 @@
 {pkgs, unstable, ghostty, ...}: with pkgs; 
 [
-  ghostty.packages.${system}.default
-  unstable.neovim
   atuin
-  curl
-  gcc
-  neofetch
   autojump
-  git
+  curl
   fd
   fzf
-  tree
-  tldr
-  jq
-  htop
+  gcc
+  ghostty.packages.${system}.default
+  git
   gnupg
+  highlight
+  htop
+  jq
+  neofetch
   ripgrep
   stow
+  tldr
   tmux
+  tree
+  unstable.neovim
   wget
   zsh
 ]
