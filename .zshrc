@@ -1,7 +1,7 @@
 # zmodload zsh/zprof  
 
 # Nix setup
-export PATH=/run/current-system/sw/bin:$PATH
+export PATH=$PATH:/run/current-system/sw/bin
 
 #Golang setup
 export GOPATH=$HOME/Dev/go
@@ -95,6 +95,10 @@ plugins=(
 if [ -d ~/Dev/asimov ]; then
   source ~/Dev/asimov/sources/aliases
   source ~/Dev/asimov/sources/func
+fi
+
+if [  ! -d ~/.oh-my-zsh/completions ]; then
+  mkdir ~/.oh-my-zsh/completions
 fi
 
 #----- Atuin shell history -----#
