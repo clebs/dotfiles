@@ -125,6 +125,16 @@
     };
   };
 
+  hardware.bluetooth = {
+    enable = true; # enables support for Bluetooth
+    powerOnBoot = true; # powers up the default Bluetooth controller on boot
+    settings = {
+      General = {
+        Experimental = true; # show battery levels and allow controlls
+      };
+    };
+  };
+
   # Enable sound with default settings, pipewire causes crackling.
   sound.enable = true;
   # hardware.pulseaudio.enable = false;
