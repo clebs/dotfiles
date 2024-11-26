@@ -14,6 +14,10 @@ font-family = FiraCode Nerd Font Mono
 cursor-style = block
 shell-integration-features = no-cursor
 
+# quick terminal
+quick-terminal-position = left
+keybind = global:cmd+period=toggle_quick_terminal
+
 # colors
 
 background = 10303a
