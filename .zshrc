@@ -27,7 +27,8 @@ export GPG_TTY=$(tty)
 export ZSH=~/.oh-my-zsh
 
 # Aliases
-alias cat='highlight -O ansi --force=shellscript'
+# Do not alias stndard cat, things break...
+alias ccat='highlight -O ansi --force=shellscript'
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
