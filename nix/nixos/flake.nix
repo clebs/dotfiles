@@ -2,7 +2,7 @@
   description = "Borja's system flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     zigpkgs.url = "github:mitchellh/zig-overlay";
     # requires ssh for now since it is a private repo.

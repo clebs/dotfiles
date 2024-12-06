@@ -6,7 +6,7 @@
 
   # services.gnome.gnome-remote-desktop.enable = true;
   environment.systemPackages = with pkgs; [
-    gnome.gnome-session
+    gnome-session
   ];
 
   networking.firewall.allowedTCPPorts = [ 3389 ];
