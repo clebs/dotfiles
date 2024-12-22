@@ -70,7 +70,6 @@
   services.printing.enable = true;
 
 
-  services.xserver.videoDrivers = ["intel"];
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
