@@ -62,3 +62,7 @@ keybind = shift+backspace=esc:^H
 keybind = shift+left=esc:b
 keybind = shift+right=esc:f
 keybind = "ctrl+shift+l=text:printf '\\e[2J\\e[3J\\e[H'\n"
+
+# unset alt+left/right so that tmux pane switch still works
+keybind = alt+left=unbind
+keybind = alt+right=unbind
