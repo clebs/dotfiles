@@ -35,7 +35,6 @@
             nodejs
             pinentry-tty # needed for gpg sign
             qemu
-            qt5.full
             rbenv
             ripgrep
             SDL2
@@ -92,7 +91,7 @@
 
       # Fonts
       fonts.packages = with pkgs; [
-            (nerdfonts.override { fonts = ["FiraCode"];})
+            nerd-fonts.fira-code
       ];
 
       # GnuPG
