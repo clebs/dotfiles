@@ -29,6 +29,8 @@ export ZSH=~/.oh-my-zsh
 # Aliases
 # Do not alias stndard cat, things break...
 alias ccat='highlight -O ansi --force=shellscript'
+# docker aliased to podman
+alias docker='podman'
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -82,7 +84,7 @@ HIST_STAMPS="dd.mm.yyyy"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git golang kubectl docker keychain atuin autojump
+  git golang kubectl podman keychain atuin autojump
 )
 
 # Preferred editor for local and remote sessions

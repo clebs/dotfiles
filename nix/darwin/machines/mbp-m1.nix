@@ -34,6 +34,7 @@
             neovim
             nodejs
             pinentry-tty # needed for gpg sign
+            podman
             qemu
             rbenv
             ripgrep
