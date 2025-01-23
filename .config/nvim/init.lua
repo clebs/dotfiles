@@ -131,7 +131,7 @@ cmd('hi NvimTreeNormal guibg=NONE ctermbg=NONE')
 cmd [[
 augroup highlight_yank
 autocmd!
-au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=150})
+au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=250})
 augroup END
 ]]
 
@@ -207,3 +207,4 @@ require('debug')
 require('snippets')
 require('completion')
 require('diagnostics')
+require('highlights')
