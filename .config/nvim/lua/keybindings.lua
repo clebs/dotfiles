@@ -17,7 +17,7 @@ key.set('n', '<Leader>lp', function() dap.set_breakpoint(nil, nil, vim.fn.input(
     { silent = true })
 key.set('n', '<Leader>dr', dap.repl.open, { silent = true })
 key.set('n', '<Leader>dl', ':lua require("dap").run_last()<CR>ngs', { silent = true })
-key.set('n', '<Leader>u', dapui.toggle, { desc = 'Toggle debug UI', silent = true })
+key.set('n', '<Leader>du', dapui.toggle, { desc = 'Toggle debug UI', silent = true })
 key.set('n', '<Leader>de', dapui.eval, { silent = true, desc = 'Evaluate expression' })
 
 -- Nvimtree

@@ -32,6 +32,7 @@ Plug('neanias/everforest-nvim', { branch = 'main' })
 Plug('folke/tokyonight.nvim', { branch = 'main' })
 Plug 'ellisonleao/gruvbox.nvim'
 Plug('rose-pine/neovim', { as = 'rose-pine' })
+Plug('Tsuzat/NeoSolarized.nvim', { branch = 'master' })
 
 
 Plug 'nvim-lualine/lualine.nvim'
@@ -45,7 +46,6 @@ Plug 'startup-nvim/startup.nvim'
 -- Debugging
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
-Plug 'leoluz/nvim-dap-go'
 
 -- Telescope
 Plug 'jiangmiao/auto-pairs'
@@ -164,8 +164,6 @@ require("telescope").setup({
 })
 require('harpoon'):setup()
 require('lualine').setup({ sections = { lualine_c = { { 'filename', path = 1, file_status = true } } }, options = { theme = "auto" } })
-require('dap-go').setup()
-require("dapui").setup()
 require('diffview').setup()
 require('which-key').setup()
 require('glow').setup()
@@ -203,8 +201,8 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 -- includes
 require('keybindings')
 require('lsp')
-require('debug')
 require('snippets')
 require('completion')
 require('diagnostics')
 require('highlights')
+require('debuggers')
