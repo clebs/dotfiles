@@ -5,9 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     zigpkgs.url = "github:mitchellh/zig-overlay";
-    # requires ssh for now since it is a private repo.
-    # On NixOS symlink ssh key to root, sudo is needed to change the system flake at /etc/nixos.
-    ghostty.url = "git+ssh://git@github.com/ghostty-org/ghostty";
+    ghostty.url = "github:ghostty-org/ghostty";
  };
 
  outputs = { self, nixpkgs, nixos-unstable, zigpkgs, ghostty, ...}: {
@@ -33,6 +31,13 @@
         specialArgs = { inherit nixos-unstable zigpkgs system ghostty; };
         modules = [
           ./machines/mbp13.nix
+        ];
+      };
+      aoostar-r7 = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit nixos-unstable system ghostty; };
+        modules = [
+          ./machines/aoostar-r7.nix
         ];
       };
     };
