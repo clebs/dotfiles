@@ -9,6 +9,7 @@
             clusterctl
             cmake
             fd
+            fzf
             gettext
             gh
             gnupg
@@ -33,6 +34,8 @@
             neofetch
             neovim
             nodejs
+            p4
+            p4v
             pinentry-tty # needed for gpg sign
             podman
             qemu
