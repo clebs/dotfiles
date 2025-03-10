@@ -26,6 +26,13 @@
           ./machines/white-tower.nix
         ];
       };
+      vader = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit nixos-unstable zigpkgs system ghostty; };
+        modules = [
+          ./machines/vader.nix
+        ];
+      };
       mbp13 = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit nixos-unstable zigpkgs system ghostty; };
