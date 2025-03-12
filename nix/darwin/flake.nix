@@ -9,9 +9,10 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, ... }:
   {
+    
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#mbp-m1
-    darwinConfigurations."mbp-m1" = nix-darwin.lib.darwinSystem {
+ darwinConfigurations."mbp-m1" = nix-darwin.lib.darwinSystem {
       # load our local autoenv derivation until PR is merged
       # https://github.com/NixOS/nixpkgs/pull/349058
       modules = [ ./machines/mbp-m1.nix ./modules/autoenv.nix ];
