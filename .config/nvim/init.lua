@@ -140,6 +140,7 @@ opt.termguicolors = true
 
 -- Plugin setup
 require("nvim-tree").setup({
+	-- changes the root of the tree when changing dir in the terminal (e.g. using cd)
 	sync_root_with_cwd = true,
 	update_cwd = true,
 	filters = {
@@ -149,6 +150,11 @@ require("nvim-tree").setup({
 		ignore = false,
 	},
 	actions = {
+		change_dir = {
+			enable = true,
+			global = true,
+			restrict_above_cwd = false,
+		},
 		open_file = {
 			resize_window = true,
 		},

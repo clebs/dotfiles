@@ -26,12 +26,20 @@ require('mason-lspconfig').setup_handlers {
   ['gopls'] = function()
     require('lspconfig').gopls.setup {
       settings = { gopls = {
-        buildFlags = { '-tags=darwin' },
+        buildFlags = { '-tags=e2e,mage' },
         completeUnimported = true,
         usePlaceholders = true,
         staticcheck = true,
         gofumpt = true,
       } },
+      capabilities = capabilities,
+    }
+  end,
+
+  ['groovyls'] = function()
+    require('lspconfig').groovyls.setup {
+      -- Unix
+      cmd = { 'java', '-jar', vim.fn.stdpath('data') .. '/mason/packages/groovy-language-server/build/libs/groovy-language-server-all.jar' },
       capabilities = capabilities,
     }
   end

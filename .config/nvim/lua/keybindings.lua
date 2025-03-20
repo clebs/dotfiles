@@ -40,7 +40,7 @@ key.set('n', '<leader>fp', require('telescope').load_extension('project').projec
 
 -- Harpoon
 local harpoon = require('harpoon')
-key.set('n', '<leader>ha', function() harpoon:list():append() end, { desc = 'Harpoon append file' })
+key.set('n', '<leader>ha', function() harpoon:list():add() end, { desc = 'Harpoon append file' })
 key.set('n', '<leader>hl', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = 'Harpoon list' })
 key.set('n', '<leader>1', function() harpoon:list():select(1) end, { desc = 'Harpoon go to 1' })
 key.set('n', '<leader>2', function() harpoon:list():select(2) end, { desc = 'Harpoon go to 2' })
