@@ -16,6 +16,8 @@ export PATH=$PATH:/usr/local/kubebuilder/bin
 alias v=nvim
 export EDITOR='nvim'
 
+# Java setup is managed by Nix: get the store path for the JRE dynamically so it works with updates
+export JAVA_HOME=${$(readlink /run/current-system/sw/bin/java)%'/bin/java'}
 
 # Homebrew setup
 export PATH=$PATH:/opt/homebrew/bin:/opt/homebrew/sbin

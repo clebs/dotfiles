@@ -23,7 +23,9 @@
             highlight
             htop
             hugo
+            jdk
             jq
+            jre
             k3d
             k9s
             kind
