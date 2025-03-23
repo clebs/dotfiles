@@ -1,6 +1,13 @@
 {config, lib, pkgs, ...}:
 {
 
+  #---- Packages ----#
+  environment.systemPackages = with pkgs; [
+    drive
+    jellyfin-web
+    jellyfin-ffmpeg
+  ];
+
   #---- DATA backup and access ----#
 
   # TODO Disko RAID1 setup
@@ -47,22 +54,26 @@
   # https://discourse.nixos.org/t/nixos-configuration-for-samba/17079/6
 
 
-  #TODO WebDav for SafeInCloud sync
-
-  # NextCloud for phone backups, messaging, calendar, etc...
-  # services.nextcloud = {
-    # enable = true;
-    # package = pkgs.nextcloud28; # previous versions unsupported
-    # home = "/home/borja/nextcloud";
-    # https = true;
-    # hostName = "nextcloud.example.com";
-    # settings = {
-      # trusted_domains = [
-        # "talk.nextcloud.example.com"
-        # "files.nextcloud.example.com"
-      # ];
-    # };
-  # };
+  # NextCloud for phone backups, messaging, calendar, webDAV, etc...
+  environment.etc."default-nextcloud-pwd".text = "Changem3rightaway!";
+  services.nextcloud = {
+    enable = true;
+    package = pkgs.nextcloud30;
+    home = "/nas/nextcloud"; # nextcloud user needs read access to /nas and write to /nas/nextcloud
+    https = false;
+    hostName = "nextcloud.castillo.box";
+    maxUploadSize = "4G";
+    database.createLocally = true;
+    config = {
+      adminpassFile = "/etc/default-nextcloud-pwd";
+      dbtype = "mysql";
+    };
+    settings = {
+      trusted_domains = [
+        "192.168.1.*" # Only reachable from the local network
+      ];
+    };
+  };
 
   # TODO Google drive sync
   # TODO Email sync
@@ -75,10 +86,6 @@
     dataDir = "/home/borja/jellyfin";
     user = "borja";
   };
-  environment.systemPackages = [
-    pkgs.jellyfin-web
-    pkgs.jellyfin-ffmpeg
-  ];
 
   # Enable docker to run some containers
   # virtualisation.docker = {
@@ -101,6 +108,7 @@
 
   networking.firewall.enable = true;
   networking.firewall.allowPing = true;
-  networking.firewall.allowedTCPPorts = [ 445 139 ];
+  # Open ports: 80 -> nextcloud http, 443 -> https
+  networking.firewall.allowedTCPPorts = [ 80 443 445 139 ];
   networking.firewall.allowedUDPPorts = [ 137 138 ];
 }
