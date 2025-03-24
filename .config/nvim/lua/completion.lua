@@ -10,6 +10,7 @@ cmp.setup {
     ['<C-p>'] = cmp.mapping.select_prev_item(selectBehavior),
     ['<S-Tab>'] = cmp.mapping.select_prev_item(selectBehavior),
     ['<C-l>'] = cmp.mapping.complete(),
+    ["<C-e>"] = cmp.mapping.abort(),
   },
 
   window = {
