@@ -1,16 +1,51 @@
 -- Icons for autocomplete popup
 local lspkind = require('lspkind')
 local cmp = require('cmp')
+local snip = vim.snippet
 local selectBehavior = { behavior = cmp.SelectBehavior, count = 1 }
 cmp.setup {
   mapping = {
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ['<C-n>'] = cmp.mapping.select_next_item(selectBehavior),
-    ['<Tab>'] = cmp.mapping.select_next_item(selectBehavior),
     ['<C-p>'] = cmp.mapping.select_prev_item(selectBehavior),
-    ['<S-Tab>'] = cmp.mapping.select_prev_item(selectBehavior),
     ['<C-l>'] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.abort(),
+
+    -- ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        if snip.active() then
+          snip.expand()
+        else
+          cmp.confirm({
+            select = true,
+          })
+        end
+      else
+        fallback()
+      end
+    end),
+
+    -- ['<Tab>'] = cmp.mapping.select_next_item(selectBehavior),
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item(selectBehavior)
+      elseif snip.active() then
+        snip.jump(1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+
+    -- ['<S-Tab>'] = cmp.mapping.select_prev_item(selectBehavior),
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif snip.active() then
+        snip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
   },
 
   window = {
@@ -42,7 +77,7 @@ cmp.setup {
 
   snippet = {
     expand = function(arg)
-      vim.snippet.expand(arg.body)
+      snip.expand(arg.body)
     end,
   },
 

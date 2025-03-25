@@ -4,7 +4,6 @@ local cmp = require("cmp")
 -- Add the snippet folder to sources to load all files
 package.path = vim.fn.stdpath('config') .. "/lua/snippets/?.lua;" .. package.path
 
-
 local allSnips = require("go")
 
 -- Define a custom source
