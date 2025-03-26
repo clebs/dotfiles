@@ -5,25 +5,13 @@ local snip = vim.snippet
 local selectBehavior = { behavior = cmp.SelectBehavior, count = 1 }
 cmp.setup {
   mapping = {
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ['<C-n>'] = cmp.mapping.select_next_item(selectBehavior),
     ['<C-p>'] = cmp.mapping.select_prev_item(selectBehavior),
     ['<C-l>'] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.abort(),
 
-    -- ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    ['<CR>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        if snip.active() then
-          snip.expand()
-        else
-          cmp.confirm({
-            select = true,
-          })
-        end
-      else
-        fallback()
-      end
-    end),
+    -- Support for snippet placeholder navigation when not in autocomplete.
 
     -- ['<Tab>'] = cmp.mapping.select_next_item(selectBehavior),
     ["<Tab>"] = cmp.mapping(function(fallback)
