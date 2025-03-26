@@ -69,6 +69,12 @@ key.set('n', '<leader>gb', cmd.BlamerToggle, { desc = 'Git Blame' })
 -- Zen
 key.set('n', '<leader>z', function() require('zen-mode').toggle({ window = { width = .80 } }) end, { desc = 'Zen mode' })
 
+-- Window and pane nav
+key.set({ 'n', 'v' }, '<C-S-Left>', '<C-w>h', { noremap = true, silent = true })
+key.set({ 'n', 'v' }, '<C-S-Right>', '<C-w>l', { noremap = true, silent = true })
+key.set({ 'n', 'v' }, '<C-S-Up>', '<C-w>k', { noremap = true, silent = true })
+key.set({ 'n', 'v' }, '<C-S-Down>', '<C-w>j', { noremap = true, silent = true })
+
 -- Neorg
 key.set('n', '<leader>ni', function()
     cmd('tabnew')
