@@ -11,7 +11,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # set kernel version
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_14;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -112,22 +112,29 @@
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    # package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     # Pin specific version since on 6.11 kernel stable does not work.
-    # package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-      # version = "565.77";
-      # sha256_64bit = "sha256-CnqnQsRrzzTXZpgkAtF7PbH9s7wbiTRNcM0SPByzFHw=";
-      # sha256_aarch64 = "sha256-LSAYUnhfnK3rcuPe1dixOwAujSof19kNOfdRHE7bToE=";
-      # openSha256 = "sha256-Fxo0t61KQDs71YA8u7arY+503wkAc1foaa51vi2Pl5I=";
-      # settingsSha256 = "sha256-VUetj3LlOSz/LB+DDfMCN34uA4bNTTpjDrb6C6Iwukk=";
-      # persistencedSha256 = "sha256-wnDjC099D8d9NJSp9D0CbsL+vfHXyJFYYgU3CwcqKww=";
-      #
-      # Nvidia DRM date param removal patch from https://raw.githubusercontent.com/CachyOS/CachyOS-PKGBUILDS/refs/heads/master/nvidia/nvidia-470xx-utils/kernel-6.14.patch
+    package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+      version = "565.77";
+      sha256_64bit = "sha256-CnqnQsRrzzTXZpgkAtF7PbH9s7wbiTRNcM0SPByzFHw=";
+      sha256_aarch64 = "sha256-LSAYUnhfnK3rcuPe1dixOwAujSof19kNOfdRHE7bToE=";
+      openSha256 = "sha256-Fxo0t61KQDs71YA8u7arY+503wkAc1foaa51vi2Pl5I=";
+      settingsSha256 = "sha256-VUetj3LlOSz/LB+DDfMCN34uA4bNTTpjDrb6C6Iwukk=";
+      persistencedSha256 = "sha256-wnDjC099D8d9NJSp9D0CbsL+vfHXyJFYYgU3CwcqKww=";
+      
+      # Nvidia DRM date param removal patch from (adjusted to compile) https://raw.githubusercontent.com/CachyOS/CachyOS-PKGBUILDS/refs/heads/master/nvidia/nvidia-470xx-utils/kernel-6.14.patch
       # See: https://forums.developer.nvidia.com/t/remove-date-from-nvidia-drm-drv-c-nvidia-550-144-03-linux-6-14-rc2/323536
-      # TODO: might need to add the other patches in: https://github.com/NixOS/nixpkgs/blob/c1b451eabc00cdcb55b953b70fe1770f3deea228/pkgs/os-specific/linux/nvidia-x11/default.nix#L75-L91
-      # patches = [ ../patches/nvidia-kernel-6.14.patch ];
-    # };
+      # Existing patches from (some not needed anymore): https://github.com/NixOS/nixpkgs/blob/c1b451eabc00cdcb55b953b70fe1770f3deea228/pkgs/os-specific/linux/nvidia-x11/default.nix#L75-L91
+      patches = [
+        ../patches/fix-for-linux-6.13.patch
+        ../patches/fix-for-linux-6.14.patch
+      ];
+      patchesOpen = [
+        ../patches/Use-linux-aperture.c-for-removing-conflict.patch
+        ../patches/TTM-fbdev-emulation-for-Linux-6.13.patch
+      ];
+    };
   };
 
   hardware.bluetooth = {
