@@ -11,43 +11,30 @@ end
 -- Mason managed LSPs
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-require('mason-lspconfig').setup()
-require('mason-lspconfig').setup_handlers {
-  -- The first entry (without a key) will be the default handler
-  -- and will be called for each installed server that doesn't have
-  -- a dedicated handler.
-  function(server_name) -- default handler (optional)
-    require('lspconfig')[server_name].setup {
-      capabilities = capabilities,
+require('mason-lspconfig').setup({
+  automatic_enable = {
+    exclude = {
+      "gopls",
+      "groovyls"
     }
-  end,
+  }
+})
 
-  -- Next, you can provide a dedicated handler for specific servers.
-  ['gopls'] = function()
-    require('lspconfig').gopls.setup {
-      settings = { gopls = {
-        buildFlags = { '-tags=e2e,mage' },
-        completeUnimported = true,
-        usePlaceholders = true,
-        staticcheck = true,
-        gofumpt = true,
-      } },
-      capabilities = capabilities,
-    }
-  end,
+-- Custom handlers
 
-  ['groovyls'] = function()
-    require('lspconfig').groovyls.setup {
-      -- Unix
-      cmd = { 'java', '-jar', vim.fn.stdpath('data') .. '/mason/packages/groovy-language-server/build/libs/groovy-language-server-all.jar' },
-      capabilities = capabilities,
-    }
-  end
+-- Gopls
+require('lspconfig').gopls.setup {
+  settings = { gopls = {
+    buildFlags = { '-tags=e2e,mage,machineagent,classycluster' },
+    completeUnimported = true,
+    usePlaceholders = true,
+    staticcheck = true,
+    gofumpt = true,
+  } },
+  capabilities = capabilities,
 }
 
--- Extra config
-
--- Go: format and organize imports on save
+-- format and organize imports on save
 vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = '*.go',
   callback = function()
@@ -63,6 +50,14 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     vim.cmd('write')
   end
 })
+
+-- Groovy
+require('lspconfig').groovyls.setup {
+  -- Unix
+  cmd = { 'java', '-jar', vim.fn.stdpath('data') .. '/mason/packages/groovy-language-server/build/libs/groovy-language-server-all.jar' },
+  capabilities = capabilities,
+}
+
 
 
 -- Swift LSP (not available on Mason)
