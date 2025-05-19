@@ -19,6 +19,7 @@
             gnupg
             go
             go-mockery
+            govc
             gum
             highlight
             htop
@@ -120,6 +121,10 @@
       # Create /etc/zshrc that loads the nix-darwin environment.
       programs.zsh.enable = true;  # default shell on catalina
       programs.autoenv.enable = true;
+
+      # nix-darwin now uses root and the user for non system wide options needs to be specified
+      # e.g. for homebrew
+      system.primaryUser = "cborja";
 
       # Set Git commit hash for darwin-version.
       system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
