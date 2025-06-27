@@ -4,6 +4,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ../hardware-configuration.nix
+      ../modules/fonts.nix
+      ../modules/virt-manager.nix
     ];
 
   # Bootloader.
@@ -196,6 +198,11 @@
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
 
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
+
   environment.sessionVariables = {
     # Prevent invisible cursor
     WLR_NO_HARDWARE_CURSORS = "1"; 
@@ -218,11 +225,6 @@
     social = import ../packages/social.nix { inherit pkgs; };
 	
   in with pkgs; core ++ desktop ++ dev ++ utils ++ games ++ x11 ++ social ++ [ brave zigpkgs.packages.${system}."0.12.0" ];
-
-  # Fonts
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = ["FiraCode"];})
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

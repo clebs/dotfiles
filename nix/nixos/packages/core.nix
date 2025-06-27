@@ -19,6 +19,7 @@
   tmux
   tree
   unstable.neovim
+  unzip
   wget
   zsh
 ]

@@ -1,8 +1,9 @@
 {pkgs, ...}: with pkgs; 
 [
   lutris
-  wineWowPackages.unstableFull
+  winePackages.stagingFull
   winetricks
+  protonup-qt
   mesa
   # retroarchFull # builds from source and takes very long
 ]
