@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ../hardware-configuration.nix
+      ../modules/fonts.nix
     ];
 
   # Bootloader.
@@ -15,7 +16,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # set kernel version
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_11;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
   boot.kernelModules = [ "kvm-intel" ];
   boot.blacklistedKernelModules = ["b43" "bcma" "nouveau" "nvidia" ];
   # Add VGA device for intel graphics.
@@ -158,11 +159,6 @@
     social = import ../packages/social.nix { inherit pkgs; };
 	
   in with pkgs; core ++ desktop ++ dev ++ utils ++ games ++ x11 ++ social ++ [ brave zigpkgs.packages.${system}."0.13.0" ];
-
-  # Fonts
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = ["FiraCode"];})
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
