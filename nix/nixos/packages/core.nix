@@ -13,6 +13,7 @@
   htop
   jq
   neofetch
+  pinentry-tty
   ripgrep
   stow
   tldr

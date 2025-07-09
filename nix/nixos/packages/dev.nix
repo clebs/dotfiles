@@ -1,11 +1,20 @@
 {pkgs, ...}: with pkgs; 
 [
-  go
-  nodejs
-  tree-sitter
   cargo
-  kubectl
+  cmake
+  go
+  k9s
   kind
+  kubebuilder
+  kubectl
+  kubectl
+  kubelogin
+  kubelogin-oidc
   kustomize
+  mage
+  nodejs
   openshift
+  podman
+  tree-sitter
+  yq
 ]
