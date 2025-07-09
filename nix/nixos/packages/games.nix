@@ -2,7 +2,7 @@
 [
   lutris
   wineWowPackages.unstableFull
+  winetricks
   mesa
-  xboxdrv
   # retroarchFull # builds from source and takes very long
 ]

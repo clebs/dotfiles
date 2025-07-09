@@ -4,4 +4,8 @@
   nodejs
   tree-sitter
   cargo
+  kubectl
+  kind
+  kustomize
+  openshift
 ]

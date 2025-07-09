@@ -1,5 +1,6 @@
 {pkgs, ...}: with pkgs; 
 [
-  ventoy
+  # Marked as insecure
+  # ventoy
   gparted
 ]
