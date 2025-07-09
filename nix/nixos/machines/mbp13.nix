@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ../hardware-configuration.nix
       ../modules/fonts.nix
+      ../modules/hyprland.nix
     ];
 
   # Bootloader.
@@ -55,7 +56,6 @@
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.displayManager.gdm.wayland = false;
   services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
@@ -83,7 +83,7 @@
   };
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -114,10 +114,10 @@
   };
 
   # Enable automatic login for the user.
-  services.displayManager.autoLogin = {
-    enable = true;
-    user = "borja";
-  };
+  # services.displayManager.autoLogin = {
+    # enable = true;
+    # user = "borja";
+  # };
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
@@ -155,10 +155,11 @@
     dev = import ../packages/dev.nix { inherit pkgs; };
     utils = import ../packages/utils.nix { inherit pkgs; };
     games = import ../packages/games.nix { inherit pkgs; };
+    wayland = import ../packages/wayland.nix { inherit pkgs; };
     x11 = import ../packages/x11.nix { inherit pkgs; };
     social = import ../packages/social.nix { inherit pkgs; };
 	
-  in with pkgs; core ++ desktop ++ dev ++ utils ++ games ++ x11 ++ social ++ [ brave zigpkgs.packages.${system}."0.13.0" ];
+  in with pkgs; core ++ desktop ++ dev ++ utils ++ games ++ wayland ++ x11 ++ social ++ [ brave zigpkgs.packages.${system}."0.14.1" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
