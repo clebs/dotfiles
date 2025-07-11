@@ -13,8 +13,9 @@
   kustomize
   mage
   nodejs
-  openshift
+  # openshift   Currently using a precompiled binary
   podman
   tree-sitter
   yq
+  vagrant
 ]
