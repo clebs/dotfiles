@@ -203,8 +203,9 @@
     games = import ../packages/games.nix { inherit pkgs; };
     x11 = import ../packages/x11.nix { inherit pkgs; };
     social = import ../packages/social.nix { inherit pkgs; };
+    media = import ../packages/media.nix { inherit pkgs; };
 	
-  in with pkgs; core ++ desktop ++ dev ++ utils ++ games ++ x11 ++ social ++ [ brave zigpkgs.packages.${system}."0.14.0" ];
+  in with pkgs; core ++ desktop ++ dev ++ utils ++ games ++ x11 ++ social ++ media ++ [ brave zigpkgs.packages.${system}."0.14.0" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
