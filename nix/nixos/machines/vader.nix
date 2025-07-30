@@ -13,7 +13,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # set kernel version
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_14;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_16;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -199,13 +199,14 @@
     core = import ../packages/core.nix { inherit pkgs unstable ghostty; };
     desktop = import ../packages/desktop.nix { inherit pkgs unstable; };
     dev = import ../packages/dev.nix { inherit pkgs; };
+    k8s = import ../packages/k8s.nix { inherit pkgs; };
     utils = import ../packages/utils.nix { inherit pkgs; };
     games = import ../packages/games.nix { inherit pkgs; };
     x11 = import ../packages/x11.nix { inherit pkgs; };
     social = import ../packages/social.nix { inherit pkgs; };
     media = import ../packages/media.nix { inherit pkgs; };
 	
-  in with pkgs; core ++ desktop ++ dev ++ utils ++ games ++ x11 ++ social ++ media ++ [ brave zigpkgs.packages.${system}."0.14.0" ];
+  in with pkgs; core ++ desktop ++ dev ++ k8s ++ utils ++ games ++ x11 ++ social ++ media ++ [ brave zigpkgs.packages.${system}."0.14.0" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

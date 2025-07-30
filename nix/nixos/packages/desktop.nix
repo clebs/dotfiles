@@ -2,6 +2,6 @@
 [
     gnomeExtensions.dash-to-dock
     gnomeExtensions.blur-my-shell
-    gnomeExtensions.vitals
+    gnomeExtensions.tophat
     gnomeExtensions.tiling-shell
 ]
