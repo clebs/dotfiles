@@ -161,8 +161,9 @@
     wayland = import ../packages/wayland.nix { inherit pkgs; };
     x11 = import ../packages/x11.nix { inherit pkgs; };
     social = import ../packages/social.nix { inherit pkgs; };
+    media = import ../packages/media.nix { inherit pkgs; };
 	
-  in with pkgs; core ++ desktop ++ dev ++ k8s ++ utils ++ games ++ wayland ++ x11 ++ social ++ [ brave zigpkgs.packages.${system}."0.14.1" ];
+  in with pkgs; core ++ desktop ++ dev ++ k8s ++ utils ++ games ++ wayland ++ x11 ++ social ++ media ++ [ brave zigpkgs.packages.${system}."0.14.1" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
