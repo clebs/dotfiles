@@ -17,7 +17,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # set kernel version
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_16;
   boot.kernelModules = [ "kvm-intel" ];
   boot.blacklistedKernelModules = ["b43" "bcma" "nouveau" "nvidia" ];
   # Add VGA device for intel graphics.
@@ -71,6 +71,7 @@
   services.printing.enable = true;
 
 
+  hardware.facetimehd.enable = true;
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -125,6 +126,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [ "broadcom-sta-6.30.223.271-57-6.16" ];
 
   #Allow to use the new nix command
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; 
@@ -153,13 +155,14 @@
     core = import ../packages/core.nix { inherit system pkgs unstable ghostty; };
     desktop = import ../packages/desktop.nix { inherit pkgs unstable; };
     dev = import ../packages/dev.nix { inherit pkgs; };
+    k8s = import ../packages/k8s.nix { inherit pkgs; };
     utils = import ../packages/utils.nix { inherit pkgs; };
     games = import ../packages/games.nix { inherit pkgs; };
     wayland = import ../packages/wayland.nix { inherit pkgs; };
     x11 = import ../packages/x11.nix { inherit pkgs; };
     social = import ../packages/social.nix { inherit pkgs; };
 	
-  in with pkgs; core ++ desktop ++ dev ++ utils ++ games ++ wayland ++ x11 ++ social ++ [ brave zigpkgs.packages.${system}."0.14.1" ];
+  in with pkgs; core ++ desktop ++ dev ++ k8s ++ utils ++ games ++ wayland ++ x11 ++ social ++ [ brave zigpkgs.packages.${system}."0.14.1" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
