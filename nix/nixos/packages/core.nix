@@ -2,6 +2,7 @@
 [
   atuin
   autojump
+  brave
   curl
   fd
   fzf

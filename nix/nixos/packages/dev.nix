@@ -1,4 +1,4 @@
-{pkgs, ...}: with pkgs; 
+{pkgs, zigpkgs, ...}: with pkgs; 
 [
   cargo
   cmake
@@ -10,4 +10,5 @@
   tree-sitter
   yq
   vagrant
+  zigpkgs.packages.${system}."0.14.1"
 ]

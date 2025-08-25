@@ -154,7 +154,7 @@
 
     core = import ../packages/core.nix { inherit system pkgs unstable ghostty; };
     desktop = import ../packages/desktop.nix { inherit pkgs unstable; };
-    dev = import ../packages/dev.nix { inherit pkgs; };
+    dev = import ../packages/dev.nix { inherit system pkgs zigpkgs; };
     k8s = import ../packages/k8s.nix { inherit pkgs; };
     utils = import ../packages/utils.nix { inherit pkgs; };
     games = import ../packages/games.nix { inherit pkgs; };
@@ -162,8 +162,9 @@
     x11 = import ../packages/x11.nix { inherit pkgs; };
     social = import ../packages/social.nix { inherit pkgs; };
     media = import ../packages/media.nix { inherit pkgs; };
+    office = import ../packages/office.nix { inherit pkgs; };
 	
-  in with pkgs; core ++ desktop ++ dev ++ k8s ++ utils ++ games ++ wayland ++ x11 ++ social ++ media ++ [ brave zigpkgs.packages.${system}."0.14.1" ];
+  in with pkgs; core ++ desktop ++ dev ++ k8s ++ utils ++ games ++ wayland ++ x11 ++ social ++ media ++ office;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
