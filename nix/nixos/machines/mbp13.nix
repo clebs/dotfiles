@@ -126,7 +126,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [ "broadcom-sta-6.30.223.271-57-6.16" ];
+  nixpkgs.config.permittedInsecurePackages = [ "broadcom-sta-6.30.223.271-57-6.16.4" ];
 
   #Allow to use the new nix command
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; 
