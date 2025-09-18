@@ -9,13 +9,14 @@
       [ 
             atuin
             autojump
-            awscli
+            awscli2
             clusterctl
             cmake
             fd
             fzf
             gettext
             gh
+            git-lfs
             gnupg
             go
             go-mockery
@@ -35,14 +36,13 @@
             kubelogin-oidc
             kustomize
             xorg.libX11
+            libyaml
             llvm
             mage
             navi
             neofetch
             neovim
             nodejs
-            p4
-            p4v
             pinentry-tty # needed for gpg sign
             podman
             qemu
@@ -65,7 +65,7 @@
             watch
             wget
             xquartz
-            ytt
+            yq
             zenity
         ];
 
@@ -86,9 +86,9 @@
 
             casks = [
                   "amethyst"
-                  "kegworks"
+                  "Sikarugir-App/sikarugir/sikarugir"
                   "vagrant"
-                  "vagrant-vmware-utility"
+             #    "vagrant-vmware-utility"
             ];
 
             brews = [
@@ -96,7 +96,7 @@
                   "mingw-w64"
                   "messense/macos-cross-toolchains/aarch64-unknown-linux-gnu"
                   "messense/macos-cross-toolchains/x86_64-unknown-linux-gnu"
-                  "libyaml" # can't use nix one because rbenv is installed on homebrew and needs this
+              #    "libyaml" # can't use nix one because rbenv is installed on homebrew and needs this
             ];
       };
 
@@ -124,7 +124,7 @@
 
       # nix-darwin now uses root and the user for non system wide options needs to be specified
       # e.g. for homebrew
-      system.primaryUser = "cborja";
+      system.primaryUser = "borja";
 
       # Set Git commit hash for darwin-version.
       system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;

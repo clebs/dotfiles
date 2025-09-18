@@ -96,12 +96,6 @@ plugins=(
 #   export EDITOR='mvim'
 # fi
 
-#----- Asimov -----#
-if [ -d ~/Dev/asimov ]; then
-  source ~/Dev/asimov/sources/aliases
-  source ~/Dev/asimov/sources/func
-fi
-
 if [  ! -d ~/.oh-my-zsh/completions ]; then
   mkdir ~/.oh-my-zsh/completions
 fi
@@ -132,7 +126,7 @@ if command -v zig > /dev/null && [ ! -f ~/.oh-my-zsh/completions/_zig ]; then cu
 if command -v rbenv &> /dev/null; then eval "$(rbenv init - zsh)"; fi
 
 ## AWS CLI completions
-# complete -C '/opt/homebrew/bin/aws_completer' aws
+complete -C '/run/current-system/sw/bin/aws_completer' aws
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="~/.rd/bin:$PATH"
@@ -141,3 +135,9 @@ export PATH="~/.rd/bin:$PATH"
 source $ZSH/oh-my-zsh.sh
 
 # zprof
+
+#----- Asimov -----#
+if [ -d ~/Dev/asimov ]; then
+  source ~/Dev/asimov/aliases
+  source ~/Dev/asimov/funcs
+fi

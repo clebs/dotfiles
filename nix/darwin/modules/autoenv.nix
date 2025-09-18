@@ -14,7 +14,7 @@ in
       enable = lib.mkEnableOption "autoenv";
       package = lib.mkOption {
         type = with lib.types; package;
-        default = (pkgs.callPackage ./../packages/autoenv.nix {});
+        default = pkgs.autoenv;
       };
     };
   };
