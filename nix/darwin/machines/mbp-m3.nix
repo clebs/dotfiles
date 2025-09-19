@@ -32,6 +32,7 @@
             k9s
             kind
             kubebuilder
+            kubectl
             kubelogin
             kubelogin-oidc
             kustomize
