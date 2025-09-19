@@ -8,7 +8,6 @@ export GOPATH=$HOME/Dev/go
 export PATH=$HOME/bin:/usr/local/bin:$GOPATH/bin:$PATH
 
 # K8s setup
-export KUBECONFIG=$HOME/.kube/config
 # add kubebuilder to path
 export PATH=$PATH:/usr/local/kubebuilder/bin
 
@@ -114,6 +113,10 @@ if command -v hugo > /dev/null && [ ! -f ~/.oh-my-zsh/completions/_hugo ]; then 
 if command -v kubebuilder > /dev/null && [ ! -f ~/.oh-my-zsh/completions/_kubebuilder ]; then kubebuilder completion zsh > ~/.oh-my-zsh/completions/_kubebuilder; fi
 if command -v kustomize > /dev/null && [ ! -f ~/.oh-my-zsh/completions/_kustomize ]; then kustomize completion zsh > ~/.oh-my-zsh/completions/_kustomize; fi
 if command -v kind > /dev/null && [ ! -f ~/.oh-my-zsh/completions/_kind ]; then kind completion zsh > ~/.oh-my-zsh/completions/_kind; fi
+
+#---- OpenShift ----#
+if command -v oc > /dev/null && [ ! -f ~/.oh-my-zsh/completions/_oc ]; then oc completion zsh > ~/.oh-my-zsh/completions/_oc; fi
+if command -v hypershift > /dev/null && [ ! -f ~/.oh-my-zsh/completions/_hypershift ]; then hypershift completion zsh > ~/.oh-my-zsh/completions/_hypershift; fi
 
 # Rust setup
 if command -v rustup > /dev/null && [ ! -f ~/.oh-my-zsh/completions/_rustup ]; then rustup completions zsh > ~/.oh-my-zsh/completions/_rustup; fi
