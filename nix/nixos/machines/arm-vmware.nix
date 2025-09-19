@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ../hardware-configuration.nix
+      ../modules/fonts.nix
       ../modules/vmware-guest-tools.nix
     ];
 
@@ -15,7 +16,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   # set kernel version
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_11;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_16;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -73,7 +74,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -146,16 +147,13 @@
 
     core = import ../packages/core.nix { inherit system pkgs unstable ghostty; };
     desktop = import ../packages/desktop.nix { inherit pkgs unstable; };
-    dev = import ../packages/dev.nix { inherit pkgs; };
+    dev = import ../packages/dev.nix { inherit pkgs zigpkgs; };
     utils = import ../packages/utils.nix { inherit pkgs; };
-    wayland = import ../packages/wayland.nix { inherit pkgs; };
+    # wayland wine not supported on arm
+    # wayland = import ../packages/wayland.nix { inherit pkgs; };
 	
-  in core ++ desktop ++ dev ++ utils ++ wayland ++ [zigpkgs.packages.${system}."0.12.0"];
-
-  # Fonts
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = ["FiraCode"];})
-  ];
+  in with pkgs; core ++ desktop ++ dev ++ utils ++ [ wl-clipboard ];
+  # in core ++ desktop ++ dev ++ utils ++ wayland
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
