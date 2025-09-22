@@ -11,28 +11,24 @@ end
 -- Mason managed LSPs
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-require('mason-lspconfig').setup({
-  automatic_enable = {
-    exclude = {
-      "gopls",
-      "groovyls"
-    }
-  }
-})
+require('mason-lspconfig').setup()
 
 -- Custom handlers
 
 -- Gopls
-require('lspconfig').gopls.setup {
-  settings = { gopls = {
-    buildFlags = { '-tags=e2e,mage,machineagent,classycluster' },
+vim.lsp.config('gopls', {
+  settings = { [ 'gopls' ] = {
+    -- buildFlags = { '' },
     completeUnimported = true,
     usePlaceholders = true,
     staticcheck = true,
     gofumpt = true,
   } },
   capabilities = capabilities,
-}
+})
+
+-- no need to enable manually, mason does it.
+-- vim.lsp.enable('gopls')
 
 -- format and organize imports on save
 vim.api.nvim_create_autocmd('BufWritePre', {
@@ -52,11 +48,11 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 })
 
 -- Groovy
-require('lspconfig').groovyls.setup {
+vim.lsp.config('groovyls', {
   -- Unix
   cmd = { 'java', '-jar', vim.fn.stdpath('data') .. '/mason/packages/groovy-language-server/build/libs/groovy-language-server-all.jar' },
   capabilities = capabilities,
-}
+})
 
 
 
