@@ -83,12 +83,13 @@
             taps = [
                   "messense/macos-cross-toolchains"
                   "gcenx/wine"
+                  "sikarugir-app/sikarugir"
             ];
 
             casks = [
                   "amethyst"
-                  "Sikarugir-App/sikarugir/sikarugir"
                   "vagrant"
+                  "sikarugir"
              #    "vagrant-vmware-utility"
             ];
 

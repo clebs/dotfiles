@@ -5,6 +5,7 @@
 [core]
 	editor = nvim
 	ignoreCase = false
+	excludesFile = ~/.gitignore
 [init]
 	defaultBranch = main
 [filter "lfs"]
