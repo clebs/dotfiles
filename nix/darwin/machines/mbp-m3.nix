@@ -31,6 +31,7 @@
             k3d
             k9s
             kind
+            krew
             kubebuilder
             kubectl
             kubelogin
