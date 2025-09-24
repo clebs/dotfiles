@@ -10,6 +10,10 @@ export PATH=$HOME/bin:/usr/local/bin:$GOPATH/bin:$PATH
 # K8s setup
 # add kubebuilder to path
 export PATH=$PATH:/usr/local/kubebuilder/bin
+# krew plugins
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+# Use all kubeconfigs under .kube at once
+export KUBECONFIG=$(find ~/.kube -type f -d 1 | tr '\n' ':')
 
 # Nvim setup
 alias v=nvim
