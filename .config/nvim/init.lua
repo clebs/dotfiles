@@ -55,7 +55,7 @@ Plug('ThePrimeagen/harpoon', { branch = 'harpoon2' })
 Plug 'xiyaowong/telescope-emoji.nvim'
 
 -- Markdown
-Plug 'ellisonleao/glow.nvim'
+Plug "OXY2DEV/markview.nvim"
 
 -- LSP Support
 Plug 'neovim/nvim-lspconfig'
@@ -172,7 +172,10 @@ require('harpoon'):setup()
 require('lualine').setup({ sections = { lualine_c = { { 'filename', path = 1, file_status = true } } }, options = { theme = "auto" } })
 require('diffview').setup()
 require('which-key').setup()
-require('glow').setup()
+require('markview').setup({
+		-- silence complaint that treesitter is loaded before this
+		experimental = { check_rtp_message = false },
+	})
 require('nvim-surround').setup()
 require('zen-mode').setup()
 require("symbols-outline").setup()
