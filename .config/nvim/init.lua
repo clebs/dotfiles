@@ -32,7 +32,7 @@ Plug('neanias/everforest-nvim', { branch = 'main' })
 Plug('folke/tokyonight.nvim', { branch = 'main' })
 Plug 'ellisonleao/gruvbox.nvim'
 Plug('rose-pine/neovim', { as = 'rose-pine' })
-Plug('Tsuzat/NeoSolarized.nvim', { branch = 'master' })
+Plug('maxmx03/solarized.nvim', { branch = 'main' })
 
 
 Plug 'nvim-lualine/lualine.nvim'
