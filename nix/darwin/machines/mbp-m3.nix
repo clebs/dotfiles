@@ -10,6 +10,7 @@
             atuin
             autojump
             awscli2
+            claude-code
             clusterctl
             cmake
             fd
@@ -20,6 +21,7 @@
             gnupg
             go
             go-mockery
+            google-cloud-sdk
             govc
             gum
             highlight
@@ -37,7 +39,6 @@
             kubelogin
             kubelogin-oidc
             kustomize
-            xorg.libX11
             libyaml
             llvm
             mage
@@ -54,18 +55,19 @@
             SDL2_image
             SDL2_ttf
             shellcheck
+            silver-searcher
             slides
             sshpass
             sshuttle
             stow
             terraform
-            silver-searcher
             tilt
             tldr
             tmux
             tree
             watch
             wget
+            xorg.libX11
             xquartz
             yq
             zenity
