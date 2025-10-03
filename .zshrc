@@ -135,7 +135,7 @@ if command -v zig > /dev/null && [ ! -f ~/.oh-my-zsh/completions/_zig ]; then cu
 if command -v rbenv &> /dev/null; then eval "$(rbenv init - zsh)"; fi
 
 ## AWS CLI completions
-complete -C '/run/current-system/sw/bin/aws_completer' aws
+if command -v aws_completer > /dev/null; then complete -C 'aws_completer' aws fi
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="~/.rd/bin:$PATH"
