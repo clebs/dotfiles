@@ -1,10 +1,4 @@
-\.DS_Store
-dotfiles.sh
+.DS_Store
 Makefile
 README.md
 .git
-.gitignore
-homebrew
-iterm2
-nix
-vscode
