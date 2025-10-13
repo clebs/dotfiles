@@ -8,7 +8,7 @@ install:
 # Hyprland
 .PHONY: hyprland
 hyprland: install
-	stow hypr waybar wofi -t ~
+	stow hyprland -t ~
 
 # Still WIP: figure out how to keep hardware config without checking it in on multiple machines (probably stow ignore)
 # NixOS:
