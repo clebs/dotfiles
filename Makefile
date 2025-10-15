@@ -25,10 +25,10 @@ hyprland: install
 nixos:
 	@if [ "$(shell ls -A "/etc/nixos")" ] && [ ! "$(args)" = "force" ]; then \
 		echo "Target not empty: copying from target"; \
-		cp -r /etc/nixos/* nix/nixos; \
+		rsync -a /etc/nixos/ nix/nixos --exclude hardware-configuration.nix; \
 	else \
 		echo "Target empty or force enabled: copying to target"; \
-		cp -r nix/nixos/* /etc/nixos; \
+		sudo rsync -a nix/nixos/ /etc/nixos --exclude hardware-configuration.nix; \
 	fi
 
 .PHONY: nixdarwin
