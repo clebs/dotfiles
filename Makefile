@@ -35,10 +35,10 @@ nixos:
 nixdarwin:
 	@if [ "$(shell ls -A "/etc/nix-darwin")" ] && [ ! "$(args)" = "force" ]; then \
 		echo "Target not empty: copying from target"; \
-		cp -r /etc/nix-darwin/* nix/darwin; \
+		rsync -a /etc/nix-darwin/ nix/darwin; \
 	else \
 		echo "Target empty or force enabled: copying to target"; \
-		cp -r nix/darwin/* /etc/nix-darwin; \
+		rsync -a nix/darwin/ /etc/nix-darwin; \
 	fi
 
 %::
