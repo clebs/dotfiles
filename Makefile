@@ -5,7 +5,7 @@ args := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))# base modules
 
 .PHONY: install
 install:
-	stow atuin ghostty git nvim omz tmux zsh -t ~
+	stow atuin ghostty git nvim tmux zsh -t ~
 
 # Hyprland
 .PHONY: hyprland
