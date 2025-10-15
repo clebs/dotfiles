@@ -33,7 +33,7 @@ export ZSH=~/.oh-my-zsh
 
 # Aliases
 # Do not alias stndard cat, things break...
-alias ccat='highlight -O ansi --force=shellscript'
+alias c='highlight -O ansi --force=shellscript'
 # docker aliased to podman
 alias docker='podman'
 # quick reapply of rc file
