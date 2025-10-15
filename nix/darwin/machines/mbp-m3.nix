@@ -48,6 +48,7 @@
             nodejs
             pinentry-tty # needed for gpg sign
             podman
+            python313Packages.pip
             qemu
             rbenv
             ripgrep
