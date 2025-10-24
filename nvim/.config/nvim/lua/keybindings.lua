@@ -34,9 +34,9 @@ key.set('n', '<leader>fg', builtin.live_grep, { desc = 'Live grep' })
 key.set('n', '<leader>fb', builtin.buffers, { desc = 'Show buffers' })
 key.set('n', '<leader>fh', builtin.help_tags, { desc = 'Help tags' })
 key.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Show diagnostics results' })
+key.set('n', '<leader>fr', builtin.lsp_references, { desc = 'Show References' })
 key.set('n', '<leader>fe', require('telescope').load_extension('emoji').emoji, { desc = 'Emoji picker' })
-key.set('n', '<leader>fp', require('telescope').load_extension('project').project,
-    { desc = 'Project picker' })
+key.set('n', '<leader>fp', builtin.lsp_implementations, { desc = 'Show Implementations' })
 
 -- Harpoon
 local harpoon = require('harpoon')
