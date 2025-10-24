@@ -27,26 +27,6 @@ vim.lsp.config('gopls', {
   capabilities = capabilities,
 })
 
--- no need to enable manually, mason does it.
--- vim.lsp.enable('gopls')
-
--- format and organize imports on save
-vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern = '*.go',
-  callback = function()
-    local orignal = vim.notify
-    vim.notify = function(msg, level, opts)
-      if msg == 'No code actions available' then
-        return
-      end
-      orignal(msg, level, opts)
-    end
-
-    vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
-    vim.cmd('write')
-  end
-})
-
 -- Groovy
 vim.lsp.config('groovyls', {
   -- Unix
