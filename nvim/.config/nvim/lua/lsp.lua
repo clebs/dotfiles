@@ -18,7 +18,7 @@ require('mason-lspconfig').setup()
 -- Gopls
 vim.lsp.config('gopls', {
   settings = { [ 'gopls' ] = {
-    -- buildFlags = { '' },
+    buildFlags = { '-tags=e2e' },
     completeUnimported = true,
     usePlaceholders = true,
     staticcheck = true,
