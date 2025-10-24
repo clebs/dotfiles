@@ -164,8 +164,12 @@ require("nvim-tree").setup({
 require("telescope").setup({
 	pickers = {
 		find_files = {
-			hidden = true
-		}
+			hidden = true,
+			find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+		},
+		diagnostics = {
+			sort_by = 'severity',
+		},
 	}
 })
 require('harpoon'):setup()
