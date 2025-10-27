@@ -10,5 +10,5 @@
   tree-sitter
   yq
   vagrant
-  zigpkgs.packages.${system}."0.14.1"
+  zigpkgs.packages.${system}."0.15.2"
 ]

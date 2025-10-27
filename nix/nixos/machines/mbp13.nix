@@ -17,7 +17,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # set kernel version
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_16;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_17;
   boot.kernelModules = [ "kvm-intel" ];
   boot.blacklistedKernelModules = ["b43" "bcma" "nouveau" "nvidia" ];
   # Add VGA device for intel graphics.
