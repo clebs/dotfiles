@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, zigpkgs, ... }:
 {
       nixpkgs.hostPlatform = "aarch64-darwin";
       nixpkgs.config.allowUnfree = true;
@@ -72,6 +72,7 @@
             xquartz
             yq
             zenity
+            zigpkgs.packages.${system}."0.15.2"
         ];
 
       # Homebrew management
