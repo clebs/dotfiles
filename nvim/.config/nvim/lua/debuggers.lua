@@ -72,10 +72,19 @@ dap.configurations.go = {
   },
   {
     type = "go",
-    name = "Debug Test",
+    name = "Debug Test File",
     request = "launch",
     mode = "test",
     program = '${file}',
+    -- get input args as string and split it into space separated array for adapter args.
+    args = function() return vim.split(vim.fn.input('Debug test args:') or "", " ") end,
+  },
+  {
+    type = "go",
+    name = "Debug Test Package",
+    request = "launch",
+    mode = "test",
+    program = "${fileDirname}",
     -- get input args as string and split it into space separated array for adapter args.
     args = function() return vim.split(vim.fn.input('Debug test args:') or "", " ") end,
   },
