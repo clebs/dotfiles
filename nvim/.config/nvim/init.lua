@@ -109,6 +109,7 @@ opt.smartcase = true      -- Search is case insensitive when all lowerccase
 opt.foldenable = false    -- Disable folding (smehow neorg set everything to fold)
 -- opt.conceallevel = 2      -- conceal level for org mode
 opt.concealcursor = "nvc" -- conceal cursor for org mode
+opt.diffopt = "vertical" -- vertical split on diff tool
 
 -- Git blamer
 g.blamer_show_in_visual_modes = 0
