@@ -2,4 +2,5 @@
 [
   libreoffice-qt6
   xournalpp
+  thunderbird
 ]

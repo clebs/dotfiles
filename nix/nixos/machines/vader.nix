@@ -1,4 +1,4 @@
-{ config, system, pkgs, nixos-unstable, zigpkgs, ghostty, ... }:
+{ config, system, pkgs, nixos-unstable, zigpkgs, ghostty, agenix, ... }:
 
 {
   imports =
@@ -6,6 +6,7 @@
       ../hardware-configuration.nix
       ../modules/fonts.nix
       ../modules/virt-manager.nix
+      ../modules/vpn.nix
     ];
 
   # Bootloader.
@@ -206,8 +207,9 @@
     social = import ../packages/social.nix { inherit pkgs; };
     media = import ../packages/media.nix { inherit pkgs; };
     office = import ../packages/office.nix { inherit pkgs; };
+    secrets = import ../packages/secrets.nix { inherit system pkgs agenix; };
 	
-  in with pkgs; core ++ desktop ++ dev ++ k8s ++ utils ++ games ++ x11 ++ social ++ media ++ office;
+  in with pkgs; core ++ desktop ++ dev ++ k8s ++ utils ++ games ++ x11 ++ social ++ media ++ office ++ secrets;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
