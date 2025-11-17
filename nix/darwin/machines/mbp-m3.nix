@@ -69,10 +69,10 @@
             watch
             wget
             xorg.libX11
-            xquartz
+            # xquartz currently not building again
             yq
             zenity
-            zigpkgs.packages.${system}."0.15.2"
+            zigpkgs.packages.${stdenv.hostPlatform.system}."0.15.2"
         ];
 
       # Homebrew management
