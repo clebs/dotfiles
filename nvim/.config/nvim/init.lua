@@ -47,12 +47,9 @@ Plug 'startup-nvim/startup.nvim'
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
 
--- Telescope
-Plug 'jiangmiao/auto-pairs'
-Plug('nvim-telescope/telescope.nvim', { branch = '0.1.x' })
-Plug('nvim-telescope/telescope-project.nvim')
+-- Navigation
+Plug 'ibhagwan/fzf-lua'
 Plug('ThePrimeagen/harpoon', { branch = 'harpoon2' })
-Plug 'xiyaowong/telescope-emoji.nvim'
 
 -- Markdown
 Plug "OXY2DEV/markview.nvim"
@@ -71,6 +68,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'folke/which-key.nvim'
+Plug 'jiangmiao/auto-pairs'
 
 -- GIT
 Plug 'sindrets/diffview.nvim'
@@ -109,7 +107,7 @@ opt.smartcase = true      -- Search is case insensitive when all lowerccase
 opt.foldenable = false    -- Disable folding (smehow neorg set everything to fold)
 -- opt.conceallevel = 2      -- conceal level for org mode
 opt.concealcursor = "nvc" -- conceal cursor for org mode
-opt.diffopt = "vertical" -- vertical split on diff tool
+opt.diffopt = "vertical"  -- vertical split on diff tool
 
 -- Git blamer
 g.blamer_show_in_visual_modes = 0
@@ -162,29 +160,34 @@ require("nvim-tree").setup({
 	},
 	view = { adaptive_size = true },
 })
-require("telescope").setup({
-	pickers = {
-		find_files = {
-			hidden = true,
-			find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+require('fzf-lua').setup({
+	actions = {
+		files = {
+			true,
+			["ctrl-q"] = FzfLua.actions.file_sel_to_qf,
 		},
-		diagnostics = {
-			sort_by = 'severity',
+	},
+	winopts = {
+		preview = {
+			horizontal = 'right:33%',
 		},
-	}
+	},
 })
 require('harpoon'):setup()
 require('lualine').setup({ sections = { lualine_c = { { 'filename', path = 1, file_status = true } } }, options = { theme = "auto" } })
 require('diffview').setup()
 require('which-key').setup()
 require('markview').setup({
-		-- silence complaint that treesitter is loaded before this
-		experimental = { check_rtp_message = false },
-	})
+	-- silence complaint that treesitter is loaded before this
+	experimental = { check_rtp_message = false },
+})
 require('nvim-surround').setup()
 require('zen-mode').setup()
 require("symbols-outline").setup()
 require("mason").setup()
+require "startup".create_mappings({
+	["<leader>ff"] = "<cmd>FzfLua files<CR>",
+})
 require("startup").setup({ theme = "nvim" })
 require("neorg").setup({
 	load = {

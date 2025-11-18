@@ -27,16 +27,16 @@ key.set('n', '<Leader>ft', cmd.NvimTreeFindFile, { noremap = true, desc = 'Find 
 local openCmd = vim.fn.has('macunix') == 1 and 'open' or 'xdg-open'
 key.set('n', 'gb', ':!' .. openCmd .. ' <cfile><CR>', { desc = 'Open with default OS app.', silent = true, remap = true })
 
--- Telescope
-local builtin = require('telescope.builtin')
-key.set('n', '<leader>ff', builtin.find_files, { desc = 'Find files' })
-key.set('n', '<leader>fg', builtin.live_grep, { desc = 'Live grep' })
-key.set('n', '<leader>fb', builtin.buffers, { desc = 'Show buffers' })
-key.set('n', '<leader>fh', builtin.help_tags, { desc = 'Help tags' })
-key.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Show diagnostics results' })
-key.set('n', '<leader>fr', builtin.lsp_references, { desc = 'Show References' })
-key.set('n', '<leader>fe', require('telescope').load_extension('emoji').emoji, { desc = 'Emoji picker' })
-key.set('n', '<leader>fp', builtin.lsp_implementations, { desc = 'Show Implementations' })
+-- fzf-lua
+local fzf = require('fzf-lua')
+key.set('n', '<leader>ff', fzf.global, { desc = 'Find anything' })
+key.set('n', '<leader>fg', fzf.grep_project, { desc = 'Live grep' })
+key.set('n', '<leader>fb', fzf.buffers, { desc = 'Show buffers' })
+key.set('n', '<leader>fh', fzf.help_tags, { desc = 'Help tags' })
+key.set('n', '<leader>fd', fzf.diagnostics_document, { desc = 'Show file diagnostics' })
+key.set('n', '<leader>fD', fzf.diagnostics_workspace, { desc = 'Show all diagnostics' })
+key.set('n', '<leader>fr', fzf.lsp_references, { desc = 'Show References' })
+key.set('n', '<leader>fp', fzf.lsp_implementations, { desc = 'Show Implementations' })
 
 -- Harpoon
 local harpoon = require('harpoon')
