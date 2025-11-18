@@ -1,7 +1,7 @@
-# zmodload zsh/zprof  
-
 # Nix setup
 export PATH=$PATH:/run/current-system/sw/bin
+
+source $ZSH/oh-my-zsh.sh
 
 #Golang setup
 export GOPATH=$HOME/Dev/go
@@ -18,6 +18,7 @@ export KUBECONFIG=$(find ~/.kube -maxdepth 1 -type f | tr '\n' ':')
 # Nvim setup
 alias v=nvim
 export EDITOR='nvim'
+
 
 # Java setup is managed by Nix: get the store path for the JRE dynamically so it works with updates
 export JAVA_HOME=${$(readlink /run/current-system/sw/bin/java)%'/bin/java'}
@@ -112,6 +113,13 @@ if command -v atuin > /dev/null && [ ! -f ~/.oh-my-zsh/custom/plugins/atuin/atui
   atuin init zsh > ~/.oh-my-zsh/custom/plugins/atuin/atuin.plugin.zsh
 fi
 
+#----- FZF -----#
+if command -v fzf &> /dev/null; then
+  export FZF_COMPLETION_TRIGGER=';;' # trigger for <Tab> completion in commands
+  export FZF_CTRL_R_COMMAND='' # disable the C-r history search, atuin covers that.
+  . <(fzf --zsh)
+fi
+
 #----- Hugo -----##
 if command -v hugo > /dev/null && [ ! -f ~/.oh-my-zsh/completions/_hugo ]; then hugo completion zsh > ~/.oh-my-zsh/completions/_hugo; fi
 
@@ -140,10 +148,6 @@ if command -v aws_completer &> /dev/null; then complete -C 'aws_completer' aws; 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="~/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-
-source $ZSH/oh-my-zsh.sh
-
-# zprof
 
 #----- Asimov -----#
 if [ -d ~/Dev/asimov ]; then
