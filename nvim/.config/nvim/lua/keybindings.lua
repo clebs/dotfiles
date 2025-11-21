@@ -67,6 +67,11 @@ key.set('n', '<leader>gc', cmd.DiffviewClose, { desc = 'Close Git Diff' })
 key.set('n', '<leader>gh', function() cmd('DiffviewFileHistory %') end, { desc = 'Git File History' })
 key.set('n', '<leader>gH', cmd.DiffviewFileHistory, { desc = 'Git Repo History' })
 key.set('n', '<leader>gb', cmd.BlamerToggle, { desc = 'Git Blame' })
+key.set({ 'n', 'v' }, '<leader>gl',
+    function()
+        require("gitlinker").link({ action = require("gitlinker.actions").system })
+    end,
+    { desc = 'Git Browse' })
 
 -- Zen
 key.set('n', '<leader>z', function() require('zen-mode').toggle({ window = { width = .80 } }) end, { desc = 'Zen mode' })

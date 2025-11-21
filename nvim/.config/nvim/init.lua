@@ -73,6 +73,7 @@ Plug 'jiangmiao/auto-pairs'
 -- GIT
 Plug 'sindrets/diffview.nvim'
 Plug 'APZelos/blamer.nvim'
+Plug 'linrongbin16/gitlinker.nvim'
 
 -- Zen
 Plug 'folke/zen-mode.nvim'
@@ -176,6 +177,7 @@ require('fzf-lua').setup({
 require('harpoon'):setup()
 require('lualine').setup({ sections = { lualine_c = { { 'filename', path = 1, file_status = true } } }, options = { theme = "auto" } })
 require('diffview').setup()
+require('gitlinker').setup()
 require('which-key').setup()
 require('markview').setup({
 	-- silence complaint that treesitter is loaded before this
