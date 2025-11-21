@@ -30,7 +30,9 @@ key.set('n', 'gb', ':!' .. openCmd .. ' <cfile><CR>', { desc = 'Open with defaul
 -- fzf-lua
 local fzf = require('fzf-lua')
 key.set('n', '<leader>ff', fzf.global, { desc = 'Find anything' })
-key.set('n', '<leader>fg', fzf.grep_project, { desc = 'Live grep' })
+-- live_grep: default regex, can switch to fuzzy
+-- grewp_project: default fuzzy (slower), can switch to regex
+key.set('n', '<leader>fg', fzf.live_grep, { desc = 'Live grep' })
 key.set('n', '<leader>fb', fzf.buffers, { desc = 'Show buffers' })
 key.set('n', '<leader>fh', fzf.help_tags, { desc = 'Help tags' })
 key.set('n', '<leader>fd', fzf.diagnostics_document, { desc = 'Show file diagnostics' })
