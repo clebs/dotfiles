@@ -1,6 +1,8 @@
 # Nix setup
 export PATH=$PATH:/run/current-system/sw/bin
 
+# Path to your oh-my-zsh installation.
+export ZSH=~/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 #Golang setup
@@ -28,9 +30,6 @@ export PATH=$PATH:/opt/homebrew/bin:/opt/homebrew/sbin
 
 # Fix for GPG sign
 export GPG_TTY=$(tty)
-
-# Path to your oh-my-zsh installation.
-export ZSH=~/.oh-my-zsh
 
 # Aliases
 # Do not alias stndard cat, things break...
