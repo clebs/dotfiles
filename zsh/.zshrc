@@ -3,7 +3,6 @@ export PATH=$PATH:/run/current-system/sw/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
-source $ZSH/oh-my-zsh.sh
 
 #Golang setup
 export GOPATH=$HOME/Dev/go
@@ -104,6 +103,10 @@ plugins=(
 if [  ! -d ~/.oh-my-zsh/completions ]; then
   mkdir ~/.oh-my-zsh/completions
 fi
+
+source $ZSH/oh-my-zsh.sh
+
+# ---- End of Zsh setup ---- #
 
 #----- Atuin shell history -----#
 # Need to manually remove the arrow up keybinds
