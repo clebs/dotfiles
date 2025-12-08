@@ -1,13 +1,12 @@
 { config, system, pkgs, nixos-unstable, zigpkgs, ghostty, agenix, ... }:
 
 {
-  imports =
-    [
-      ../hardware-configuration.nix
-      ../modules/fonts.nix
-      ../modules/virt-manager.nix
-      ../modules/vpn.nix
-    ];
+  imports = [
+    ../hardware-configuration.nix
+    ../modules/fonts.nix
+    ../modules/virt-manager.nix
+    ../modules/vpn.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -47,13 +46,16 @@
   };
 
   # Desktop
-  services.xserver = {
-    # Enable the X11 windowing system.
-    enable = true;
-    # Configure keymap in X11
-    xkb.layout = "us";
-    xkb.variant = "euro";
-    # Enable the GNOME Desktop Environment.
+  services = {
+    xserver = {
+      # Enable the X11 windowing system.
+      enable = true;
+      # Configure keymap in X11
+      xkb.layout = "us";
+      xkb.variant = "euro";
+      # Enable the GNOME Desktop Environment.
+      videoDrivers = [ "nvidia" ];
+    };
     desktopManager.gnome.enable = true;
     displayManager = {
       # GNOME login manager
@@ -62,18 +64,17 @@
         wayland = false;
       };
     };
-    videoDrivers = ["nvidia"];
   };
 
   # Enable automatic login for the user.
-#  services.displayManager.autoLogin = {
-#    enable = true;
-#    user = "borja";
-#  };
+  #  services.displayManager.autoLogin = {
+  #    enable = true;
+  #    user = "borja";
+  #  };
 
-# Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-#  systemd.services."getty@tty1".enable = false;
-#  systemd.services."autovt@tty1".enable = false;
+  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
+  #  systemd.services."getty@tty1".enable = false;
+  #  systemd.services."autovt@tty1".enable = false;
 
   # Configure console keymap
   console.keyMap = "dvorak";
@@ -89,7 +90,6 @@
     enable = true;
     enable32Bit = true;
   };
-
 
   hardware.nvidia = {
     # Modesetting is required.
@@ -153,28 +153,33 @@
     description = "Borja Clemente";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
-    packages = with pkgs; [
-    #  thunderbird
-    ];
+    packages = with pkgs;
+      [
+        #  thunderbird
+      ];
   };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   #Allow to use the new nix command
-  nix.settings.experimental-features = [ "nix-command" "flakes" ]; 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # add extra binary caches
   nix.settings = {
-    extra-substituters = ["https://ghostty.cachix.org"];
-    extra-trusted-public-keys = ["ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="];
+    extra-substituters = [ "https://ghostty.cachix.org" ];
+    extra-trusted-public-keys =
+      [ "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns=" ];
   };
 
   programs.zsh.enable = true;
   programs.steam = {
     enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+    remotePlay.openFirewall =
+      true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall =
+      true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall =
+      true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
 
   programs.appimage = {
@@ -186,7 +191,7 @@
 
   environment.sessionVariables = {
     # Prevent invisible cursor
-    WLR_NO_HARDWARE_CURSORS = "1"; 
+    WLR_NO_HARDWARE_CURSORS = "1";
     # Hint electron apps to use Wayland
     NIXOS_OZONE_WL = "1";
     PATH = "$PATH:$HOME/.local/bin";
@@ -194,8 +199,11 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = let 
-    unstable = import nixos-unstable { inherit system; config.allowUnfree = true; };
+  environment.systemPackages = let
+    unstable = import nixos-unstable {
+      inherit system;
+      config.allowUnfree = true;
+    };
 
     core = import ../packages/core.nix { inherit pkgs unstable ghostty; };
     desktop = import ../packages/desktop.nix { inherit pkgs unstable; };
@@ -208,8 +216,10 @@
     media = import ../packages/media.nix { inherit pkgs; };
     office = import ../packages/office.nix { inherit pkgs; };
     secrets = import ../packages/secrets.nix { inherit system pkgs agenix; };
-	
-  in with pkgs; core ++ desktop ++ dev ++ k8s ++ utils ++ games ++ x11 ++ social ++ media ++ office ++ secrets;
+
+  in with pkgs;
+  core ++ desktop ++ dev ++ k8s ++ utils ++ games ++ x11 ++ social ++ media
+  ++ office ++ secrets;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

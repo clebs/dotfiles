@@ -2,7 +2,7 @@
   description = "Borja's system flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     zigpkgs.url = "github:mitchellh/zig-overlay";
     ghostty.url = "github:ghostty-org/ghostty";
@@ -10,47 +10,41 @@
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     # optionally choose not to download darwin deps (saves some resources on Linux)
     agenix.inputs.darwin.follows = "";
- };
+  };
 
- outputs = { self, nixpkgs, nixos-unstable, zigpkgs, ghostty, agenix, ...}: {
+  outputs = { self, nixpkgs, nixos-unstable, zigpkgs, ghostty, agenix, ... }: {
     nixosConfigurations = {
       # Here we can define different configurations for hosts and systems.
       # Then they can be called with nix-os rebuild switch --flake .#configname
-      arm-vmware = let system = "aarch64-linux"; in nixpkgs.lib.nixosSystem {
+      arm-vmware = let system = "aarch64-linux";
+      in nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit nixos-unstable zigpkgs system ghostty; };
-        modules = [
-          ./machines/arm-vmware.nix
-        ];
+        modules = [ ./machines/arm-vmware.nix ];
       };
-      white-tower = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
+      white-tower = let system = "x86_64-linux";
+      in nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit nixos-unstable zigpkgs system ghostty; };
-        modules = [
-          ./machines/white-tower.nix
-        ];
+        modules = [ ./machines/white-tower.nix ];
       };
-      vader = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
+      vader = let system = "x86_64-linux";
+      in nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit nixos-unstable zigpkgs system ghostty agenix; };
-        modules = [
-          ./machines/vader.nix
-          agenix.nixosModules.default
-        ];
+        modules = [ ./machines/vader.nix agenix.nixosModules.default ];
       };
-      mbp13 = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
+      mbp13 = let system = "x86_64-linux";
+      in nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit nixos-unstable zigpkgs system ghostty; };
-        modules = [
-          ./machines/mbp13.nix
-        ];
+        modules = [ ./machines/mbp13.nix ];
       };
-      aoostar-r7 = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
+      aoostar-r7 = let system = "x86_64-linux";
+      in nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit nixos-unstable system ghostty; };
-        modules = [
-          ./machines/aoostar-r7.nix
-        ];
+        modules = [ ./machines/aoostar-r7.nix ];
       };
     };
   };
