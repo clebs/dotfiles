@@ -61,7 +61,6 @@
             sshpass
             sshuttle
             stow
-            terraform
             tilt
             tldr
             tmux
