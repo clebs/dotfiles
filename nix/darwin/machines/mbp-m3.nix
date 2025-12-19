@@ -65,6 +65,7 @@
             tldr
             tmux
             tree
+            tree-sitter
             watch
             wget
             xorg.libX11
