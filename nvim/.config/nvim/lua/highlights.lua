@@ -4,15 +4,15 @@ vim.api.nvim_set_hl(0, "@comment.note", { bg = "#3069b8", fg = "#52bf26" })
 vim.api.nvim_set_hl(0, "@comment.fixme", { bg = "#dbd827", fg = "#1f1f1f" })
 vim.api.nvim_set_hl(0, "@comment.xxx", { bg = "#53256e", fg = "#3073e6" })
 
-require 'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter'.install {
   -- Minimal parsers
-  ensure_installed = {
-    "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "go", "zig", "comment", "bash",
-    "json", "nix", "yaml"
-  },
-  -- Ensure highlighting is enabled
-  highlight = {
-    enable = true,                             -- Enable Tree-sitter-based syntax highlighting
-    additional_vim_regex_highlighting = false, -- Disable standard regex-based syntax highlighting
-  },
+  "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "go", "zig", "comment", "bash",
+  "json", "nix", "yaml"
 }
+
+local filetypes = { "c", "lua", "vim", "vimdoc", "md", "go", "zig", "sh", "json", "nix", "yaml" }
+
+vim.api.nvim_create_autocmd('Filetype', {
+  pattern = filetypes,
+  callback = function() vim.treesitter.start() end,
+})
