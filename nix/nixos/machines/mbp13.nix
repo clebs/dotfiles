@@ -55,8 +55,8 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -77,8 +77,8 @@
     enable32Bit = true;
     extraPackages = with pkgs; [
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-      vaapiVdpau
+      intel-vaapi-driver         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      libva-vdpau-driver
       libvdpau-va-gl
     ];
   };
@@ -126,7 +126,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [ "broadcom-sta-6.30.223.271-57-6.16.4" ];
+  nixpkgs.config.permittedInsecurePackages = [ "broadcom-sta-6.30.223.271-59-6.17.10" ];
 
   #Allow to use the new nix command
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; 
