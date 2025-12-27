@@ -14,7 +14,9 @@ export PATH=$PATH:/usr/local/kubebuilder/bin
 # krew plugins
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 # Use all kubeconfigs under .kube at once
-export KUBECONFIG=$(find ~/.kube -maxdepth 1 -type f | tr '\n' ':')
+if [ -d ~/.kube ]; then
+  export KUBECONFIG=$(find ~/.kube -maxdepth 1 -type f | tr '\n' ':')
+fi
 
 # Nvim setup
 alias v=nvim
