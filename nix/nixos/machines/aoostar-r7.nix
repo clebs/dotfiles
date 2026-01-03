@@ -88,7 +88,7 @@
     enable32Bit = true;
   };
   # Configure console keymap
-  console.keyMap = "dvorak";
+  console.keyMap = "us";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

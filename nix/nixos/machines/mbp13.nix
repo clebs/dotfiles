@@ -65,7 +65,7 @@
   };
 
   # Configure console keymap
-  console.keyMap = "dvorak";
+  console.keyMap = "us";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -126,7 +126,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [ "broadcom-sta-6.30.223.271-59-6.17.10" ];
+  nixpkgs.config.permittedInsecurePackages = [ "broadcom-sta-6.30.223.271-59-6.17.13" ];
 
   #Allow to use the new nix command
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; 
