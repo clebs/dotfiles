@@ -13,11 +13,19 @@
   margin: 2px 2px;
 }
 
+#custom-nixos {
+  border-radius: 5px 0px 0px 5px;
+  background-color: rgba(16,16,16,0.8);
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 5px 0;
+  font-size: 22;
+}
+
 #workspaces {
-  border-radius: 5px;
-  margin: 5px;
-  background: #101010;
-  margin-left: 2px;
+  border-radius: 0px 5px 5px 0px;
+  background-color: rgba(16,16,16,0.8);
+  margin: 5px 0;
 }
 
 #workspaces button {
@@ -46,6 +54,7 @@ button {
 #clock,
 #battery,
 #pulseaudio,
+#bluetooth,
 #network,
 #cpu,
 #memory,
@@ -54,9 +63,14 @@ button {
 #custom-weather,
 #custom-uptime,
 #custom-docker {
-  background-color: #101010;
+  background-color: rgba(16,16,16,0.8);
   padding: 0.5rem 1rem;
   margin: 5px 0;
+  font-size: 12;
+}
+
+#bluetooth {
+  font-size: 16;
 }
 
 #clock {

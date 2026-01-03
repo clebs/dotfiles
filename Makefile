@@ -7,10 +7,10 @@ args := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))# base modules
 install:
 	stow atuin ghostty git nvim tmux zsh -t ~
 
-# Hyprland
+# Hyprland: add subdir to make command (e.g. make hyprland mbp13)
 .PHONY: hyprland
-hyprland: install
-	stow hyprland -t ~
+hyprland:
+	@cd hyprland && stow $(args) -t ~
 
 # Nix:
 # Can not use stow because nix does not like symlinks
@@ -42,4 +42,4 @@ nixdarwin:
 	fi
 
 %::
-	@True
+	@true
