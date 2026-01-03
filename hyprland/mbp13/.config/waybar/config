@@ -49,7 +49,8 @@
   "clock": {
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
     "format": "{:%d.%m.%Y - %H:%M}",
-    "interval": 1
+    "interval": 1,
+    "on-click": "brave calendar.google.com",
   },
 
   "network": {
