@@ -28,28 +28,31 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    # Kitty is required for initial setup
-    kitty
-    # hyprland bar
-    waybar
-    # notifications
-    swaynotificationcenter
-    libnotify
-    # wallpapers
-    hyprpaper
-    # lock screen
-    hyprlock
-    # idle lock
-    hypridle
-    # GTK styling
-    nwg-look
-    # app launcher
-    wofi
-    # Control brightness
-    brightnessctl
     #bluetooth
     blueberry
+    # Control brightness
+    brightnessctl
+    # lock screen
+    hypridle
+    hyprlock
+    # wallpapers
+    hyprpaper
+    # Kitty is required for initial setup
+    kitty
+    # notifications
+    libnotify
+    swaynotificationcenter
+    # choose network
+    networkmanagerapplet
+    # power menu
+    nwg-bar
+    # GTK styling
+    nwg-look
     # media controls
     playerctl
+    # hyprland bar
+    waybar
+    # app launcher
+    wofi
   ];
 }
