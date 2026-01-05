@@ -95,8 +95,8 @@ key.set('n', '<leader>nr', function()
     cmd('NvimTreeRefresh')
 end, { desc = 'Neorg return' })
 
--- Glow Markdown buffer_hunks_preview
-key.set('n', '<leader>m', cmd.Glow, { desc = 'Markdown Preview' })
+-- Markdown preview in split pane
+key.set('n', '<leader>m', ':Markview splitToggle <CR>', { desc = 'Markdown Preview' })
 
 -- Miscelaneous --
 key.set('n', '<leader>y', '\"*y', { noremap = true, desc = 'Copy to system clipboard' })
