@@ -69,7 +69,7 @@
             # GNOME login manager
             gdm = {
               enable = true;
-              wayland = false;
+              # wayland = false; # on 25.11 GNOME 49 dropped X11 support
             };
           };
           videoDrivers = ["amdgpu"];

@@ -4,6 +4,7 @@
   imports = [
     ../hardware-configuration.nix
     ../modules/fonts.nix
+    ../modules/hyprland.nix
     ../modules/virt-manager.nix
     ../modules/vpn.nix
   ];
@@ -13,7 +14,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # set kernel version
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_17;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_18;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -53,15 +54,15 @@
       # Configure keymap in X11
       xkb.layout = "us";
       xkb.variant = "euro";
-      # Enable the GNOME Desktop Environment.
       videoDrivers = [ "nvidia" ];
     };
+    # Enable the GNOME Desktop Environment.
     desktopManager.gnome.enable = true;
     displayManager = {
       # GNOME login manager
       gdm = {
         enable = true;
-        wayland = false;
+        # wayland = false; # on 25.11 GNOME 49 dropped X11 support
       };
     };
   };
@@ -211,14 +212,14 @@
     k8s = import ../packages/k8s.nix { inherit pkgs; };
     utils = import ../packages/utils.nix { inherit pkgs; };
     games = import ../packages/games.nix { inherit pkgs; };
-    x11 = import ../packages/x11.nix { inherit pkgs; };
+    wayland = import ../packages/wayland.nix { inherit pkgs; };
     social = import ../packages/social.nix { inherit pkgs; };
     media = import ../packages/media.nix { inherit pkgs; };
     office = import ../packages/office.nix { inherit pkgs; };
     secrets = import ../packages/secrets.nix { inherit system pkgs agenix; };
 
   in with pkgs;
-  core ++ desktop ++ dev ++ k8s ++ utils ++ games ++ x11 ++ social ++ media
+  core ++ desktop ++ dev ++ k8s ++ utils ++ games ++ wayland ++ social ++ media
   ++ office ++ secrets;
 
   # Some programs need SUID wrappers, can be configured further or are
