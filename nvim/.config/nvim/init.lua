@@ -58,7 +58,7 @@ Plug "OXY2DEV/markview.nvim"
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
-Plug 'simrat39/symbols-outline.nvim'
+Plug 'hedyhli/outline.nvim'
 Plug 'onsails/lspkind.nvim'
 
 -- Autocompletion
@@ -185,7 +185,7 @@ require('markview').setup({
 })
 require('nvim-surround').setup()
 require('zen-mode').setup()
-require("symbols-outline").setup()
+require("outline").setup()
 require("mason").setup()
 require "startup".create_mappings({
 	["<leader>ff"] = "<cmd>FzfLua files<CR>",

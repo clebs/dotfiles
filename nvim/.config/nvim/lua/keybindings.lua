@@ -57,7 +57,7 @@ key.set('n', 'gd', vim.lsp.buf.definition, { noremap = true, desc = 'Go to defin
 key.set('n', 'gp', vim.lsp.buf.implementation, { noremap = true, desc = 'Go to implementation' })
 key.set('n', 'gr', vim.lsp.buf.references, { noremap = true, desc = 'References' })
 key.set('n', '<leader>ga', vim.lsp.buf.code_action, { noremap = true, desc = 'Code actions' })
-key.set('n', '<leader>o', cmd.SymbolsOutline, { desc = 'Code Outline' })
+key.set('n', '<leader>o', cmd.Outline, { desc = 'Code Outline' })
 key.set('n', '<leader>k', vim.diagnostic.open_float, { desc = 'Show diagnostic' })
 key.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover docs' })
 
