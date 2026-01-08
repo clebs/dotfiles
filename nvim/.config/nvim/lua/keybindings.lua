@@ -83,18 +83,19 @@ key.set({ 'n', 'v' }, '<C-S-Right>', '<C-w>l', { noremap = true, silent = true }
 key.set({ 'n', 'v' }, '<C-S-Up>', '<C-w>k', { noremap = true, silent = true })
 key.set({ 'n', 'v' }, '<C-S-Down>', '<C-w>j', { noremap = true, silent = true })
 
--- Neorg
+-- Notes
 key.set('n', '<leader>ni', function()
     cmd('tabnew')
-    cmd('Neorg index')
-    cmd('cd %:p:h')
+    cmd('cd ~/Documents/notes')
+    cmd('e index.md')
     cmd('NvimTreeRefresh')
-end, { desc = 'Neorg index' })
+end, { desc = 'Notes' })
+
 key.set('n', '<leader>nr', function()
     cmd('tabclose')
     cmd('cd -')
     cmd('NvimTreeRefresh')
-end, { desc = 'Neorg return' })
+end, { desc = 'Notes return' })
 
 -- Markdown preview in split pane
 key.set('n', '<leader>m', ':Markview splitToggle <CR>', { desc = 'Markdown Preview' })

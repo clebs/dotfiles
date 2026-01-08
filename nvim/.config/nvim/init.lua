@@ -78,9 +78,8 @@ Plug 'linrongbin16/gitlinker.nvim'
 -- Zen
 Plug 'folke/zen-mode.nvim'
 
--- Org mode
-Plug('nvim-neorg/neorg', { run = ':Neorg sync-parsers' })
-Plug 'nvim-neorg/lua-utils.nvim'
+-- Notes
+Plug 'epwalsh/obsidian.nvim'
 
 call('plug#end')
 
@@ -191,30 +190,13 @@ require "startup".create_mappings({
 	["<leader>ff"] = "<cmd>FzfLua files<CR>",
 })
 require("startup").setup({ theme = "nvim" })
-require("neorg").setup({
-	load = {
-		["core.defaults"] = {},
-		["core.concealer"] = {},
-		["core.completion"] = { config = { engine = 'nvim-cmp', name = "[Norg]" } },
-		["core.summary"] = {},
-		["core.dirman"] = {
-			config = {
-				workspaces = {
-					notes = "~/Documents/notes",
-				},
-				default_workspace = "notes",
-			},
+require("obsidian").setup({
+	workspaces = {
+		{
+			name = "notes",
+			path = "~/Documents/notes",
 		},
-		["core.integrations.nvim-cmp"] = {},
-		["core.integrations.treesitter"] = {},
-		["core.syntax"] = {},
 	},
-})
--- Fix for detecting neorg files. This does not work, using autocmd for now
--- vim.filetype.add({ extensions = { norg = "lua" } })
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = "*.norg",
-	command = "setfiletype norg",
 })
 
 -- includes
