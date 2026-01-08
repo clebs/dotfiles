@@ -39,6 +39,7 @@ key.set('n', '<leader>fd', fzf.diagnostics_document, { desc = 'Show file diagnos
 key.set('n', '<leader>fD', fzf.diagnostics_workspace, { desc = 'Show all diagnostics' })
 key.set('n', '<leader>fr', fzf.lsp_references, { desc = 'Show References' })
 key.set('n', '<leader>fp', fzf.lsp_implementations, { desc = 'Show Implementations' })
+key.set('n', '<leader>fo', fzf.oldfiles, { desc = 'Recent files' })
 
 -- Harpoon
 local harpoon = require('harpoon')
