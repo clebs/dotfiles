@@ -48,6 +48,8 @@
     nwg-bar
     # GTK styling
     nwg-look
+    # audio settings
+    pavucontrol
     # media controls
     playerctl
     # hyprland bar
