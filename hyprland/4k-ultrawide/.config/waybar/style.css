@@ -70,6 +70,10 @@ button {
   font-size: 12;
 }
 
+#temperature.critical {
+  color: #FF0000
+}
+
 #bluetooth {
   font-size: 16;
 }

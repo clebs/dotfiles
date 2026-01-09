@@ -78,8 +78,10 @@
   },
 
   "temperature": {
-    "critical-threshold": 50,
+    "critical-threshold": 85,
+    "hwmon-path": ["/sys/class/hwmon/hwmon2/temp2_input", "/sys/class/hwmon/hwmon2/temp3_input"],
     "format": " {temperatureC}°C",
+    "format-critical": " {temperatureC}°C",
     "tooltip": false
   },
 
