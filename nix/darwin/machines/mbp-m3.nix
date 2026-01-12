@@ -10,6 +10,7 @@
             atuin
             autojump
             awscli2
+            azure-cli
             claude-code
             clusterctl
             cmake
