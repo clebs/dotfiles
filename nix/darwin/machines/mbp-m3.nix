@@ -47,6 +47,7 @@
             neofetch
             neovim
             nodejs
+            opencode
             pinentry-tty # needed for gpg sign
             podman
             python313Packages.pip
