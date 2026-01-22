@@ -55,6 +55,7 @@ key.set('n', '<leader>6', function() harpoon:list():select(6) end, { desc = 'Har
 -- LSP
 key.set('n', '<leader>rn', vim.lsp.buf.rename, { noremap = true, desc = 'Rename symbol' })
 key.set('n', 'gd', vim.lsp.buf.definition, { noremap = true, desc = 'Go to definition' })
+key.set('n', 'gD', vim.lsp.buf.type_definition, { noremap = true, desc = 'Type definition' })
 key.set('n', 'gp', vim.lsp.buf.implementation, { noremap = true, desc = 'Go to implementation' })
 key.set('n', 'gr', vim.lsp.buf.references, { noremap = true, desc = 'References' })
 key.set('n', '<leader>ga', vim.lsp.buf.code_action, { noremap = true, desc = 'Code actions' })
