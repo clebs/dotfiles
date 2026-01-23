@@ -191,6 +191,9 @@ require "startup".create_mappings({
 })
 require("startup").setup({ theme = "nvim" })
 require("obsidian").setup({
+	ui = {
+		enable = false,
+	},
 	workspaces = {
 		{
 			name = "notes",
