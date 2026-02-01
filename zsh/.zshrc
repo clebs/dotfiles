@@ -158,3 +158,10 @@ if [ -d ~/Dev/asimov ]; then
   source ~/Dev/asimov/aliases
   source ~/Dev/asimov/funcs
 fi
+
+# >>>> Vagrant command completion (start)
+if command -v zig > /dev/null; then
+  fpath=(/opt/vagrant/embedded/gems/gems/vagrant-2.4.9/contrib/zsh $fpath)
+  compinit
+fi
+# <<<<  Vagrant command completion (end)
