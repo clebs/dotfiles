@@ -97,7 +97,7 @@
                   "amethyst"
                   "vagrant"
                   "sikarugir"
-             #    "vagrant-vmware-utility"
+                  "vagrant-vmware-utility"
             ];
 
             brews = [
