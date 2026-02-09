@@ -70,7 +70,7 @@
             tree-sitter
             watch
             wget
-            xorg.libX11
+            libX11
             # xquartz currently not building again
             yq
             zenity
