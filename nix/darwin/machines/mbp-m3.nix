@@ -14,6 +14,7 @@
             claude-code
             clusterctl
             cmake
+            docker
             fd
             fzf
             gettext
@@ -41,6 +42,9 @@
             kubelogin-oidc
             kustomize
             libyaml
+            # to be able to use docker when podman has issues
+            # run limactl start template:docker and follow instructions
+            lima 
             llvm
             mage
             navi
