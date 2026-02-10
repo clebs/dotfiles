@@ -165,6 +165,10 @@ require('fzf-lua').setup({
 		files = {
 			true,
 			["ctrl-q"] = FzfLua.actions.file_sel_to_qf,
+			["ctrl-a"] = {
+				fn = FzfLua.actions.file_sel_to_qf,
+				prefix = "select-all+"
+			},
 		},
 	},
 	winopts = {
