@@ -18,6 +18,10 @@ if [ -d ~/.kube ]; then
   export KUBECONFIG=$(find ~/.kube -maxdepth 1 -type f | tr '\n' ':')
 fi
 
+# Docker setup
+# Using docker based on Lima, need to set the docker host:
+export DOCKER_HOST="unix:///${HOME}/.lima/docker/sock/docker.sock"
+
 # Nvim setup
 alias v=nvim
 export EDITOR='nvim'
@@ -35,8 +39,6 @@ export GPG_TTY=$(tty)
 # Aliases
 # Do not alias stndard cat, things break...
 alias c='highlight -O ansi --force=shellscript'
-# docker aliased to podman
-alias docker='podman'
 # quick reapply of rc file
 alias s='source ~/.zshrc'
 
