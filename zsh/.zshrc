@@ -30,6 +30,17 @@ export EDITOR='nvim'
 # Java setup is managed by Nix: get the store path for the JRE dynamically so it works with updates
 export JAVA_HOME=${$(readlink /run/current-system/sw/bin/java)%'/bin/java'}
 
+# NPM setup
+# Add usual binary installation location to PATH
+export PATH=$PATH:$HOME/.npm/node_modules/.bin
+
+# pi.dev setup
+# TODO: figure out how to install extensions in either ~/.pi or ~/.npm
+# Current solution: install in cwd with `-l`.
+# Can't install the default way because of nix read only store.
+# export GOOGLE_CLOUD_PROJECT=<my-project>
+# export GOOGLE_CLOUD_LOCATION=<my-region>
+
 # Homebrew setup
 export PATH=$PATH:/opt/homebrew/bin:/opt/homebrew/sbin
 
