@@ -13,6 +13,7 @@
   highlight
   htop
   jq
+  keepassxc
   neofetch
   pinentry-tty
   ripgrep

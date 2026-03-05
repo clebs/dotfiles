@@ -10,6 +10,7 @@
       ../hardware-configuration.nix
       ../modules/fonts.nix
       ../modules/hyprland.nix
+      ../modules/printers.nix
     ];
 
   # Bootloader.
@@ -126,7 +127,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [ "broadcom-sta-6.30.223.271-59-6.18.9" ];
+  nixpkgs.config.permittedInsecurePackages = [ "broadcom-sta-6.30.223.271-59-6.18.10" ];
 
   #Allow to use the new nix command
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; 
@@ -159,12 +160,11 @@
     utils = import ../packages/utils.nix { inherit pkgs; };
     games = import ../packages/games.nix { inherit pkgs; };
     wayland = import ../packages/wayland.nix { inherit pkgs; };
-    x11 = import ../packages/x11.nix { inherit pkgs; };
     social = import ../packages/social.nix { inherit pkgs; };
     media = import ../packages/media.nix { inherit pkgs; };
     office = import ../packages/office.nix { inherit pkgs; };
 	
-  in with pkgs; core ++ desktop ++ dev ++ k8s ++ utils ++ games ++ wayland ++ x11 ++ social ++ media ++ office;
+  in with pkgs; core ++ desktop ++ dev ++ k8s ++ utils ++ games ++ wayland ++ social ++ media ++ office;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
