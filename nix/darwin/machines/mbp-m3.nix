@@ -15,6 +15,7 @@
             clusterctl
             cmake
             docker
+            fastfetch
             fd
             fzf
             gettext
@@ -48,7 +49,6 @@
             llvm
             mage
             navi
-            neofetch
             neovim
             nodejs
             opencode
