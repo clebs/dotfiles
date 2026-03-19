@@ -8,6 +8,12 @@ export ZSH=~/.oh-my-zsh
 export GOPATH=$HOME/Dev/go
 export PATH=$HOME/bin:/usr/local/bin:$GOPATH/bin:$PATH
 
+# suppress ld warnings on macOS
+
+if [[ "$(uname)" == "Darwin" ]]; then
+  export CGO_LDFLAGS='-Wl,-w'
+fi
+
 # K8s setup
 # add kubebuilder to path
 export PATH=$PATH:/usr/local/kubebuilder/bin
