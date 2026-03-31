@@ -11,6 +11,7 @@
             autojump
             awscli2
             azure-cli
+            btop
             claude-code
             clusterctl
             cmake
@@ -28,7 +29,6 @@
             govc
             gum
             highlight
-            htop
             hugo
             jdk
             jq
