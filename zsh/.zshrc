@@ -58,6 +58,8 @@ export GPG_TTY=$(tty)
 alias c='highlight -O ansi --force=shellscript'
 # quick reapply of rc file
 alias s='source ~/.zshrc'
+# quick worktree
+alias gw='git worktree'
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
