@@ -181,8 +181,8 @@ if [ -d ~/Dev/asimov ]; then
 fi
 
 #----- Claude Jail -----#
-if [ -d ~/Dev/jail ]; then
-  alias cj='~/Dev/jail/jail'
+if [ -d ~/Dev/cj ]; then
+  alias cj='~/Dev/cj/jail'
 fi
 
 # >>>> Vagrant command completion (start)
