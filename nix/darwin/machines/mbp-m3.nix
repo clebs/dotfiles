@@ -106,6 +106,7 @@
 
             brews = [
                   "gcc" # can't use nix gcc because of https://github.com/NixOS/nixpkgs/issues/306279
+                  "gnu-sed"
                   "mingw-w64"
                   "messense/macos-cross-toolchains/aarch64-unknown-linux-gnu"
                   "messense/macos-cross-toolchains/x86_64-unknown-linux-gnu"
