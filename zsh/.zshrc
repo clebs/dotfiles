@@ -180,6 +180,11 @@ if [ -d ~/Dev/asimov ]; then
   source ~/Dev/asimov/funcs
 fi
 
+#----- Claude Jail -----#
+if [ -d ~/Dev/jail ]; then
+  alias cj='~/Dev/jail/jail'
+fi
+
 # >>>> Vagrant command completion (start)
 if command -v zig > /dev/null; then
   fpath=(/opt/vagrant/embedded/gems/gems/vagrant-2.4.9/contrib/zsh $fpath)
