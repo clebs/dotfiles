@@ -77,7 +77,6 @@
             libX11
             # xquartz currently not building again
             yq
-            zenity
             zigpkgs.packages.${stdenv.hostPlatform.system}."0.15.2"
         ];
 
