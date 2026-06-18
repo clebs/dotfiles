@@ -62,7 +62,6 @@
             SDL2_image
             SDL2_ttf
             shellcheck
-            silver-searcher
             slides
             sshpass
             sshuttle
@@ -87,7 +86,7 @@
             onActivation = {
                   autoUpdate = true;
                   upgrade = true;
-                  cleanup = "zap";
+                  # cleanup = "zap";
             };
 
             taps = [
