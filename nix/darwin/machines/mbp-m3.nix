@@ -52,6 +52,7 @@
             neovim
             nodejs
             opencode
+            pi-coding-agent
             pinentry-tty # needed for gpg sign
             podman
             python313Packages.pip
