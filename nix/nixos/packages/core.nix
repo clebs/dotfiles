@@ -14,7 +14,7 @@
   htop
   jq
   keepassxc
-  neofetch
+  fastfetch
   pinentry-tty
   ripgrep
   stow

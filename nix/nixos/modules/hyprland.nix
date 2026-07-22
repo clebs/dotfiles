@@ -5,9 +5,8 @@
     xwayland.enable = true;
   };
 
-  services.displayManager.gdm.wayland = true;
-
-  networking.wireless.iwd.enable = true;
+  # disable because it conflicts with networkmanager. Not cleat why we need this.
+  # networking.wireless.iwd.enable = true;
 
   environment.sessionVariables =  {
     NIXOS_OZONE_WL = "1";
@@ -29,7 +28,7 @@
 
   environment.systemPackages = with pkgs; [
     #bluetooth
-    blueberry
+    blueman
     # Control brightness
     brightnessctl
     # lock screen

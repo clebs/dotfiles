@@ -14,7 +14,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # set kernel version
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_18;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_7_1;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -22,11 +22,12 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant. But cant be used with network manager.
+  # networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant. But cant be used with network manager.
   networking.hostName = "vader"; # Define your hostname.
 
   # Firmware
   hardware.enableAllFirmware = true;
+  hardware.enableRedistributableFirmware = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -62,7 +63,6 @@
       # GNOME login manager
       gdm = {
         enable = true;
-        # wayland = false; # on 25.11 GNOME 49 dropped X11 support
       };
     };
   };
