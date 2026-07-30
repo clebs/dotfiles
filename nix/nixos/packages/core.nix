@@ -11,7 +11,7 @@
   git
   gnupg
   highlight
-  htop
+  btop
   jq
   keepassxc
   fastfetch
