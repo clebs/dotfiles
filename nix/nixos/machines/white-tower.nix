@@ -63,6 +63,7 @@
       gdm = {
         enable = true;
         wayland = false;
+        autoSuspend = false;
       };
     };
     videoDrivers = ["nvidia"];

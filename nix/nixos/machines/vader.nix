@@ -63,6 +63,7 @@
       # GNOME login manager
       gdm = {
         enable = true;
+        autoSuspend = false;
       };
     };
   };
