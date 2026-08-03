@@ -4,7 +4,7 @@ window-decoration = false
 window-padding-x = 10
 window-padding-y = 10
 
-background-opacity = 0.90
+background-opacity = 0.95
 unfocused-split-opacity = 0.98
 
 # Font
@@ -18,6 +18,9 @@ shell-integration-features = no-cursor
 quick-terminal-position = left
 keybind = global:cmd+period=toggle_quick_terminal
 
+# toggle background-opacity
+keybind = cmd+u=toggle_background_opacity
+
 # colors
 
 background = 10303a
@@ -25,8 +28,8 @@ foreground = 00b151
 
 
 # black
-palette = 0=1d1f21
-palette = 8=666666
+palette = 0=0e1f25
+palette = 8=355d6a
 
 # red
 palette = 1=c91b00
