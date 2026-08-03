@@ -1,6 +1,9 @@
 # Nix setup
 export PATH=$PATH:/run/current-system/sw/bin
 
+# Local binaries
+export PATH=$PATH:$HOME/.local/bin
+
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
