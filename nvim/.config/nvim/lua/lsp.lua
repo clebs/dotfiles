@@ -13,17 +13,43 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 
 require('mason-lspconfig').setup()
 
+-- Custom commands
+-- WIP: find a way to get the right LSP for the current buffer
+vim.api.nvim_create_user_command('LspStart', function()
+  local ft = vim.bo.filetype
+  local configs = require('lspconfig.configs')
+
+  for name, config in pairs(configs) do
+    local filetypes = config.filetypes
+        or (config.config_def and config.config_def.default_config.filetypes)
+        or {}
+    if vim.tbl_contains(filetypes, ft) then
+      vim.lsp.enable(name, true)
+      return
+    end
+  end
+end, {})
+
+vim.api.nvim_create_user_command('LspStop', function()
+  local clients = vim.lsp.get_clients({ bufnr = 0 })
+  for _, client in ipairs(clients) do
+    vim.lsp.enable(client.name, false)
+  end
+end, {})
+
 -- Custom handlers
 
 -- Gopls
 vim.lsp.config('gopls', {
-  settings = { [ 'gopls' ] = {
-    buildFlags = { '-tags=e2e' },
-    completeUnimported = true,
-    usePlaceholders = true,
-    staticcheck = true,
-    gofumpt = true,
-  } },
+  settings = {
+    ['gopls'] = {
+      buildFlags = { '-tags=e2e' },
+      completeUnimported = true,
+      usePlaceholders = true,
+      staticcheck = true,
+      gofumpt = true,
+    }
+  },
   capabilities = capabilities,
 })
 
@@ -32,7 +58,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*.go",
   callback = function()
     local params = vim.lsp.util.make_range_params()
-    params.context = {only = {"source.organizeImports"}}
+    params.context = { only = { "source.organizeImports" } }
     local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
     for cid, res in pairs(result or {}) do
       for _, r in pairs(res.result or {}) do
@@ -42,7 +68,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         end
       end
     end
-    vim.lsp.buf.format({async = false})
+    vim.lsp.buf.format({ async = false })
   end
 })
 
