@@ -1,46 +1,45 @@
--- UI
+-- vars
+lsp = vim.lsp
+api = vim.api
 
 -- Override globally
-local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
-function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+local orig_util_open_floating_preview = lsp.util.open_floating_preview
+function lsp.util.open_floating_preview(contents, syntax, opts, ...)
   opts = opts or {}
   opts.border = opts.border or 'rounded'
   return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
 -- Mason managed LSPs
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(lsp.protocol.make_client_capabilities())
 
 require('mason-lspconfig').setup()
 
 -- Custom commands
--- WIP: find a way to get the right LSP for the current buffer
-vim.api.nvim_create_user_command('LspStart', function()
+api.nvim_create_user_command('LspStart', function()
   local ft = vim.bo.filetype
-  local configs = require('lspconfig.configs')
 
-  for name, config in pairs(configs) do
-    local filetypes = config.filetypes
-        or (config.config_def and config.config_def.default_config.filetypes)
-        or {}
-    if vim.tbl_contains(filetypes, ft) then
-      vim.lsp.enable(name, true)
+  for _, name in ipairs(vim.tbl_keys(lsp.config._configs or {})) do
+    local conf = lsp.config[name]
+    if conf and conf.filetypes and vim.tbl_contains(conf.filetypes, ft) then
+      lsp.enable(name, true)
       return
     end
   end
 end, {})
 
-vim.api.nvim_create_user_command('LspStop', function()
-  local clients = vim.lsp.get_clients({ bufnr = 0 })
+
+api.nvim_create_user_command('LspStop', function()
+  local clients = lsp.get_clients({ bufnr = 0 })
   for _, client in ipairs(clients) do
-    vim.lsp.enable(client.name, false)
+    lsp.enable(client.name, false)
   end
 end, {})
 
 -- Custom handlers
 
 -- Gopls
-vim.lsp.config('gopls', {
+lsp.config('gopls', {
   settings = {
     ['gopls'] = {
       buildFlags = { '-tags=e2e' },
@@ -54,27 +53,27 @@ vim.lsp.config('gopls', {
 })
 
 -- organize imports on save
-vim.api.nvim_create_autocmd("BufWritePre", {
+api.nvim_create_autocmd("BufWritePre", {
   pattern = "*.go",
   callback = function()
-    local params = vim.lsp.util.make_range_params()
+    local params = lsp.util.make_range_params()
     params.context = { only = { "source.organizeImports" } }
-    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
+    local result = lsp.buf_request_sync(0, "textDocument/codeAction", params)
     for cid, res in pairs(result or {}) do
       for _, r in pairs(res.result or {}) do
         if r.edit then
-          local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
-          vim.lsp.util.apply_workspace_edit(r.edit, enc)
+          local enc = (lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
+          lsp.util.apply_workspace_edit(r.edit, enc)
         end
       end
     end
-    vim.lsp.buf.format({ async = false })
+    lsp.buf.format({ async = false })
   end
 })
 
 
 -- Groovy
-vim.lsp.config('groovyls', {
+lsp.config('groovyls', {
   -- Unix
   cmd = { 'java', '-jar', vim.fn.stdpath('data') .. '/mason/packages/groovy-language-server/build/libs/groovy-language-server-all.jar' },
   capabilities = capabilities,
@@ -83,25 +82,25 @@ vim.lsp.config('groovyls', {
 
 
 -- Swift LSP (not available on Mason)
-local swift_lsp = vim.api.nvim_create_augroup("swift_lsp", { clear = true })
-vim.api.nvim_create_autocmd("FileType", {
+local swift_lsp = api.nvim_create_augroup("swift_lsp", { clear = true })
+api.nvim_create_autocmd("FileType", {
   pattern = { "swift" },
   callback = function()
     local root_dir = vim.fs.dirname(vim.fs.find({
       "Package.swift",
       ".git",
     }, { upward = true })[1])
-    local client = vim.lsp.start({
+    local client = lsp.start({
       name = "sourcekit-lsp",
       cmd = { "sourcekit-lsp" },
       root_dir = root_dir,
     })
-    vim.lsp.buf_attach_client(0, client)
+    lsp.buf_attach_client(0, client)
   end,
   group = swift_lsp,
 })
 
-vim.api.nvim_create_autocmd('BufWritePre', {
+api.nvim_create_autocmd('BufWritePre', {
   pattern = '*',
-  command = "silent! lua vim.lsp.buf.format()",
+  command = "silent! lua lsp.buf.format()",
 })
