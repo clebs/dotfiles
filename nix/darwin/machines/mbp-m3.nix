@@ -1,4 +1,4 @@
-{ pkgs, inputs, zigpkgs, ... }:
+{ pkgs, inputs, ccusage, ... }:
 {
       nixpkgs.hostPlatform = "aarch64-darwin";
       nixpkgs.config.allowUnfree = true;
@@ -12,6 +12,7 @@
             awscli2
             azure-cli
             btop
+            ccusage.packages.${stdenv.hostPlatform.system}.default
             claude-code
             clusterctl
             cmake
@@ -77,7 +78,7 @@
             libX11
             # xquartz currently not building again
             yq
-            zigpkgs.packages.${stdenv.hostPlatform.system}."0.15.2"
+            zig
         ];
 
       # Homebrew management
