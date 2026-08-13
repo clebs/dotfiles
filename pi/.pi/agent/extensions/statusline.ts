@@ -5,7 +5,7 @@
 
 import type { AssistantMessage } from "@earendil-works/pi-ai";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
-import { truncateToWidth, visibleWidth } from "@earendil-works/pi-tui";
+import { truncateToWidth } from "@earendil-works/pi-tui";
 
 export default function (pi: ExtensionAPI) {
   let cavemanBadge = "";
@@ -36,20 +36,24 @@ export default function (pi: ExtensionAPI) {
         dispose: unsub,
         invalidate() {},
         render(width: number): string[] {
-          // Token stats
-          let input = 0, output = 0, cost = 0;
+          // Walk the branch to compute cost and find the last assistant usage
+          let cost = 0;
+          let lastUsage: { input: number; output: number; cacheRead: number; cacheWrite: number; totalTokens: number } | null = null;
           for (const e of ctx.sessionManager.getBranch()) {
             if (e.type === "message" && e.message.role === "assistant") {
               const m = e.message as AssistantMessage;
-              input += m.usage.input;
-              output += m.usage.output;
               cost += m.usage.cost.total;
+              lastUsage = m.usage;
             }
           }
 
-          // Context percentage — estimate from input tokens vs context window
+          // Context percentage from last assistant message's usage
+          // totalTokens = input + output + cacheRead + cacheWrite (full context window consumption)
           const contextWindow = ctx.model?.contextWindow ?? 200000;
-          const pct = Math.min(100, Math.round((input / contextWindow) * 100));
+          const contextTokens = lastUsage
+            ? (lastUsage.totalTokens || lastUsage.input + lastUsage.output + lastUsage.cacheRead + lastUsage.cacheWrite)
+            : 0;
+          const pct = Math.min(100, (contextTokens / contextWindow) * 100);
 
           // Progress bar
           const filled = Math.floor(pct / 10);
@@ -66,11 +70,15 @@ export default function (pi: ExtensionAPI) {
           // Badge
           const badge = cavemanBadge ? theme.fg("warning", cavemanBadge) : "";
 
-          const line = `${badge}${theme.fg("accent", model)} ${bar} ${pct}% ${theme.fg("dim", costFmt)}`;
+          const pctFmt = Math.round(pct).toString();
+
+          const line = `${badge}${theme.fg("accent", model)} ${bar} ${pctFmt}% ${theme.fg("success", theme.bold(costFmt))}`;
 
           return [truncateToWidth(line, width)];
         },
       };
     });
+
+
   });
 }
