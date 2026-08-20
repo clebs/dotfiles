@@ -52,11 +52,12 @@
             navi
             neovim
             nodejs
+            ollama
             opencode
             pi-coding-agent
             pinentry-tty # needed for gpg sign
             podman
-            python313Packages.pip
+            python314Packages.pip
             qemu
             rbenv
             ripgrep
@@ -108,6 +109,7 @@
                   "gcc" # can't use nix gcc because of https://github.com/NixOS/nixpkgs/issues/306279
                   "gnu-sed"
                   "mingw-w64"
+                  "mlx-lm"
                   "messense/macos-cross-toolchains/aarch64-unknown-linux-gnu"
                   "messense/macos-cross-toolchains/x86_64-unknown-linux-gnu"
               #    "libyaml" # can't use nix one because rbenv is installed on homebrew and needs this
