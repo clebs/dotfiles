@@ -3,12 +3,13 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     ccusage.url = "github:ccusage/ccusage";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, ccusage, ... }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nixpkgs-stable, ccusage, ... }:
   {
     
     # Build darwin flake using:
@@ -16,7 +17,10 @@
  darwinConfigurations."mbp-m3" = nix-darwin.lib.darwinSystem {
       # Use an own autoenv module until it can be added to nix-darwin
       modules = [ ./machines/mbp-m3.nix ./modules/autoenv.nix ];
-      specialArgs = { inherit inputs ccusage; };
+      specialArgs = { 
+        inherit inputs ccusage;
+        pkgs-stable = import inputs.nixpkgs-stable { system = "aarch64-darwin"; };
+      };
     };
 
     # Expose the package set, including overlays, for convenience.
