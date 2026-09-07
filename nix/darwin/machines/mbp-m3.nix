@@ -1,4 +1,4 @@
-{ pkgs, inputs, ccusage, ... }:
+{ pkgs, pkgs-stable, inputs, ccusage, ... }:
 {
       nixpkgs.hostPlatform = "aarch64-darwin";
       nixpkgs.config.allowUnfree = true;
@@ -7,10 +7,11 @@
       # $ nix-env -qaP | grep wget
       environment.systemPackages = with pkgs;
       [ 
+            android-tools
             atuin
             autojump
             awscli2
-            azure-cli
+            pkgs-stable.azure-cli
             btop
             ccusage.packages.${stdenv.hostPlatform.system}.default
             claude-code
@@ -29,6 +30,7 @@
             google-cloud-sdk
             govc
             gum
+            heimdall
             highlight
             hugo
             jdk
@@ -57,7 +59,7 @@
             pi-coding-agent
             pinentry-tty # needed for gpg sign
             podman
-            python314Packages.pip
+            python313Packages.pip
             qemu
             rbenv
             ripgrep
