@@ -8,8 +8,6 @@
     ghostty.url = "github:ghostty-org/ghostty";
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
-    # optionally choose not to download darwin deps (saves some resources on Linux)
-    agenix.inputs.darwin.follows = "";
   };
 
   outputs = { self, nixpkgs, nixos-unstable, zigpkgs, ghostty, agenix, ... }: {
