@@ -173,6 +173,12 @@ require('fzf-lua').setup({
 			},
 		},
 	},
+	files = {
+		cmd = "fd --type f --hidden --no-ignore", -- add flags to include hidden and ignored
+	},
+	grep = {
+		rg_opts = "--column --line-number --no-heading --color=always --smart-case --no-ignore --hidden", -- add flags to include hidden and ignored
+	},
 	winopts = {
 		preview = {
 			horizontal = 'right:33%',
