@@ -116,7 +116,7 @@ HIST_STAMPS="dd.mm.yyyy"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git golang kubectl podman keychain atuin autojump
+  git golang kubectl podman keychain autojump
 )
 
 # Preferred editor for local and remote sessions
@@ -134,17 +134,9 @@ source $ZSH/oh-my-zsh.sh
 
 # ---- End of Zsh setup ---- #
 
-#----- Atuin shell history -----#
-# Need to manually remove the arrow up keybinds
-if command -v atuin > /dev/null && [ ! -f ~/.oh-my-zsh/custom/plugins/atuin/atuin.plugin.zsh ]; then
-  mkdir -p ~/.oh-my-zsh/custom/plugins/atuin
-  atuin init zsh > ~/.oh-my-zsh/custom/plugins/atuin/atuin.plugin.zsh
-fi
-
 #----- FZF -----#
 if command -v fzf &> /dev/null; then
   export FZF_COMPLETION_TRIGGER=';;' # trigger for <Tab> completion in commands
-  export FZF_CTRL_R_COMMAND='' # disable the C-r history search, atuin covers that.
   . <(fzf --zsh)
 fi
 
