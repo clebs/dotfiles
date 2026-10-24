@@ -1,4 +1,4 @@
-{ config, system, pkgs, nixos-unstable, zigpkgs, ghostty, agenix, ... }:
+{ config, system, pkgs, pkgs-unstable, agenix, ... }:
 
 {
   imports = [
@@ -175,11 +175,11 @@
   #Allow to use the new nix command
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # add extra binary caches
-  nix.settings = {
-    extra-substituters = [ "https://ghostty.cachix.org" ];
-    extra-trusted-public-keys =
-      [ "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns=" ];
-  };
+  # nix.settings = {
+    # extra-substituters = [ "https://my-cache.cachix.org" ];
+    # extra-trusted-public-keys =
+      # [ "my-cache.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns=" ];
+  # };
 
   programs.zsh.enable = true;
   programs.steam = {
@@ -210,14 +210,9 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = let
-    unstable = import nixos-unstable {
-      inherit system;
-      config.allowUnfree = true;
-    };
-
-    core = import ../packages/core.nix { inherit pkgs unstable ghostty; };
-    desktop = import ../packages/desktop.nix { inherit pkgs unstable; };
-    dev = import ../packages/dev.nix { inherit system pkgs zigpkgs; };
+    core = import ../packages/core.nix { inherit pkgs pkgs-unstable; };
+    desktop = import ../packages/desktop.nix { inherit pkgs pkgs-unstable; };
+    dev = import ../packages/dev.nix { inherit system pkgs; };
     k8s = import ../packages/k8s.nix { inherit pkgs; };
     utils = import ../packages/utils.nix { inherit pkgs; };
     games = import ../packages/games.nix { inherit pkgs; };

@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, system, pkgs, nixos-unstable, zigpkgs, ghostty, ... }:
+{ config, system, pkgs, nixos-unstable, ... }:
 
 {
   imports =
@@ -114,11 +114,6 @@
 
   #Allow to use the new nix command
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; 
-  # add extra binary caches
-  nix.settings = {
-    extra-substituters = ["https://ghostty.cachix.org"];
-    extra-trusted-public-keys = ["ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="];
-  };
 
   # VMware tools
   # Disable the default module and import Mitchell's override. It has
@@ -146,9 +141,9 @@
   environment.systemPackages = let 
     unstable = import nixos-unstable { inherit system; config.allowUnfree = true; };
 
-    core = import ../packages/core.nix { inherit system pkgs unstable ghostty; };
+    core = import ../packages/core.nix { inherit system pkgs unstable; };
     desktop = import ../packages/desktop.nix { inherit pkgs unstable; };
-    dev = import ../packages/dev.nix { inherit pkgs zigpkgs; };
+    dev = import ../packages/dev.nix { inherit pkgs; };
     utils = import ../packages/utils.nix { inherit pkgs; };
     # wayland wine not supported on arm
     # wayland = import ../packages/wayland.nix { inherit pkgs; };

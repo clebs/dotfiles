@@ -1,4 +1,4 @@
-{pkgs, unstable, ghostty, ...}: with pkgs; 
+{pkgs, pkgs-unstable, ...}: with pkgs; 
 [
   atuin
   autojump
@@ -7,7 +7,7 @@
   fd
   fzf
   gcc
-  ghostty.packages.${system}.default
+  ghostty
   git
   gnupg
   highlight
@@ -21,7 +21,7 @@
   tldr
   tmux
   tree
-  unstable.neovim
+  pkgs-unstable.neovim
   unzip
   wget
   zsh
