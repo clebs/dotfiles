@@ -14,7 +14,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # set kernel version
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_7_2;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_7_3;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -116,15 +116,35 @@
     # accessible via `nvidia-settings`.
     nvidiaSettings = true;
 
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
     # package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+    # Optionally, you may need to select the appropriate driver version for your specific GPU.
+    # Hashes are resolved in this order.
+    # Some wget obtianed hashes might be wrong (probably nix adds some patches)
+    # To obtain the hash run on each output:
+    # nix hash convert --hash-algo sha256 --to sri <wget output>
+    #
+    # 64-bit Linux driver
+    # wget -q -O - "https://download.nvidia.com/XFree86/Linux-x86_64/595.112.07/NVIDIA-Linux-x86_64-595.112.07.run.sha256sum"
+    #
+    # aarch64 driver
+    # wget -q -O - "https://download.nvidia.com/XFree86/Linux-aarch64/595.112.07/NVIDIA-Linux-aarch64-595.112.07.run.sha256sum"
+    #
+    # Settings
+    # wget -q -O - "https://download.nvidia.com/XFree86/nvidia-settings/nvidia-settings-595.112.07.tar.bz2.sha256sum"
+    #
+    # Open kernel modules (need to calculate from extracted tarball). Run nix hash path on output store path.
+    # nix-prefetch-url --type sha256 "https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/595.112.07.tar.gz"
+    #
+    # Persistenced
+    # wget -q -O - "https://download.nvidia.com/XFree86/nvidia-persistenced/nvidia-persistenced-595.112.07.tar.bz2.sha256sum"
     package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-      version = "595.99.02";
-      sha256_64bit = "sha256-6HR3lYv3YwcFSTJL1a1slI66btIQ5EAFs+/4SUD24ew=";
-      sha256_aarch64 = "sha256-CCqHZTN2KNOZ4yZp2rDcuRJp9pHfRw47k4m4dWnS/2w=";
-      openSha256 = "sha256-T36x/jx8yQ8l3LFp1rZIrTfcSwbGy8YSAvXOUSptpb4=";
-      settingsSha256 = "sha256-GYCcnxfKPrTCrsmd25sMyzfC5cqJQJx0c31haooyTYM=";
-      persistencedSha256 = "sha256-VyKtF/HdHPQrHHK6opSO69M72LmnGZtauuchj9uuje8=";
+      version = "595.112.07";
+      sha256_64bit = "sha256-Gjjs1Tii2mIypzMBhAY69Z6fyUbJCMylVb0HkJhIufA=";
+      sha256_aarch64 = "sha256-H/YDsHwyp8d2Wn2L3HMA1Bh16HwmWsVvJA1PwGThv/c=";
+      settingsSha256 = "sha256-2bWSou/9J3EojhSRXBol/+yGGu2XZ6EuCptb5qXHM14=";
+      openSha256 = "sha256-Iaxw08/j83b31eR79jvfqNlSf0qN7V1H5fsjEZ9iNB0=";
+      persistencedSha256 = "sha256-egXEpN1qJkookuBr1z6ucxKwWynDtZYiv1lVs7sTFaM=";
     };
   };
 
