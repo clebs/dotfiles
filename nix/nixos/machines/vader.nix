@@ -16,6 +16,13 @@
   # set kernel version
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_7_3;
 
+  # add supported filesystems
+  boot.supportedFilesystems = {
+    exfat = true;
+    ntfs = true;
+    xfs = true;
+  };
+
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -91,6 +98,10 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
+    extraPackages = with pkgs; [
+      libva-vdpau-driver # For AMD/NVIDIA
+      libvdpau-va-gl
+    ];
   };
 
   hardware.nvidia = {
@@ -222,9 +233,10 @@
   environment.sessionVariables = {
     # Prevent invisible cursor
     WLR_NO_HARDWARE_CURSORS = "1";
-    # Hint electron apps to use Wayland
-    NIXOS_OZONE_WL = "1";
     PATH = "$PATH:$HOME/.local/bin";
+    # enable mangohud on all games.
+    # toggle with right shift + F12
+    MANGOHUD=1;
   };
 
   # List packages installed in system profile. To search, run:

@@ -9,10 +9,15 @@
   # networking.wireless.iwd.enable = true;
 
   environment.sessionVariables =  {
+    # Hint electron apps to use Wayland
     NIXOS_OZONE_WL = "1";
     # fix nautilus rendering bug on wayland
     GSK_RENDERER = "gl";
-    GDK_DEBUG = "gl-prefer-gl";
+    SDL_VIDEODRIVER = "wayland";
+    QT_QPA_PLATFORM = "wayland";
+    GDK_BACKEND = "wayland";
+    GDK_GL = "gl";
+    GDK_DEBUG = "gl";
   };
 
   xdg.portal = {
