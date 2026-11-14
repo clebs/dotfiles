@@ -1,11 +1,10 @@
-{ config, system, pkgs, nixos-unstable, ghostty, ... }:
+{ config, system, pkgs, pkgs-unstable, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
+  imports = [ # Include the results of the hardware scan.
       ../hardware-configuration.nix
       ../modules/fonts.nix
-      ../modules/nas.nix
+      ../modules/nas/nas.nix
     ];
 
   # Bootloader.
@@ -15,9 +14,17 @@
   };
 
   # set kernel version
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_11;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_7_3;
   # Load AMD drivers early
   boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.kernelModules = [ "hidp" "joydev" "uhid" ];
+  boot.kernelParams = [ "snd-intel-dspcfg.dsp_driver=1" ];
+  # disable BT-WiFi coexistence arbitration
+  # avoids wifi crash after disabling bluetooth controller
+  boot.extraModprobeConfig = ''
+     options iwlmvm power_scheme=1
+     options iwlwifi bt_coex_active=0
+  '';
 
   # NAS should never sleep
   systemd.targets.sleep.enable = false;
@@ -28,6 +35,10 @@
   networking.networkmanager.enable = true;
   networking.hostName = "castillobox"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  # Firmware
+  hardware.enableAllFirmware = true;
+  hardware.enableRedistributableFirmware = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -57,29 +68,27 @@
     desktop.configuration =
       { system.nixos.tags = [ "desktop" ];
         # Desktop
-        services.xserver = {
-          # Enable the X11 windowing system.
-          enable = true;
-          # Configure keymap in X11
-          xkb.layout = "us";
-          xkb.variant = "euro";
+        imports = [../modules/hyprland.nix];
+
+        services = {
+          xserver = {
+            # Enable the X11 windowing system.
+            enable = true;
+            # Configure keymap in X11
+            xkb.layout = "us";
+            xkb.variant = "euro";
+            videoDrivers = ["amdgpu"];
+          };
           # Enable the GNOME Desktop Environment.
           desktopManager.gnome.enable = true;
           displayManager = {
             # GNOME login manager
             gdm = {
               enable = true;
-              wayland = false;
               autoSuspend = false;
             };
           };
-          videoDrivers = ["amdgpu"];
         };
-
-        # on desktop mode enble sleep
-        systemd.targets.sleep.enable = false;
-        systemd.targets.suspend.enable = false;
-        systemd.targets.hybrid-sleep.enable = false;
       };
   };
 
@@ -91,17 +100,18 @@
   # Configure console keymap
   console.keyMap = "us";
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+  # server will unlikely print
+  services.printing.enable = false;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    wireplumber.enable = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
 
@@ -113,14 +123,40 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  hardware.bluetooth = {
+    enable = true; # enables support for Bluetooth
+    powerOnBoot = true; # powers up the default Bluetooth controller on boot
+    settings = {
+      General = {
+        Experimental = true; # show battery levels and allow controlls
+        JustWorksRepairing = "always";
+      };
+      Policy = {
+        AutoEnable = true;
+      };
+    };
+  };
+
+  # support for most controllers and peripherials
+  hardware.steam-hardware.enable = true;
+  hardware.xpadneo.enable = true;
+
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.borja = {
     isNormalUser = true;
     description = "Borja Clemente";
-    extraGroups = [ "networkmanager" "wheel" ];
+    # need media groups to be able to run GUI from tty
+    extraGroups = [ "networkmanager" "wheel" "input" "seat" "video" "render" "audio" ];
     shell = pkgs.zsh;
     packages = with pkgs; [];
+    linger = true; # needed to be able to run user services and timers when logged out
   };
+
+  # autologin to screen tty to be able to launch GUI apps.
+  # and enable seatd
+  # services.getty.autologinUser = "borja";
+  services.seatd.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -131,11 +167,12 @@
   programs.zsh.enable = true;
 
   environment.systemPackages = let 
-    unstable = import nixos-unstable { inherit system; config.allowUnfree = true; };
-
-    core = import ../packages/core.nix { inherit pkgs unstable ghostty; };
-    x11 = import ../packages/x11.nix { inherit pkgs; };
- in with pkgs; core ++ x11;
+    core = import ../packages/core.nix { inherit pkgs pkgs-unstable; };
+    wayland = import ../packages/wayland.nix { inherit pkgs; };
+    dev = import ../packages/dev.nix { inherit pkgs; };
+    games = import ../packages/games.nix { inherit pkgs; };
+    emulation = import ../packages/emulation.nix { inherit pkgs; };
+ in with pkgs; core ++ wayland ++ dev ++ games ++ emulation;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

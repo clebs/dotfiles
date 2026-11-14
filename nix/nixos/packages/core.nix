@@ -1,6 +1,6 @@
 {pkgs, pkgs-unstable, ...}: with pkgs; 
 [
-  atuin
+  alsa-utils
   autojump
   brave
   curl
@@ -15,7 +15,9 @@
   jq
   keepassxc
   fastfetch
+  pciutils
   pinentry-tty
+  pulseaudio
   ripgrep
   stow
   tldr

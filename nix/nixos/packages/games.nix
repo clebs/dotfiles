@@ -6,5 +6,4 @@
   protonup-qt
   mangohud
   mesa
-  # retroarchFull # builds from source and takes very long
 ]
