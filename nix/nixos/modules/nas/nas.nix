@@ -233,4 +233,9 @@
        # APPIMAGE_EXTRACT_AND_RUN = "1";
      };
    };  
+
+   # script to manage ROMs
+   system.activationScripts.symlinkDirs = ''
+     install -Dm755 ${./link-roms.sh} /nas/Games/ROMs/link-roms.sh
+   '';
 }
