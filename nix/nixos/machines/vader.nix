@@ -150,12 +150,12 @@
     # Persistenced
     # wget -q -O - "https://download.nvidia.com/XFree86/nvidia-persistenced/nvidia-persistenced-595.112.07.tar.bz2.sha256sum"
     package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-      version = "595.112.07";
-      sha256_64bit = "sha256-Gjjs1Tii2mIypzMBhAY69Z6fyUbJCMylVb0HkJhIufA=";
-      sha256_aarch64 = "sha256-H/YDsHwyp8d2Wn2L3HMA1Bh16HwmWsVvJA1PwGThv/c=";
-      settingsSha256 = "sha256-2bWSou/9J3EojhSRXBol/+yGGu2XZ6EuCptb5qXHM14=";
-      openSha256 = "sha256-Iaxw08/j83b31eR79jvfqNlSf0qN7V1H5fsjEZ9iNB0=";
-      persistencedSha256 = "sha256-egXEpN1qJkookuBr1z6ucxKwWynDtZYiv1lVs7sTFaM=";
+      version = "620.70.06";
+      sha256_64bit = "sha256-KRGOOr0IwHVZvMo9nHYjjQOUkK8DYqLlvPy+cgSv1LE=";
+      sha256_aarch64 = "sha256-P6ZaknHg3eKk5YxJZcOIhaAqOkKszcsm/IF0EGB/PgM=";
+      settingsSha256 = "sha256-CFBRmXFJ9eAf5BRlHMBolahz1Pshr9giI7zcZC29oZ8=";
+      openSha256 = "sha256-e18RIVpaYhBu8rYF2+7Me1iphkuADL52DE9jyRLTysg=";
+      persistencedSha256 = "sha256-ItlTollPLVbUEFKNnr1Im2K0YrMIAep2/GnEarFoh/g=";
     };
   };
 
