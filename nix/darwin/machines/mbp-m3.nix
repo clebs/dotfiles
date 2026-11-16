@@ -8,7 +8,7 @@
       environment.systemPackages = with pkgs;
       [ 
             android-tools
-            atuin
+            # atuin
             autojump
             awscli2
             pkgs-stable.azure-cli
@@ -55,13 +55,14 @@
             neovim
             nodejs
             ollama
-            opencode
             pi-coding-agent
             pinentry-tty # needed for gpg sign
             podman
             python313Packages.pip
             qemu
+            rar
             rbenv
+            rclone
             ripgrep
             SDL2
             SDL2_image
@@ -91,7 +92,7 @@
             onActivation = {
                   autoUpdate = true;
                   upgrade = true;
-                  cleanup = "zap";
+                  cleanup = "uninstall";
             };
 
             taps = [
