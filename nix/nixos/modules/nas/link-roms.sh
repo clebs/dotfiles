@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# Sync ROMS from the backup to ES-DE
-
 set -euo pipefail
 
 # Change to the directory where the script lives
@@ -32,7 +30,7 @@ declare -A DIR_MAP=(
 
 for dir in */; do
   [ -d "$dir" ] || continue
-  # clean / suffix from dir
+  # clean '/' suffix from dir
   dirname="${dir%/}"
 
 	printf "\n\n==== ${dirname} ====\n\n"
