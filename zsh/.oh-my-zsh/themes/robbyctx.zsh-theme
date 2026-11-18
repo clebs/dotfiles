@@ -8,7 +8,7 @@ ctx_prompt() {
         if [ $len -gt 8 ]; then
             ctx=${ctx:0:8}
         fi
-        local ctxlabel="%{$fg[white]%} [$ctx]%{%f%}"
+        local ctxlabel="%{$fg[magenta]%} [$ctx]%{%f%}"
         echo $ctxlabel
     fi
 }
