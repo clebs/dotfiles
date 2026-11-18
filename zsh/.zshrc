@@ -147,6 +147,16 @@ if command -v hugo > /dev/null && [ ! -f ~/.oh-my-zsh/completions/_hugo ]; then 
 if command -v kubebuilder > /dev/null && [ ! -f ~/.oh-my-zsh/completions/_kubebuilder ]; then kubebuilder completion zsh > ~/.oh-my-zsh/completions/_kubebuilder; fi
 if command -v kustomize > /dev/null && [ ! -f ~/.oh-my-zsh/completions/_kustomize ]; then kustomize completion zsh > ~/.oh-my-zsh/completions/_kustomize; fi
 if command -v kind > /dev/null && [ ! -f ~/.oh-my-zsh/completions/_kind ]; then kind completion zsh > ~/.oh-my-zsh/completions/_kind; fi
+# wrap k9s to use light or dark theme based on tmux env
+if command -v k9s > /dev/null; then
+  k9s() {
+     if [[ "$(tmux show-environment -g COLORFGBG 2>/dev/null)" == *";15" ]]; then
+       command k9s --invert
+     else
+       command k9s
+     fi
+   }
+fi
 
 #---- OpenShift ----#
 if command -v oc > /dev/null && [ ! -f ~/.oh-my-zsh/completions/_oc ]; then oc completion zsh > ~/.oh-my-zsh/completions/_oc; fi
