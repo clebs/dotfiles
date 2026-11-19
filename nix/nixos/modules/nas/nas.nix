@@ -61,6 +61,9 @@
 
   services.webdav = {
     enable = true;
+    # user the systemd service runs as
+    # if running as webdav can not write most files
+    user = "borja";
     configFile = "/etc/webdav/config.yaml";
   };
 
