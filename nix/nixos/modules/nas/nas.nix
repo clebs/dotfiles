@@ -149,7 +149,8 @@
   services.cron = {
     enable = true;
     systemCronJobs = [
-      "00 00 * * * root rtcwake --date 08:30 -m disk >/var/log/cron.log 2>&1"
+      # sleep at 23:30 and wake up at 8:30
+      "30 23 * * * root rtcwake --date +9h -m disk >/var/log/cron.log 2>&1"
     ];
   };
 
